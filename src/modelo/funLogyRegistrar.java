@@ -27,7 +27,7 @@ public class funLogyRegistrar {
         
         try{
             ps=conexion.prepareStatement (sql);
-            ps.setString (1,x.UUID.randomUUID().toString());
+            ps.setString (1, UUID.randomUUID().toString());
             ps.setString (2,x.getNombre_Usuario());
             ps.setString (3,x.getApellido_Usuario());
             ps.setString (4,x.getUser_name());

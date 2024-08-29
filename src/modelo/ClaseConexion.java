@@ -6,8 +6,8 @@ public class ClaseConexion {
     
     //Variables para la cadena de conexión
     private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
-    private static final String USUARIO = "Allan_developer";
-    private static final String CONTRASENA = "MIRNAESPINA";
+    private static final String USUARIO = "System";
+    private static final String CONTRASENA = "ITR2024";
     
     //Creación del metodo de conexión que retorna la conexión
     public static Connection getConexion() {
