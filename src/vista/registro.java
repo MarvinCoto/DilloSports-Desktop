@@ -18,8 +18,18 @@ public class registro extends javax.swing.JFrame {
      */
     public registro() {
         initComponents();
+        this.setLocationRelativeTo(this);
+         
+    }
+    public static void initregistro(){
+        tbUsuario modelo = new tbUsuario();
+        registro vista = new registro();
+        ctrlRegistroUsuarios con = new ctrlRegistroUsuarios(modelo, vista);
+        
+        
         
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
