@@ -23,7 +23,7 @@ public class funLogyRegistrar {
         
         Connection conexion=ClaseConexion.getConexion();
         PreparedStatement ps=null;
-        String sql= "insert into tbUsuarioss(UUID_Usuario, Nombre_Usuario, Apellido_Usuario, User_name, Contrasena_Usuario, Genero_Usuario, FNacimiento_Usuario) values (?, ?,?, ?, ?, ?,?,?,)";
+        String sql= "insert into tbUsuarios(UUID_Usuario, Nombre_Usuario, Apellido_Usuario, User_name, Contrasena_Usuario, Genero_Usuario, FNacimiento_Usuario) values (?, ?, ?, ?, ?, ?, ?)";
         
         try{
             ps=conexion.prepareStatement (sql);
