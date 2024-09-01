@@ -76,7 +76,7 @@ public class Noticias {
             addNoticia.setString(2, getTitulo());
             addNoticia.setString(3, getDescripcion());
             addNoticia.setString(4, getFecha());
-            addNoticia.setString(4, getImagen());
+            addNoticia.setString(5, getImagen());
  
             //Ejecutar la consulta
             addNoticia.executeUpdate();
@@ -148,7 +148,7 @@ public class Noticias {
 
             try {
                 //Ejecutamos la Query
-                String sql = "update tbNoticias set Titulo_Noticia = ?, Descripcion_Noticia = ?, Fecha_Noticia = ?, Imagen_Noticia where UUID_Noticia = ?";
+                String sql = "update tbNoticias set Titulo_Noticia = ?, Descripcion_Noticia = ?, Fecha_Noticia = ?, Imagen_Noticia = ? where UUID_Noticia = ?";
                 PreparedStatement updateNoticia = conexion.prepareStatement(sql);
 
                 updateNoticia.setString(1, getTitulo());
