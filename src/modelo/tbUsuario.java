@@ -7,13 +7,15 @@ import java.util.UUID;
 import java.sql.*;
 
 
-
 /**
  *
  * @author alanbrito
  */
 public class tbUsuario {
     private String UUID_Usuario ;
+    private String Nombre;
+    private String Correo;
+    private String Contraseña;
     private String Nombre_Usuario; 
     private String Apellido_Usuario; 
     private String User_name ;
