@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
+import java.util.UUID;
+import java.sql.*;
+
+
 
 /**
  *
@@ -67,7 +71,7 @@ public class tbUsuario {
         this.Correo_Usuario = Correo_Usuario;
     }
 
-    public String getGenero_Usuario(String text) {
+    public String getGenero_Usuario() {
         return Genero_Usuario;
     }
 
@@ -75,11 +79,33 @@ public class tbUsuario {
         this.Genero_Usuario = Genero_Usuario;
     }
 
-    public String getFNacimiento_Usuario(String text) {
+    public String getFNacimiento_Usuario() {
         return FNacimiento_Usuario;
     }
 
     public void setFNacimiento_Usuario(String FNacimiento_Usuario) {
         this.FNacimiento_Usuario = FNacimiento_Usuario;
+    }
+    
+    public void GuardarUsuario(){
+        Connection conexion = ClaseConexion.getConexion();
+        
+        try {
+            PreparedStatement addUsuario = conexion.prepareStatement("INSERT INTO tbUsuarios(UUID_Usuario, Nombre_Usuario, Apellido_Usuario, User_name, Contrasena_Usuario, Correo_Usuario, Genero_Usuario, FNacimiento_Usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            addUsuario.setString(1, UUID.randomUUID().toString());
+            addUsuario.setString(2, getNombre_Usuario());
+            addUsuario.setString(3, getApellido_Usuario());
+            addUsuario.setString(4, getUser_name());
+            addUsuario.setString(5, getContrasena());
+            addUsuario.setString(6, getCorreo_Usuario());
+            addUsuario.setString(7, getGenero_Usuario());
+            addUsuario.setString(8, getFNacimiento_Usuario());
+            
+            addUsuario.executeUpdate();
+                    
+           
+        } catch (SQLException ex) {
+            System.out.println("Este es el error en el modelo: metodo guardar"+ ex);
+        }
     }
 }
