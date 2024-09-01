@@ -27,7 +27,7 @@ public class registro extends javax.swing.JFrame {
         ctrlRegistroUsuarios con = new ctrlRegistroUsuarios(modelo, vista);
         
         
-        
+        vista.setVisible(true);
     }
     
 

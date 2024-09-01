@@ -13,7 +13,7 @@ import java.sql.*;
  * @author alanbrito
  */
 public class tbUsuario {
-    private  String UUID_Usuario ;
+    private String UUID_Usuario ;
     private String Nombre_Usuario; 
     private String Apellido_Usuario; 
     private String User_name ;
@@ -102,7 +102,7 @@ public class tbUsuario {
             addUsuario.setString(8, getFNacimiento_Usuario());
             
             addUsuario.executeUpdate();
-                    
+                    System.out.println("Usuario creado exitosamente");
            
         } catch (SQLException ex) {
             System.out.println("Este es el error en el modelo: metodo guardar"+ ex);
