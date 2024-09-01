@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import modelo.Noticias;
 import vista.frmHome;
 import vista.frmNoticias;
-import vista.noticiasPrueba;
 
 
     //////////////////////////1- Implementar herencia: ActionListener
@@ -16,52 +15,52 @@ import vista.noticiasPrueba;
     
     //////////////////////////2- Parametros
     private Noticias modeloNoticias;
-    private frmHome vistaNoticias;
-    private noticiasPrueba Panel; 
+    private frmHome vistaHome;
+    private frmNoticias vistaNoticias; 
     
     //////////////////////////3- Constructor de la clase
-    public ctrlNoticias(Noticias modeloNoticias, frmHome VistaNoticias, noticiasPrueba panel) {
+    public ctrlNoticias(Noticias modeloNoticias, frmHome vistaHome, frmNoticias vistaNoticias) {
         
         this.modeloNoticias = modeloNoticias;
-        this.vistaNoticias = VistaNoticias;
-        this.Panel = panel;
+        this.vistaHome = vistaHome;
+        this.vistaNoticias = vistaNoticias;
         
         //Siempre hay que poner los botones que vamos a utilizar
-        noticiasPrueba.btnGuardar.addMouseListener(this);
-        noticiasPrueba.btnActualizar.addMouseListener(this);
-        noticiasPrueba.btnEliminar.addMouseListener(this);
-        noticiasPrueba.btnLimpiar.addMouseListener(this);
-        noticiasPrueba.txtBuscar.addMouseListener(this);
-        noticiasPrueba.jtbNoticias.addMouseListener(this);
-        vistaNoticias.jlbNoticias.addMouseListener(this);
-        modeloNoticias.MostrarNoticia(noticiasPrueba.jtbNoticias);
+        frmNoticias.btnGuardar.addMouseListener(this);
+        frmNoticias.btnActualizar.addMouseListener(this);
+        frmNoticias.btnEliminar.addMouseListener(this);
+        frmNoticias.btnLimpiar.addMouseListener(this);
+        frmNoticias.txtBuscar.addMouseListener(this);
+        frmNoticias.jtbNoticias.addMouseListener(this);
+        vistaHome.jlbNoticias.addMouseListener(this);
+        modeloNoticias.MostrarNoticia(frmNoticias.jtbNoticias);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         
         //////////////////////////4- Detección de clicks en la vista
-        if(e.getSource() == vistaNoticias.jlbNoticias){
-            vistaNoticias.jpContenedor.removeAll();
-            vistaNoticias.jpContenedor.add(Panel);
-            vistaNoticias.jpContenedor.revalidate();
-            vistaNoticias.jpContenedor.repaint();
+        if(e.getSource() == vistaHome.jlbNoticias){
+            vistaHome.jpContenedor.removeAll();
+            vistaHome.jpContenedor.add(vistaNoticias);
+            vistaHome.jpContenedor.revalidate();
+            vistaHome.jpContenedor.repaint();
         }
         
         
-        if (e.getSource() == Panel.btnGuardar) {
-            if (Panel.txtTitulo.getText().isEmpty() || Panel.txtDescripcion.getText().isEmpty() || Panel.txtFecha.getText().isEmpty() || Panel.txtImagen.getText().isEmpty() )  {
+        if (e.getSource() == vistaNoticias.btnGuardar) {
+            if (vistaNoticias.txtTitulo.getText().isEmpty() || vistaNoticias.txtDescripcion.getText().isEmpty() || vistaNoticias.txtFecha.getText().isEmpty() || vistaNoticias.txtImagen.getText().isEmpty() )  {
                 JOptionPane.showMessageDialog(vistaNoticias, "Debes llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
                     //Asignar lo de la vista al modelo
-                    modeloNoticias.setTitulo(Panel.txtTitulo.getText());
-                    modeloNoticias.setDescripcion(Panel.txtDescripcion.getText());
-                    modeloNoticias.setFecha(Panel.txtFecha.getText());
-                    modeloNoticias.setImagen(Panel.txtImagen.getText());
+                    modeloNoticias.setTitulo(vistaNoticias.txtTitulo.getText());
+                    modeloNoticias.setDescripcion(vistaNoticias.txtDescripcion.getText());
+                    modeloNoticias.setFecha(vistaNoticias.txtFecha.getText());
+                    modeloNoticias.setImagen(vistaNoticias.txtImagen.getText());
                     //Ejecutar el metodo 
                     modeloNoticias.GuardarNoticia();
-                    modeloNoticias.MostrarNoticia(Panel.jtbNoticias);
+                    modeloNoticias.MostrarNoticia(vistaNoticias.jtbNoticias);
                    // modeloNoticias.limpiar(Panel);
                 } catch (Exception ex) {
                     System.out.println("este es el error al guardar" + e);
@@ -69,43 +68,48 @@ import vista.noticiasPrueba;
             }
         }
         
-        if (e.getSource() == Panel.btnEliminar) {
-            if (Panel.txtTitulo.getText().isEmpty() || Panel.txtDescripcion.getText().isEmpty() || Panel.txtFecha.getText().isEmpty() || Panel.txtImagen.getText().isEmpty() ) {
+        if (e.getSource() == vistaNoticias.btnEliminar) {
+            if (vistaNoticias.txtTitulo.getText().isEmpty() || vistaNoticias.txtDescripcion.getText().isEmpty() || vistaNoticias.txtFecha.getText().isEmpty() || vistaNoticias.txtImagen.getText().isEmpty() ) {
                 JOptionPane.showMessageDialog(vistaNoticias, "Debes seleccionar un registro para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                modeloNoticias.EliminarNoticia(Panel.jtbNoticias);
-                modeloNoticias.MostrarNoticia(Panel.jtbNoticias);
+                try {
+                modeloNoticias.EliminarNoticia(vistaNoticias.jtbNoticias);
+                modeloNoticias.MostrarNoticia(vistaNoticias.jtbNoticias);
                // modeloNoticias.limpiar(Panel);
+                } catch (Exception ex) {
+                    System.out.println("este es el error al guardar" + e);
+                    }
+                }
             }
-        }
         
-        if (e.getSource() == Panel.btnActualizar) {
-            if (Panel.txtTitulo.getText().isEmpty() || Panel.txtDescripcion.getText().isEmpty() || Panel.txtFecha.getText().isEmpty() || Panel.txtImagen.getText().isEmpty() ) {
+        
+        if (e.getSource() == vistaNoticias.btnActualizar) {
+            if (vistaNoticias.txtTitulo.getText().isEmpty() || vistaNoticias.txtDescripcion.getText().isEmpty() || vistaNoticias.txtFecha.getText().isEmpty() || vistaNoticias.txtImagen.getText().isEmpty() ) {
                 JOptionPane.showMessageDialog(vistaNoticias, "Debes seleccionar un registro para actualizar", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
                     //Asignar lo de la vista al modelo al momento de darle clic a actualizar
-                    modeloNoticias.setTitulo(Panel.txtTitulo.getText());
-                    modeloNoticias.setDescripcion(Panel.txtDescripcion.getText());
-                    modeloNoticias.setFecha(Panel.txtFecha.getText());
-                    modeloNoticias.setImagen(Panel.txtImagen.getText());
+                    modeloNoticias.setTitulo(vistaNoticias.txtTitulo.getText());
+                    modeloNoticias.setDescripcion(vistaNoticias.txtDescripcion.getText());
+                    modeloNoticias.setFecha(vistaNoticias.txtFecha.getText());
+                    modeloNoticias.setImagen(vistaNoticias.txtImagen.getText());
 
                     //Ejecutar el método    
-                    modeloNoticias.ActualizarNoticia(Panel.jtbNoticias);
-                    modeloNoticias.MostrarNoticia(Panel.jtbNoticias);
+                    modeloNoticias.ActualizarNoticia(vistaNoticias.jtbNoticias);
+                    modeloNoticias.MostrarNoticia(vistaNoticias.jtbNoticias);
                    // modeloNoticias.limpiar(Panel);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(Panel, "La edad debe ser un número", "Error", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(vistaNoticias, "La edad debe ser un número", "Error", JOptionPane.WARNING_MESSAGE);
                 }
             }
         }
 
-        if (e.getSource() == Panel.btnLimpiar) {
-          //  modeloNoticias.limpiar(vistaNoticias);
+        if (e.getSource() == vistaNoticias.btnLimpiar) {
+          modeloNoticias.limpiar(vistaNoticias);
         }
         
-        if (e.getSource() == Panel.jtbNoticias) {
-            //modeloNoticias.cargarDatosTabla(Panel);
+        if (e.getSource() == vistaNoticias.jtbNoticias) {
+            modeloNoticias.cargarDatosTabla(vistaNoticias);
         }
         
         
@@ -114,8 +118,8 @@ import vista.noticiasPrueba;
     @Override
     public void keyReleased(KeyEvent e) {
         
-        if (e.getSource() == Panel.txtBuscar) {
-            modeloNoticias.Buscar(Panel.jtbNoticias, Panel.txtBuscar);
+        if (e.getSource() == vistaNoticias.txtBuscar) {
+            modeloNoticias.Buscar(vistaNoticias.jtbNoticias, vistaNoticias.txtBuscar);
         }
         
     }

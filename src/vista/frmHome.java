@@ -40,7 +40,7 @@ public class frmHome extends javax.swing.JFrame {
         
         Noticias modeloNoticias = new Noticias();
        frmHome vista = new frmHome();
-       noticiasPrueba panel = new noticiasPrueba();
+       frmNoticias panel = new frmNoticias();
         ctrlNoticias controlador = new ctrlNoticias(modeloNoticias, vista, panel);
         
         vista.setVisible(true);
