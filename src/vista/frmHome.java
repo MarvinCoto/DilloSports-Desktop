@@ -4,7 +4,9 @@
  */
 package vista;
 
+import controlador.ctrlNoticias;
 import java.awt.Color;
+import modelo.Noticias;
 
 /**
  *
@@ -32,6 +34,17 @@ public class frmHome extends javax.swing.JFrame {
         jpPerfil.setBackground(DefaultColor);
         jpAjustes.setBackground(DefaultColor);
         
+    }
+    
+        public static void initNoticias(){
+        
+        Noticias modeloNoticias = new Noticias();
+       frmHome vista = new frmHome();
+       frmNoticias panel = new frmNoticias();
+        ctrlNoticias controlador = new ctrlNoticias(modeloNoticias, vista, panel);
+        
+        vista.setVisible(true);
+    
     }
 
     /**
@@ -62,7 +75,7 @@ public class frmHome extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         JlTitulo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jpContenedor = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -289,7 +302,7 @@ public class frmHome extends javax.swing.JFrame {
                 .addComponent(jpNoticias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpTorneos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jpPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jpAjustes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -346,39 +359,27 @@ public class frmHome extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        jDesktopPane1.setBackground(new java.awt.Color(51, 51, 51));
-        jDesktopPane1.setPreferredSize(new java.awt.Dimension(791, 481));
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 790, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jpContenedor.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jpContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jpContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -398,43 +399,43 @@ public class frmHome extends javax.swing.JFrame {
     private void jpInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInicioMouseClicked
         // TODO add your handling code here:
         frmInicio frmInicio = new frmInicio();
-        jDesktopPane1.removeAll();
-        jDesktopPane1.add(frmInicio).setVisible(true);
+        jpContenedor.removeAll();
+        jpContenedor.add(frmInicio).setVisible(true);
     }//GEN-LAST:event_jpInicioMouseClicked
 
     private void jpPartidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpPartidosMouseClicked
         // TODO add your handling code here:
         frmPartidos frmPartidos = new frmPartidos();
-        jDesktopPane1.removeAll();
-        jDesktopPane1.add(frmPartidos).setVisible(true);
+        jpContenedor.removeAll();
+        jpContenedor.add(frmPartidos).setVisible(true);
     }//GEN-LAST:event_jpPartidosMouseClicked
 
     private void jpNoticiasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpNoticiasMouseClicked
         // TODO add your handling code here:
-        frmNoticias frmNoticias = new frmNoticias();
-        jDesktopPane1.removeAll();
-        jDesktopPane1.add(frmNoticias).setVisible(true);
+      //  frmNoticias frmNoticias = new frmNoticias();
+      //  jpContenedor.removeAll();
+      //  jpContenedor.add(frmNoticias).setVisible(true);
     }//GEN-LAST:event_jpNoticiasMouseClicked
 
     private void jpTorneosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTorneosMouseClicked
         // TODO add your handling code here:
         frmTorneos frmTorneos = new frmTorneos();
-        jDesktopPane1.removeAll();
-        jDesktopPane1.add(frmTorneos).setVisible(true);
+        jpContenedor.removeAll();
+        jpContenedor.add(frmTorneos).setVisible(true);
     }//GEN-LAST:event_jpTorneosMouseClicked
 
     private void jpPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpPerfilMouseClicked
         // TODO add your handling code here:
         frmPerfil frmPerfil = new frmPerfil();
-        jDesktopPane1.removeAll();
-        jDesktopPane1.add(frmPerfil).setVisible(true);
+        jpContenedor.removeAll();
+        jpContenedor.add(frmPerfil).setVisible(true);
     }//GEN-LAST:event_jpPerfilMouseClicked
 
     private void jpAjustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAjustesMouseClicked
         // TODO add your handling code here:
         frmAjustes frmAjustes = new frmAjustes();
-        jDesktopPane1.removeAll();
-        jDesktopPane1.add(frmAjustes).setVisible(true);
+        jpContenedor.removeAll();
+        jpContenedor.add(frmAjustes).setVisible(true);
     }//GEN-LAST:event_jpAjustesMouseClicked
 
     private void jpInicioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInicioMousePressed
@@ -542,14 +543,13 @@ public class frmHome extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmHome().setVisible(true);
+                initNoticias();
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JlTitulo;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -558,11 +558,12 @@ public class frmHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel jlbAjustes;
     private javax.swing.JLabel jlbInicio;
-    private javax.swing.JLabel jlbNoticias;
+    public javax.swing.JLabel jlbNoticias;
     private javax.swing.JLabel jlbPartidos;
     private javax.swing.JLabel jlbPerfil;
     private javax.swing.JLabel jlbTorneos;
     private javax.swing.JPanel jpAjustes;
+    public javax.swing.JPanel jpContenedor;
     private javax.swing.JPanel jpInicio;
     private javax.swing.JPanel jpNoticias;
     private javax.swing.JPanel jpPartidos;
