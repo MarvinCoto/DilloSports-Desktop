@@ -4,6 +4,9 @@
  */
 package vista;
 
+import controlador.ctrlLogin;
+import modelo.tbUsuario;
+
 /**
  *
  * @author FerOrtiz08
@@ -15,6 +18,17 @@ public class frmLogin extends javax.swing.JFrame {
      */
     public frmLogin() {
         initComponents();
+        this.setLocationRelativeTo(this);
+    }
+    
+    public static void initFrmLogin(){
+        
+        tbUsuario modeloUsuario = new tbUsuario();
+        frmLogin vista = new frmLogin();
+        ctrlLogin controlador = new ctrlLogin(modeloUsuario, vista);
+        
+        vista.setVisible(true);
+        
     }
 
     /**

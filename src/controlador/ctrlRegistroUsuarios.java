@@ -28,11 +28,12 @@ public class ctrlRegistroUsuarios implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        
         if (e.getSource() == vista.btnRegistrar) {
             modeloUsuario.setNombre_Usuario(vista.txtNombreR.getText());
             modeloUsuario.setApellido_Usuario(vista.txtApellidoR.getText());
             modeloUsuario.setUser_name(vista.txtUsernameR.getText());
-            modeloUsuario.setContrasena(vista.txtContrasena.getText());
+            modeloUsuario.setContrasena(modeloUsuario.convertirSHA256(vista.txtContrasena.getText()));
             modeloUsuario.setCorreo_Usuario(vista.txtCorreoR.getText());
             modeloUsuario.setGenero_Usuario(vista.txtGeneroReg.getText());
             modeloUsuario.setFNacimiento_Usuario(vista.txtFnacimientoR.getText());
@@ -41,7 +42,7 @@ public class ctrlRegistroUsuarios implements MouseListener{
             
             JOptionPane.showMessageDialog(vista, "Usuario creado con Exito!");
             
-            
+    
             
         }
     }

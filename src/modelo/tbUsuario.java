@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 import java.sql.*;
 
@@ -107,4 +109,51 @@ public class tbUsuario {
             System.out.println("Este es el error en el modelo: metodo guardar"+ ex);
         }
     }
+    
+    public boolean iniciarSesion() {
+        //Obtenemos la conexión a la base de datos
+        Connection conexion = ClaseConexion.getConexion();
+        boolean resultado = false;
+
+        try {
+            //Preparamos la consulta SQL para verificar el usuario
+            String sql = "SELECT * FROM tbUsuarios WHERE Correo_Usuario = ? AND Contrasena_Usuario = ?";
+            PreparedStatement statement = conexion.prepareStatement(sql);
+            statement.setString(1, getCorreo_Usuario());
+            statement.setString(2, getContrasena());
+
+            //Ejecutamos la consulta
+            ResultSet resultSet = statement.executeQuery();
+
+            //Si hay un resultado, significa que el usuario existe y la contraseña es correcta
+            if (resultSet.next()) {
+                resultado = true;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Error en el modelo: método iniciarSesion " + ex);
+        }
+
+        return resultado;
+    }
+    
+    
+    public String convertirSHA256(String password) {
+	MessageDigest md = null;
+	try {
+		md = MessageDigest.getInstance("SHA-256");
+	}
+	catch (NoSuchAlgorithmException e) {
+		System.out.println(e.toString());
+		return null;
+	}
+	byte[] hash = md.digest(password.getBytes());
+	StringBuffer sb = new StringBuffer();
+ 
+	for(byte b : hash) {
+		sb.append(String.format("%02x", b));
+	}
+ 
+	return sb.toString();
+}
 }
