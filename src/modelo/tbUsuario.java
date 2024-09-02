@@ -14,16 +14,17 @@ import java.sql.*;
  * @author alanbrito
  */
 public class tbUsuario {
+
+    
     private String UUID_Usuario ;
     private String Nombre_Usuario; 
     private String Apellido_Usuario; 
     private String User_name ;
-    private String Contrasena; 
+    private String Contrasena_Usuario; 
     private String Correo_Usuario; 
     private String Genero_Usuario;
     private String FNacimiento_Usuario; 
     
-
     public String getUUID_Usuario() {
         return UUID_Usuario;
     }
@@ -56,12 +57,12 @@ public class tbUsuario {
         this.User_name = User_name;
     }
 
-    public String getContrasena() {
-        return Contrasena;
+    public String getContrasena_Usuario() {
+        return Contrasena_Usuario;
     }
 
-    public void setContrasena(String Contrasena) {
-        this.Contrasena = Contrasena;
+    public void setContrasena_Usuario(String Contrasena_Usuario) {
+        this.Contrasena_Usuario = Contrasena_Usuario;
     }
 
     public String getCorreo_Usuario() {
@@ -88,6 +89,9 @@ public class tbUsuario {
         this.FNacimiento_Usuario = FNacimiento_Usuario;
     }
     
+
+    
+    
     public void GuardarUsuario(){
         Connection conexion = ClaseConexion.getConexion();
         
@@ -97,7 +101,7 @@ public class tbUsuario {
             addUsuario.setString(2, getNombre_Usuario());
             addUsuario.setString(3, getApellido_Usuario());
             addUsuario.setString(4, getUser_name());
-            addUsuario.setString(5, getContrasena());
+            addUsuario.setString(5, getContrasena_Usuario());
             addUsuario.setString(6, getCorreo_Usuario());
             addUsuario.setString(7, getGenero_Usuario());
             addUsuario.setString(8, getFNacimiento_Usuario());
@@ -120,7 +124,7 @@ public class tbUsuario {
             String sql = "SELECT * FROM tbUsuarios WHERE Correo_Usuario = ? AND Contrasena_Usuario = ?";
             PreparedStatement statement = conexion.prepareStatement(sql);
             statement.setString(1, getCorreo_Usuario());
-            statement.setString(2, getContrasena());
+            statement.setString(2, getContrasena_Usuario());
 
             //Ejecutamos la consulta
             ResultSet resultSet = statement.executeQuery();

@@ -24,7 +24,7 @@ public class registro extends javax.swing.JFrame {
     public static void initregistro(){
         tbUsuario modelo = new tbUsuario();
         registro vista = new registro();
-        ctrlRegistroUsuarios con = new ctrlRegistroUsuarios(modelo, vista);
+        ctrlRegistroUsuarios controlador = new ctrlRegistroUsuarios(modelo, vista);
         
         
         vista.setVisible(true);
@@ -211,7 +211,7 @@ public class registro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new registro().setVisible(true);
+                initregistro();
             }
         });
     }

@@ -34,7 +34,7 @@ public class ctrlLogin implements MouseListener {
         if (e.getSource() == vista.btnIniciarSesion) {
             
             modelo.setCorreo_Usuario(vista.txtCorreo.getText());
-            modelo.setContrasena(modelo.convertirSHA256(vista.txtContraseña.getText()));
+            modelo.setContrasena_Usuario(modelo.convertirSHA256(vista.txtContraseña.getText()));
             
             //Creo una variable llamada comprobar 
             //que guardará el resultado de ejecutar el método iniciarSesion()

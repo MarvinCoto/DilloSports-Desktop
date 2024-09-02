@@ -33,7 +33,7 @@ public class ctrlRegistroUsuarios implements MouseListener{
             modeloUsuario.setNombre_Usuario(vista.txtNombreR.getText());
             modeloUsuario.setApellido_Usuario(vista.txtApellidoR.getText());
             modeloUsuario.setUser_name(vista.txtUsernameR.getText());
-            modeloUsuario.setContrasena(modeloUsuario.convertirSHA256(vista.txtContrasena.getText()));
+            modeloUsuario.setContrasena_Usuario(modeloUsuario.convertirSHA256(vista.txtContrasena.getText()));
             modeloUsuario.setCorreo_Usuario(vista.txtCorreoR.getText());
             modeloUsuario.setGenero_Usuario(vista.txtGeneroReg.getText());
             modeloUsuario.setFNacimiento_Usuario(vista.txtFnacimientoR.getText());
