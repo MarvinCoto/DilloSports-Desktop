@@ -13,9 +13,6 @@ import java.sql.*;
  */
 public class tbUsuario {
     private String UUID_Usuario ;
-    private String Nombre;
-    private String Correo;
-    private String Contraseña;
     private String Nombre_Usuario; 
     private String Apellido_Usuario; 
     private String User_name ;
