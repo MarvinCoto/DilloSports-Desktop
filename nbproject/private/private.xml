@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/FerFi/OneDrive/Escritorio/DilloSports-Desktop/src/vista/frmBienvenida.java</file>
-            <file>file:/C:/Users/FerFi/OneDrive/Escritorio/DilloSports-Desktop/src/modelo/tbUsuario.java</file>
-            <file>file:/C:/Users/FerFi/OneDrive/Escritorio/DilloSports-Desktop/src/controlador/ctrlRegistroUsuarios.java</file>
-            <file>file:/C:/Users/FerFi/OneDrive/Escritorio/DilloSports-Desktop/src/vista/registro.java</file>
-            <file>file:/C:/Users/FerFi/OneDrive/Escritorio/DilloSports-Desktop/src/vista/frmHome.java</file>
-            <file>file:/C:/Users/FerFi/OneDrive/Escritorio/DilloSports-Desktop/src/modelo/ClaseConexion.java</file>
+            <file>file:/C:/Users/imerj/OneDrive/Desktop/DilloSports-Desktop/src/controlador/ctrlIngresoCorreo.java</file>
+            <file>file:/C:/Users/imerj/OneDrive/Desktop/DilloSports-Desktop/src/vista/registro.java</file>
+            <file>file:/C:/Users/imerj/OneDrive/Desktop/DilloSports-Desktop/src/vista/frmInicio.java</file>
+            <file>file:/C:/Users/imerj/OneDrive/Desktop/DilloSports-Desktop/src/vista/frmBienvenida.java</file>
+            <file>file:/C:/Users/imerj/OneDrive/Desktop/DilloSports-Desktop/src/vista/frmHome.java</file>
         </group>
     </open-files>
 </project-private>

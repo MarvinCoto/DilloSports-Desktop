@@ -6,6 +6,7 @@ package vista;
 
 import controlador.ctrlLogin;
 import modelo.tbUsuario;
+import vista.frmRecuperacion;
 
 /**
  *
@@ -47,6 +48,7 @@ public class frmLogin extends javax.swing.JFrame {
         txtCorreo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JTextField();
+        btnOlvidasteContraseña = new javax.swing.JButton();
         btnIniciarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,9 +66,8 @@ public class frmLogin extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Correo Electrónico");
+        jLabel3.setText("Ingrese su correo electrónico:");
 
-        txtCorreo.setText("Ingrese su correo electrónico");
         txtCorreo.setName(""); // NOI18N
         txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,9 +77,19 @@ public class frmLogin extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Contraseña");
+        jLabel4.setText("Ingrese su contraseña:");
 
-        txtContraseña.setText("Ingrese su contraseña");
+        btnOlvidasteContraseña.setBackground(new java.awt.Color(153, 153, 153));
+        btnOlvidasteContraseña.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnOlvidasteContraseña.setForeground(new java.awt.Color(255, 255, 255));
+        btnOlvidasteContraseña.setText("¿Olvidaste tu contraseña?");
+        btnOlvidasteContraseña.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnOlvidasteContraseña.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnOlvidasteContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOlvidasteContraseñaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,6 +98,7 @@ public class frmLogin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnOlvidasteContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -104,7 +116,9 @@ public class frmLogin extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnOlvidasteContraseña)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         btnIniciarSesion.setBackground(new java.awt.Color(255, 51, 51));
@@ -143,7 +157,7 @@ public class frmLogin extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();
@@ -152,6 +166,15 @@ public class frmLogin extends javax.swing.JFrame {
     private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoActionPerformed
+
+    private void btnOlvidasteContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOlvidasteContraseñaActionPerformed
+        // TODO add your handling code here:
+        frmRecuperacion frmRecuperacion = new frmRecuperacion();
+        
+        frmRecuperacion.setVisible(true);
+        
+        this.dispose(); 
+    }//GEN-LAST:event_btnOlvidasteContraseñaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,9 +210,11 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnIniciarSesion;
+    private javax.swing.JButton btnOlvidasteContraseña;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
