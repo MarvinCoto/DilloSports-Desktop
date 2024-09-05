@@ -34,6 +34,8 @@ public class frmHome extends javax.swing.JFrame {
         jpPerfil.setBackground(DefaultColor);
         jpAjustes.setBackground(DefaultColor);
         
+        this.setLocationRelativeTo(null);
+        
     }
     
         public static void initNoticias(){

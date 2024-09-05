@@ -9,7 +9,9 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import modelo.tbUsuario;
 import static oracle.sql.NUMBER.e;
+import vista.frmHome;
 import vista.frmLogin;
+import vista.registro;
 
 /**
  *
@@ -25,6 +27,7 @@ public class ctrlLogin implements MouseListener {
         this.vista = vista;
         
         vista.btnIniciarSesion.addMouseListener(this);
+        vista.btnIrARegistro.addMouseListener(this);
         
     }
 
@@ -42,10 +45,22 @@ public class ctrlLogin implements MouseListener {
             
             //Si la variable es true significa que si existe el usuario
             if (comprobar) {
-                     JOptionPane.showMessageDialog(vista, "Usuario existente, ¡Bienvenido!");
+                     JOptionPane.showMessageDialog(vista, "Inicio de sesión exitoso, ¡Bienvenido!");
+                     
+                     frmHome.initNoticias();
+                     vista.dispose();
+                     
             } else {
                JOptionPane.showMessageDialog(vista, "Usuario no encontrado");
             }
+        
+        }
+        
+        if (e.getSource() == vista.btnIrARegistro) {
+            
+            registro.initregistro();
+        
+            vista.dispose();
         
         }
         

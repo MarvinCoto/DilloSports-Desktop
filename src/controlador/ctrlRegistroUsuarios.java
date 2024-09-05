@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import modelo.tbUsuario;
+import vista.frmLogin;
 import vista.registro;
 
 /**
@@ -23,13 +24,22 @@ public class ctrlRegistroUsuarios implements MouseListener{
         this.vista = vista;
         
         vista.btnRegistrar.addMouseListener(this);
+        vista.btnIrALogin.addMouseListener(this);
         
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         
+        
         if (e.getSource() == vista.btnRegistrar) {
+            
+            if (vista.txtNombreR.getText().isEmpty() || vista.txtApellidoR.getText().isEmpty() || vista.txtUsernameR.getText().isEmpty()
+                || vista.txtContrasena.getText().isEmpty() || vista.txtCorreoR.getText().isEmpty() || vista.txtGeneroReg.getText().isEmpty()
+                || vista.txtFnacimientoR.getText().isEmpty() )  {
+                JOptionPane.showMessageDialog(vista, "Debes llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
             modeloUsuario.setNombre_Usuario(vista.txtNombreR.getText());
             modeloUsuario.setApellido_Usuario(vista.txtApellidoR.getText());
             modeloUsuario.setUser_name(vista.txtUsernameR.getText());
@@ -44,6 +54,16 @@ public class ctrlRegistroUsuarios implements MouseListener{
             
     
             
+            }
+        }
+        
+        if (e.getSource() == vista.btnIrALogin) {
+            
+            frmLogin.initFrmLogin();
+            
+            vista.dispose();
+        
+        
         }
     }
 
