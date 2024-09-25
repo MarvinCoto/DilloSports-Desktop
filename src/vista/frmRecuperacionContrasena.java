@@ -46,7 +46,7 @@ public class frmRecuperacionContrasena extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Restablecer De Contraseña");
+        jLabel2.setText("Restablecer Contraseña");
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -100,7 +100,7 @@ public class frmRecuperacionContrasena extends javax.swing.JFrame {
                         .addGap(198, 198, 198)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(312, 312, 312)
+                        .addGap(326, 326, 326)
                         .addComponent(jLabel2)))
                 .addContainerGap(223, Short.MAX_VALUE))
         );
