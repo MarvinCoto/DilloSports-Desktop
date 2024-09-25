@@ -47,7 +47,7 @@ public class ctrlLogin implements MouseListener {
             if (comprobar) {
                      JOptionPane.showMessageDialog(vista, "Inicio de sesión exitoso, ¡Bienvenido!");
                      
-                     frmHome.initNoticias();
+                     frmHome.initHome();
                      vista.dispose();
                      
             } else {

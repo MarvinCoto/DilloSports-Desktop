@@ -4,6 +4,10 @@
  */
 package vista;
 
+import controlador.ctrlHome;
+import controlador.ctrlNoticias;
+import modelo.Noticias;
+
 /**
  *
  * @author Estudiante
@@ -15,7 +19,13 @@ public class frmNoticias extends javax.swing.JPanel {
      */
     public frmNoticias() {
         initComponents();
+      
+        Noticias modeloNoticias = new Noticias();
+        frmNoticias panelNoticias = this;
+        frmHome vista = new frmHome();
         
+        
+        ctrlNoticias controlador = new ctrlNoticias(modeloNoticias, vista, panelNoticias);
         
         
     }
@@ -207,7 +217,7 @@ public class frmNoticias extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 39, Short.MAX_VALUE))
+                .addGap(0, 38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

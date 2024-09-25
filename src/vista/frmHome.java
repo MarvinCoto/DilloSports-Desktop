@@ -4,6 +4,7 @@
  */
 package vista;
 
+import controlador.ctrlHome;
 import controlador.ctrlNoticias;
 import java.awt.Color;
 import modelo.Noticias;
@@ -38,17 +39,17 @@ public class frmHome extends javax.swing.JFrame {
         
     }
     
-        public static void initNoticias(){
+        public static void initHome(){
         
-        Noticias modeloNoticias = new Noticias();
-       frmHome vista = new frmHome();
-       frmNoticias panel = new frmNoticias();
-        ctrlNoticias controlador = new ctrlNoticias(modeloNoticias, vista, panel);
+        frmHome vista = new frmHome();
+        frmNoticias panelNoticias = new frmNoticias();
+        frmInicio2 panelInicio = new frmInicio2();
+        ctrlHome controlador = new ctrlHome(vista, panelNoticias, panelInicio);
         
         vista.setVisible(true);
     
     }
-
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -170,9 +171,9 @@ public class frmHome extends javax.swing.JFrame {
         jpNoticias.setLayout(jpNoticiasLayout);
         jpNoticiasLayout.setHorizontalGroup(
             jpNoticiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpNoticiasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlbNoticias, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jpNoticiasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlbNoticias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(26, 26, 26))
         );
         jpNoticiasLayout.setVerticalGroup(
@@ -203,9 +204,9 @@ public class frmHome extends javax.swing.JFrame {
         jpTorneos.setLayout(jpTorneosLayout);
         jpTorneosLayout.setHorizontalGroup(
             jpTorneosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTorneosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlbTorneos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jpTorneosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlbTorneos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(26, 26, 26))
         );
         jpTorneosLayout.setVerticalGroup(
@@ -400,9 +401,9 @@ public class frmHome extends javax.swing.JFrame {
 
     private void jpInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInicioMouseClicked
         // TODO add your handling code here:
-        frmInicio frmInicio = new frmInicio();
-        jpContenedor.removeAll();
-        jpContenedor.add(frmInicio).setVisible(true);
+        //frmInicio frmInicio = new frmInicio();
+        //jpContenedor.removeAll();
+        //jpContenedor.add(frmInicio).setVisible(true);
     }//GEN-LAST:event_jpInicioMouseClicked
 
     private void jpPartidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpPartidosMouseClicked
@@ -545,9 +546,12 @@ public class frmHome extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                initNoticias();
+                initHome();
+                
             }
         });
+        
+     
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -558,18 +562,18 @@ public class frmHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel jlbAjustes;
-    private javax.swing.JLabel jlbInicio;
+    public javax.swing.JLabel jlbAjustes;
+    public javax.swing.JLabel jlbInicio;
     public javax.swing.JLabel jlbNoticias;
-    private javax.swing.JLabel jlbPartidos;
-    private javax.swing.JLabel jlbPerfil;
-    private javax.swing.JLabel jlbTorneos;
-    private javax.swing.JPanel jpAjustes;
+    public javax.swing.JLabel jlbPartidos;
+    public javax.swing.JLabel jlbPerfil;
+    public javax.swing.JLabel jlbTorneos;
+    public javax.swing.JPanel jpAjustes;
     public javax.swing.JPanel jpContenedor;
-    private javax.swing.JPanel jpInicio;
-    private javax.swing.JPanel jpNoticias;
-    private javax.swing.JPanel jpPartidos;
-    private javax.swing.JPanel jpPerfil;
-    private javax.swing.JPanel jpTorneos;
+    public javax.swing.JPanel jpInicio;
+    public javax.swing.JPanel jpNoticias;
+    public javax.swing.JPanel jpPartidos;
+    public javax.swing.JPanel jpPerfil;
+    public javax.swing.JPanel jpTorneos;
     // End of variables declaration//GEN-END:variables
 }

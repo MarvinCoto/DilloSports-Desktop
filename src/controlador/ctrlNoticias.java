@@ -40,12 +40,7 @@ import vista.frmNoticias;
     public void mouseClicked(MouseEvent e) {
         
         //////////////////////////4- Detección de clicks en la vista
-        if(e.getSource() == vistaHome.jlbNoticias){
-            vistaHome.jpContenedor.removeAll();
-            vistaHome.jpContenedor.add(vistaNoticias);
-            vistaHome.jpContenedor.revalidate();
-            vistaHome.jpContenedor.repaint();
-        }
+        
         
         
         if (e.getSource() == vistaNoticias.btnGuardar) {
@@ -126,6 +121,7 @@ import vista.frmNoticias;
 
     @Override
     public void mousePressed(MouseEvent e) {
+        
     }
 
     @Override
