@@ -79,7 +79,7 @@ public class Arbitros {
         }
     }
     
-    public void (JTable table) {
+    public void MostrarArbitro(JTable table) {
         Connection conexion = ClaseConexion.getConexion();
         
         DefaultTableModel modeloArbitros = new DefaultTableModel();
@@ -104,7 +104,7 @@ public class Arbitros {
         }
     }
     
-     public void EliminarNoticia(JTable tabla) {
+     public void EliminarArbitro(JTable tabla) {
         //Creamos una variable igual a ejecutar el método de la clase de conexión
         Connection conexion = ClaseConexion.getConexion();
 

@@ -45,7 +45,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnActualizarArbitro" min="-2" max="-2" attributes="0"/>
                   <Component id="btnGuardarArbitro" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEliminarArbitro" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="btnLimpiarArbitros" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
@@ -81,7 +81,7 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEliminarArbitro" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Component id="btnLimpiarArbitros" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -154,12 +154,12 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="btnEliminar">
+    <Component class="javax.swing.JButton" name="btnEliminarArbitro">
       <Properties>
         <Property name="text" type="java.lang.String" value="ELIMINAR "/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarArbitroActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

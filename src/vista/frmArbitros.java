@@ -34,7 +34,7 @@ public class frmArbitros extends javax.swing.JFrame {
         jtbArbitro = new javax.swing.JTable();
         btnActualizarArbitro = new javax.swing.JButton();
         btnGuardarArbitro = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        btnEliminarArbitro = new javax.swing.JButton();
         btnLimpiarArbitros = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,10 +56,10 @@ public class frmArbitros extends javax.swing.JFrame {
 
         btnGuardarArbitro.setText("GUARDAR ");
 
-        btnEliminar.setText("ELIMINAR ");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarArbitro.setText("ELIMINAR ");
+        btnEliminarArbitro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                btnEliminarArbitroActionPerformed(evt);
             }
         });
 
@@ -87,7 +87,7 @@ public class frmArbitros extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnActualizarArbitro)
                     .addComponent(btnGuardarArbitro)
-                    .addComponent(btnEliminar)
+                    .addComponent(btnEliminarArbitro)
                     .addComponent(btnLimpiarArbitros))
                 .addGap(65, 65, 65))
         );
@@ -114,7 +114,7 @@ public class frmArbitros extends javax.swing.JFrame {
                             .addComponent(txtEdadArbitro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnEliminar)
+                        .addComponent(btnEliminarArbitro)
                         .addGap(7, 7, 7)
                         .addComponent(btnLimpiarArbitros)
                         .addGap(18, 18, 18)))
@@ -125,9 +125,9 @@ public class frmArbitros extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    private void btnEliminarArbitroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarArbitroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    }//GEN-LAST:event_btnEliminarArbitroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,7 +166,7 @@ public class frmArbitros extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnActualizarArbitro;
-    public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnEliminarArbitro;
     public javax.swing.JButton btnGuardarArbitro;
     public javax.swing.JButton btnLimpiarArbitros;
     private javax.swing.JScrollPane jScrollPane1;
