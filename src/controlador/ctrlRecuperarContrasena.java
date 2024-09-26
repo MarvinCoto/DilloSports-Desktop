@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Random;
+import modelo.EnviarCorreos;
 import modelo.tbUsuario;
 import vista.frmRecuperacionContrasena;
 
@@ -47,8 +48,7 @@ public class ctrlRecuperarContrasena implements MouseListener, KeyListener {
                     +""
                     +"Tu codigo de Verificacion es: " + numeroAleatorio;
             
-            EnviarCorreos.enviarCorreo(recipient, subject, content);
-            
+            EnviarCorreos.enviarCorreo(recipient, subject, content); 
             vista.frmCodigoRecu.initfrmCodigoveri();
             vistaRecuContrasena.dispose();
             return;
