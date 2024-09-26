@@ -83,26 +83,7 @@ import vista.frmNoticias;
             }
         
         
-        if (e.getSource() == vistaNoticias.btnActualizar) {
-            if (vistaNoticias.txtTitulo.getText().isEmpty() || vistaNoticias.txtDescripcion.getText().isEmpty() || vistaNoticias.txtFecha.getText().isEmpty() || vistaNoticias.txtImagen.getText().isEmpty() ) {
-                JOptionPane.showMessageDialog(vistaNoticias, "Debes seleccionar un registro para actualizar", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                try {
-                    //Asignar lo de la vista al modelo al momento de darle clic a actualizar
-                    modeloNoticias.setTitulo(vistaNoticias.txtTitulo.getText());
-                    modeloNoticias.setDescripcion(vistaNoticias.txtDescripcion.getText());
-                    modeloNoticias.setFecha(vistaNoticias.txtFecha.getText());
-                    modeloNoticias.setImagen(vistaNoticias.txtImagen.getText());
-
-                    //Ejecutar el método    
-                    modeloNoticias.ActualizarNoticia(vistaNoticias.jtbNoticias);
-                    modeloNoticias.MostrarNoticia(vistaNoticias.jtbNoticias);
-                   // modeloNoticias.limpiar(Panel);
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(vistaNoticias, "La edad debe ser un número", "Error", JOptionPane.WARNING_MESSAGE);
-                }
-            }
-        }
+       
 
         if (e.getSource() == vistaNoticias.btnLimpiar) {
           modeloNoticias.limpiar(vistaNoticias);
