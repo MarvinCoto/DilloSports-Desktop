@@ -7,38 +7,38 @@ package controlador;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
-import modelo.Noticias;
 import vista.frmHome;
-import vista.frmInicio;
-import vista.frmNoticias;
+import vista.frmPartidos;
+import vista.frmPerfil;
 
 /**
  *
  * @author marvi
  */
-public class ctrlInicio implements MouseListener{
+public class ctrlPerfil implements MouseListener{
     
     //////////////////////////2- Parametros
     private frmHome vistaHome;
-    private frmInicio panelInicio;
+    private frmPerfil panelPerfil;
     
-    public ctrlInicio(frmHome vistaHome, frmInicio panelInicio) {
+    public ctrlPerfil(frmHome vistaHome, frmPerfil panelPerfil) {
         
         
         this.vistaHome = vistaHome;
-        this.panelInicio = panelInicio;
+        this.panelPerfil = panelPerfil;
         
         //Siempre hay que poner los botones que vamos a utilizar
-        frmInicio.btnPrueba.addMouseListener(this);
+        frmPerfil.btnPrueba.addMouseListener(this);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         
-        if(e.getSource() == panelInicio.btnPrueba){
-            JOptionPane.showMessageDialog(panelInicio, "Hola");
+        if(e.getSource() == panelPerfil.btnPrueba){
+            JOptionPane.showMessageDialog(panelPerfil, "Hola");
     
         }
+        
     }
 
     @Override

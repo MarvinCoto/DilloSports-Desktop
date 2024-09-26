@@ -31,6 +31,18 @@ public class ctrlRegistroUsuarios implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         
+        //2-Validar correos
+            if(!vista.txtCorreoR.getText().contains("@") || !vista.txtCorreoR.getText().contains(".com")){
+                JOptionPane.showMessageDialog(vista, "Ingrese un correo valido");
+            }
+            
+            //3-Validar que la contraseña tenga mas de 6 caracteres
+            if(vista.txtContrasena.getText().length() < 6){
+                JOptionPane.showMessageDialog(vista, "La contraseña debe tener mas de 6 caracteres");
+            }
+            
+            
+        
         
         if (e.getSource() == vista.btnRegistrar) {
             
