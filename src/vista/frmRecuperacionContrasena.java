@@ -4,6 +4,9 @@
  */
 package vista;
 
+import controlador.ctrlRecuperarContrasena;
+import modelo.tbUsuario;
+
 /**
  *
  * @author FerOrtiz08
@@ -16,7 +19,15 @@ public class frmRecuperacionContrasena extends javax.swing.JFrame {
     public frmRecuperacionContrasena() {
         initComponents();
     }
-
+    
+    public static void initfrmRecucontra(){
+        tbUsuario modelo = new tbUsuario();
+        frmRecuperacionContrasena vista = new frmRecuperacionContrasena();
+        ctrlRecuperarContrasena controlador = new ctrlRecuperarContrasena(modelo, vista);
+        
+        vista.setVisible(true);
+    }
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,8 +42,8 @@ public class frmRecuperacionContrasena extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtRecuperacion = new javax.swing.JTextField();
-        btnRegresar = new javax.swing.JButton();
         btnRestablecer = new javax.swing.JButton();
+        btnRegresarLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,39 +64,40 @@ public class frmRecuperacionContrasena extends javax.swing.JFrame {
 
         txtRecuperacion.setText("Ingrese su Correo Electronico");
 
-        btnRegresar.setBackground(new java.awt.Color(255, 0, 51));
-        btnRegresar.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegresar.setText("Regresar al Login");
-
         btnRestablecer.setBackground(new java.awt.Color(255, 0, 51));
         btnRestablecer.setForeground(new java.awt.Color(255, 255, 255));
         btnRestablecer.setText("Restablecer Contraseña");
+
+        btnRegresarLogin.setBackground(new java.awt.Color(255, 0, 51));
+        btnRegresarLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegresarLogin.setText("Regresar al Login");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRecuperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtRecuperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnRegresarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49)
-                        .addComponent(btnRegresar)
-                        .addGap(79, 79, 79)
-                        .addComponent(btnRestablecer)))
-                .addGap(43, 43, 43))
+                        .addComponent(btnRestablecer)
+                        .addGap(89, 89, 89))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(54, 54, 54)
                 .addComponent(txtRecuperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRestablecer, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                    .addComponent(btnRestablecer, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegresarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dilogo.png"))); // NOI18N
@@ -180,7 +192,7 @@ public class frmRecuperacionContrasena extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnRegresar;
+    public javax.swing.JButton btnRegresarLogin;
     public javax.swing.JButton btnRestablecer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
