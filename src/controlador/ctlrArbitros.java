@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
 import vista.frmHome;
 import modelo.Arbitros;
 import vista.frmArbitros;
@@ -30,8 +31,8 @@ public class ctlrArbitros  implements MouseListener, KeyListener{
         
         vistaArbitros.btnGuardarArbitro.addMouseListener(this);
         vistaArbitros.btnActualizarArbitro.addMouseListener(this);
-        vistaArbitros.btnEliminar.addMouseListener(this);
-        vistaArbitros.btn
+        vistaArbitros.btnEliminarArbitro.addMouseListener(this);
+        vistaArbitros.btnLimpiarArbitros.addMouseListener(this);
        
         
     }
@@ -46,13 +47,13 @@ public class ctlrArbitros  implements MouseListener, KeyListener{
             } else {
                 try {
                     //Asignar lo de la vista al modelo
-                    modeloArbitro.setNombreArbitro(vistaArbitros.txtNombreArbitro.getText());
-                    modeloArbitro.setApellidoArbitro(vistaArbitros.txtApellidoArbitro.getText());
-                    modeloArbitro.setEdadArbitro(vistaArbitros.txtEdadArbitro.getText());
-                    modeloArbitro.setTelefonoArbitro(vistaArbitros.telefonoArbitro.getText());
+                    modeloArbitro.setNombre_Arbitro(vistaArbitros.txtNombreArbitro.getText());
+                    modeloArbitro.setApellido_Arbitro(vistaArbitros.txtApellidoArbitro.getText());
+                    modeloArbitro.setEdad_Arbitro(vistaArbitros.txtEdadArbitro.getText());
+                    modeloArbitro.setTelefono_Arbitro(vistaArbitros.telefonoArbitro.getText());
                     //Ejecutar el metodo 
                     modeloArbitro.GuardarArbitro();
-                    modeloArbitro.MostrarArbitro(vistaArbitros.jtbArbitros);
+                    modeloArbitro.MostrarArbitro(vistaArbitros.jtbArbitro);
                    // modeloNoticias.limpiar(Panel);
                 } catch (Exception ex) {
                     System.out.println("este es el error al guardar" + e);
@@ -60,19 +61,43 @@ public class ctlrArbitros  implements MouseListener, KeyListener{
             }
         }
         
+        
+       
+      
         if (e.getSource() == vistaArbitros.btnEliminarArbitro) {
             if (vistaArbitros.txtNombreArbitro.getText().isEmpty() || vistaArbitros.txtApellidoArbitro.getText().isEmpty() || vistaArbitros.telefonoArbitro.getText().isEmpty() || vistaArbitros.txtEdadArbitro.getText().isEmpty() ) {
                 JOptionPane.showMessageDialog(vistaArbitros, "Debes seleccionar un registro para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
                 modeloArbitro.EliminarArbitro(vistaArbitros.jtbArbitro);
-                modeloArbitro.MostrarNoticia(vistaNoticias.jtbNoticias);
+                modeloArbitro.MostrarArbitro(vistaArbitros.jtbArbitro);
                // modeloNoticias.limpiar(Panel);
                 } catch (Exception ex) {
                     System.out.println("este es el error al guardar" + e);
                     }
                 }
             }
+        
+        if (e.getSource() == vistaArbitros.btnActualizarArbitro) {
+            if (vistaArbitros.txtNombreArbitro.getText().isEmpty() || vistaArbitros.txtApellidoArbitro.getText().isEmpty() || vistaArbitros.telefonoArbitro.getText().isEmpty() || vistaArbitros.txtEdadArbitro.getText().isEmpty() ) {
+                JOptionPane.showMessageDialog(vistaArbitros, "Debes seleccionar un registro para actualizar", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    //Asignar lo de la vista al modelo al momento de darle clic a actualizar
+                    modeloArbitro.setTitulo(vistaNoticias.txtTitulo.getText());
+                    modeloNoticias.setDescripcion(vistaNoticias.txtDescripcion.getText());
+                    modeloNoticias.setFecha(vistaNoticias.txtFecha.getText());
+                    modeloNoticias.setImagen(vistaNoticias.txtImagen.getText());
+
+                    //Ejecutar el método    
+                    modeloNoticias.ActualizarNoticia(vistaNoticias.jtbNoticias);
+                    modeloNoticias.MostrarNoticia(vistaNoticias.jtbNoticias);
+                   // modeloNoticias.limpiar(Panel);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(vistaNoticias, "La edad debe ser un número", "Error", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }
         
     }
 
