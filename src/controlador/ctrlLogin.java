@@ -11,6 +11,7 @@ import modelo.tbUsuario;
 import static oracle.sql.NUMBER.e;
 import vista.frmHome;
 import vista.frmLogin;
+import vista.frmRecuperacionContrasena;
 import vista.registro;
 
 /**
@@ -20,24 +21,25 @@ import vista.registro;
 public class ctrlLogin implements MouseListener {
     
     tbUsuario modelo;
-    frmLogin vista;
+    frmLogin vistaa;
     
     public ctrlLogin(tbUsuario modelo, frmLogin vista ) {
         this.modelo = modelo;
-        this.vista = vista;
+        this.vistaa = vista;
         
         vista.btnIniciarSesion.addMouseListener(this);
         vista.btnIrARegistro.addMouseListener(this);
+        vista.btnOlvidarContra.addMouseListener(this);
         
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         
-        if (e.getSource() == vista.btnIniciarSesion) {
+        if (e.getSource() == vistaa.btnIniciarSesion) {
             
-            modelo.setCorreo_Usuario(vista.txtCorreo.getText());
-            modelo.setContrasena_Usuario(modelo.convertirSHA256(vista.txtContraseña.getText()));
+            modelo.setCorreo_Usuario(vistaa.txtCorreo.getText());
+            modelo.setContrasena_Usuario(modelo.convertirSHA256(vistaa.txtContraseña.getText()));
             
             //Creo una variable llamada comprobar 
             //que guardará el resultado de ejecutar el método iniciarSesion()
@@ -45,23 +47,30 @@ public class ctrlLogin implements MouseListener {
             
             //Si la variable es true significa que si existe el usuario
             if (comprobar) {
-                     JOptionPane.showMessageDialog(vista, "Inicio de sesión exitoso, ¡Bienvenido!");
+                     JOptionPane.showMessageDialog(vistaa, "Inicio de sesión exitoso, ¡Bienvenido!");
                      
                      frmHome.initNoticias();
-                     vista.dispose();
+                     vistaa.dispose();
                      
             } else {
-               JOptionPane.showMessageDialog(vista, "Usuario no encontrado");
+               JOptionPane.showMessageDialog(vistaa, "Usuario no encontrado");
             }
         
         }
         
-        if (e.getSource() == vista.btnIrARegistro) {
+        if (e.getSource() == vistaa.btnIrARegistro) {
             
             registro.initregistro();
         
-            vista.dispose();
+            vistaa.dispose();
+            
         
+        }
+        
+        
+        if (e.getSource() == vistaa.btnOlvidarContra) {
+            vista.frmRecuperacionContrasena.initfrmRecucontra();
+            vistaa.dispose();
         }
         
     }

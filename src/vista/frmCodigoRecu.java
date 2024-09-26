@@ -4,6 +4,7 @@
  */
 package vista;
 
+import controlador.ctrlCodigoRecuperacion;
 import controlador.ctrlRecuperarContrasena;
 import modelo.tbUsuario;
 
@@ -23,7 +24,7 @@ public class frmCodigoRecu extends javax.swing.JFrame {
     public static void initfrmCodigoVerificacion(){
         tbUsuario modelo = new tbUsuario();
         frmCodigoRecu vista = new frmCodigoRecu();
-        ctrlRecuperarContrasena controlador = new ctrlRecuperarContrasena(modelo, vista);
+        ctrlCodigoRecuperacion controlador = new ctrlCodigoRecuperacion(modelo, vista);
         
         vista.setVisible(true);
     }
@@ -67,7 +68,9 @@ public class frmCodigoRecu extends javax.swing.JFrame {
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("Ingresar Codigo");
 
-        btnRegresar.setText("jButton1");
+        btnRegresar.setBackground(new java.awt.Color(255, 51, 51));
+        btnRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegresar.setText("Regresar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

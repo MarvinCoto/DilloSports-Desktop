@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
 import modelo.tbUsuario;
 import vista.frmCodigoRecu;
 
@@ -27,14 +28,30 @@ public class ctrlCodigoRecuperacion implements MouseListener, KeyListener {
         
         VisCodigoRecu.txtCodigoVerificacion.addMouseListener(this);
         VisCodigoRecu.btnIngresar.addMouseListener(this);
+        VisCodigoRecu.btnRegresar.addMouseListener(this);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         
-        if (e.getSource() == VisCodigoRecu.btnIngresar) 
+        if (e.getSource() == VisCodigoRecu.btnRegresar) {
+            JOptionPane.showMessageDialog(VisCodigoRecu, "Ingrese el codigo que se le a enviado");
+            return;
+        } 
+        
+        vista.frmRecuperacionContrasena.initfrmRecucontra();
+        VisCodigoRecu.dispose();
+        
+        if (e.getSource() == VisCodigoRecu.btnIngresar){
+            
+            vista.frmContrasenaNueva.initfrmContraNueva();
+            VisCodigoRecu.dispose();
+        }
+        
         
     }
+    
+    
 
     @Override
     public void mousePressed(MouseEvent e) {

@@ -23,34 +23,35 @@ public class EnviarCorreos {
     
     public static void enviarCorreo(String recipient, String subject, String content){
         
-    //Propiedades del servidor de correo
-    Properties properties = new Properties();
-    properties.put("mail.smtp.auth", "true");
-    properties.put("mail.smtp.starttls.enable", "true");
-    properties.put("mail.smtp.host", "smtp.gmail.com");
-    properties.put("mail.smtp.port", "587");
+        // Propiedades del servidor de correo
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true"); // Cambiar a SSL
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587"); // Puerto SSL
         
-    final String myAccountEmail = "oficial.dillo.sports@gmail.com";
-    final String password = "dillouSports1";
+        final String myAccountEmail = "oficial.dillo.sports@gmail.com";
+        final String password = "tu_contraseña"; // Reemplaza con la contraseña correcta o una contraseña de aplicación
     
-    Session session = Session.getInstance(properties, new Authenticator(){
-        @Override
-        protected PasswordAuthentication getPasswordAuthentication(){
-            return new PasswordAuthentication(myAccountEmail, password);
-        }
-    });
+        Session session = Session.getInstance(properties, new Authenticator(){
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication(){
+                return new PasswordAuthentication(myAccountEmail, password);
+            }
+        });
     
-    try {
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(myAccountEmail));
-        message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-        message.setSubject(subject);
-        message.setText(content);
-        
-        Transport.send(message);
-        System.out.println("Correo enviado con éxito");
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+        try {
+    Message message = new MimeMessage(session);
+    message.setFrom(new InternetAddress(myAccountEmail));
+    message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+    message.setSubject(subject);
+    message.setText(content);
+
+    Transport.send(message);
+    System.out.println("Correo enviado con éxito");
+} catch (MessagingException e) {
+    e.printStackTrace();
+    System.out.println("Error en el modelo: método iniciarSesion " + e);
+}
     }
 }

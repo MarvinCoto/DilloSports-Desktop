@@ -49,7 +49,7 @@ public class ctrlRecuperarContrasena implements MouseListener, KeyListener {
                     +"Tu codigo de Verificacion es: " + numeroAleatorio;
             
             EnviarCorreos.enviarCorreo(recipient, subject, content); 
-            vista.frmCodigoRecu.initfrmCodigoveri();
+            vista.frmCodigoRecu.initfrmCodigoVerificacion();
             vistaRecuContrasena.dispose();
             return;
         }

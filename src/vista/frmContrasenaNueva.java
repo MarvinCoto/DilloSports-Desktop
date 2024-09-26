@@ -4,6 +4,10 @@
  */
 package vista;
 
+import controlador.ctrlContrasenaNueva;
+import controlador.ctrlRecuperarContrasena;
+import modelo.tbUsuario;
+
 /**
  *
  * @author FerOrtiz08
@@ -15,6 +19,14 @@ public class frmContrasenaNueva extends javax.swing.JFrame {
      */
     public frmContrasenaNueva() {
         initComponents();
+    }
+    
+    public static void initfrmContraNueva(){
+        tbUsuario modelo = new tbUsuario();
+        frmContrasenaNueva vista = new frmContrasenaNueva();
+        ctrlContrasenaNueva controlador = new ctrlContrasenaNueva(modelo, vista);
+        
+        vista.setVisible(true);
     }
 
     /**
@@ -33,6 +45,7 @@ public class frmContrasenaNueva extends javax.swing.JFrame {
         txtNuevaContrasena = new javax.swing.JTextField();
         txtConfirmarContrasena = new javax.swing.JTextField();
         btnGuardarContrasena = new javax.swing.JButton();
+        btnVolverAlLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +68,10 @@ public class frmContrasenaNueva extends javax.swing.JFrame {
         btnGuardarContrasena.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardarContrasena.setText("Guardar Contraseña");
 
+        btnVolverAlLogin.setBackground(new java.awt.Color(255, 0, 51));
+        btnVolverAlLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolverAlLogin.setText("Volver al Login");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -68,8 +85,10 @@ public class frmContrasenaNueva extends javax.swing.JFrame {
                             .addComponent(txtConfirmarContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
                         .addGap(73, 73, 73))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnVolverAlLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
                         .addComponent(btnGuardarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(176, 176, 176))))
+                        .addGap(94, 94, 94))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,7 +98,9 @@ public class frmContrasenaNueva extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtConfirmarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnGuardarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGuardarContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(btnVolverAlLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -165,6 +186,7 @@ public class frmContrasenaNueva extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnGuardarContrasena;
+    public javax.swing.JButton btnVolverAlLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
