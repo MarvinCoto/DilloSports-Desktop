@@ -1,26 +1,34 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package vista;
 
-import javax.swing.plaf.basic.BasicInternalFrameUI;
+import controlador.ctrlHome;
+import controlador.ctrlInicio;
+import controlador.ctrlNoticias;
+import modelo.Noticias;
 
 /**
  *
  * @author marvi
  */
-public class frmInicio extends javax.swing.JInternalFrame {
+public class frmInicio extends javax.swing.JPanel {
 
     /**
-     * Creates new form frmInicio
+     * Creates new form frmInicio2
      */
     public frmInicio() {
         initComponents();
         
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
-        BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
-        ui.setNorthPane(null);
+    
+        frmInicio panelInicio = this;
+        frmHome vista = new frmHome();
+        
+        
+        ctrlInicio controlador = new ctrlInicio(vista, panelInicio);
+        
+
     }
 
     /**
@@ -32,52 +40,58 @@ public class frmInicio extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        btnPrueba = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(51, 51, 51));
-        setPreferredSize(new java.awt.Dimension(791, 481));
+        jPanel10.setBackground(new java.awt.Color(51, 51, 51));
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel10.setText("¡Bienvenido!");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("¡Bienvenido!");
+        btnPrueba.setText("jButton1");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addContainerGap(591, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel10))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(282, 282, 282)
+                        .addComponent(btnPrueba)))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel1)
-                .addContainerGap(379, Short.MAX_VALUE))
+                .addComponent(jLabel10)
+                .addGap(170, 170, 170)
+                .addComponent(btnPrueba)
+                .addContainerGap(241, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    public static javax.swing.JButton btnPrueba;
+    private javax.swing.JLabel jLabel10;
+    public javax.swing.JPanel jPanel10;
     // End of variables declaration//GEN-END:variables
 }

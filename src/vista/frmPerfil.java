@@ -1,26 +1,30 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package vista;
 
-import javax.swing.plaf.basic.BasicInternalFrameUI;
+import controlador.ctrlInicio;
+import controlador.ctrlPerfil;
 
 /**
  *
  * @author marvi
  */
-public class frmPerfil extends javax.swing.JInternalFrame {
+public class frmPerfil extends javax.swing.JPanel {
 
     /**
-     * Creates new form frmInicio
+     * Creates new form frmPerfil2
      */
     public frmPerfil() {
         initComponents();
         
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
-        BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
-        ui.setNorthPane(null);
+        frmPerfil panelPerfil = this;
+        frmHome vista = new frmHome();
+        
+        
+        ctrlPerfil controlador = new ctrlPerfil(vista, panelPerfil);
+        
     }
 
     /**
@@ -34,15 +38,15 @@ public class frmPerfil extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(51, 51, 51));
-        setPreferredSize(new java.awt.Dimension(791, 481));
+        btnPrueba = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Perfil");
+
+        btnPrueba.setText("jButton1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -51,18 +55,24 @@ public class frmPerfil extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addContainerGap(702, Short.MAX_VALUE))
+                .addContainerGap(717, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnPrueba)
+                .addGap(349, 349, 349))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addContainerGap(405, Short.MAX_VALUE))
+                .addGap(151, 151, 151)
+                .addComponent(btnPrueba)
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -71,12 +81,11 @@ public class frmPerfil extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton btnPrueba;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

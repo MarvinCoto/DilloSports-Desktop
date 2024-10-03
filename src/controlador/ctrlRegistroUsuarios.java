@@ -31,6 +31,10 @@ public class ctrlRegistroUsuarios implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         
+       
+            
+            
+        
         
         if (e.getSource() == vista.btnRegistrar) {
             

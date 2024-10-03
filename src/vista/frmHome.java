@@ -4,6 +4,7 @@
  */
 package vista;
 
+import controlador.ctrlHome;
 import controlador.ctrlNoticias;
 import java.awt.Color;
 import modelo.Noticias;
@@ -18,13 +19,11 @@ public class frmHome extends javax.swing.JFrame {
      * Creates new form frmPrueba
      */
     
-    Color DefaultColor,ClickedColor;
+    Color DefaultColor;
     
     public frmHome() {
         initComponents();
         
-        DefaultColor = new Color(0,0,0);
-        ClickedColor = new Color(51,51,51);
         
         //Establecer el color predeterminado en Panorámico en tiempo de ejecución
         jpInicio.setBackground(DefaultColor);
@@ -38,17 +37,22 @@ public class frmHome extends javax.swing.JFrame {
         
     }
     
-        public static void initNoticias(){
+        public static void initHome(){
         
-        Noticias modeloNoticias = new Noticias();
-       frmHome vista = new frmHome();
-       frmNoticias panel = new frmNoticias();
-        ctrlNoticias controlador = new ctrlNoticias(modeloNoticias, vista, panel);
+        frmHome vista = new frmHome();
+        frmInicio panelInicio = new frmInicio();
+        frmPartidos panelPartidos = new frmPartidos();
+        frmNoticias panelNoticias = new frmNoticias();
+        frmTorneos panelTorneos = new frmTorneos();
+        frmPerfil panelPerfil = new frmPerfil();
+        frmAjustes panelAjustes = new frmAjustes();
+        
+        ctrlHome controlador = new ctrlHome(vista, panelInicio, panelPartidos, panelNoticias, panelTorneos, panelPerfil, panelAjustes);
         
         vista.setVisible(true);
     
     }
-
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -170,9 +174,9 @@ public class frmHome extends javax.swing.JFrame {
         jpNoticias.setLayout(jpNoticiasLayout);
         jpNoticiasLayout.setHorizontalGroup(
             jpNoticiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpNoticiasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlbNoticias, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jpNoticiasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlbNoticias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(26, 26, 26))
         );
         jpNoticiasLayout.setVerticalGroup(
@@ -203,9 +207,9 @@ public class frmHome extends javax.swing.JFrame {
         jpTorneos.setLayout(jpTorneosLayout);
         jpTorneosLayout.setHorizontalGroup(
             jpTorneosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTorneosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlbTorneos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jpTorneosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlbTorneos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(26, 26, 26))
         );
         jpTorneosLayout.setVerticalGroup(
@@ -400,16 +404,16 @@ public class frmHome extends javax.swing.JFrame {
 
     private void jpInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInicioMouseClicked
         // TODO add your handling code here:
-        frmInicio frmInicio = new frmInicio();
-        jpContenedor.removeAll();
-        jpContenedor.add(frmInicio).setVisible(true);
+        //frmInicio frmInicio = new frmInicio();
+        //jpContenedor.removeAll();
+        //jpContenedor.add(frmInicio).setVisible(true);
     }//GEN-LAST:event_jpInicioMouseClicked
 
     private void jpPartidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpPartidosMouseClicked
         // TODO add your handling code here:
-        frmPartidos frmPartidos = new frmPartidos();
-        jpContenedor.removeAll();
-        jpContenedor.add(frmPartidos).setVisible(true);
+        //frmPartidos frmPartidos = new frmPartidos();
+        //jpContenedor.removeAll();
+        //jpContenedor.add(frmPartidos).setVisible(true);
     }//GEN-LAST:event_jpPartidosMouseClicked
 
     private void jpNoticiasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpNoticiasMouseClicked
@@ -421,95 +425,95 @@ public class frmHome extends javax.swing.JFrame {
 
     private void jpTorneosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTorneosMouseClicked
         // TODO add your handling code here:
-        frmTorneos frmTorneos = new frmTorneos();
-        jpContenedor.removeAll();
-        jpContenedor.add(frmTorneos).setVisible(true);
+        //frmTorneos frmTorneos = new frmTorneos();
+        //jpContenedor.removeAll();
+        //jpContenedor.add(frmTorneos).setVisible(true);
     }//GEN-LAST:event_jpTorneosMouseClicked
 
     private void jpPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpPerfilMouseClicked
         // TODO add your handling code here:
-        frmPerfil frmPerfil = new frmPerfil();
-        jpContenedor.removeAll();
-        jpContenedor.add(frmPerfil).setVisible(true);
+        //frmPerfil frmPerfil = new frmPerfil();
+        //jpContenedor.removeAll();
+        //jpContenedor.add(frmPerfil).setVisible(true);
     }//GEN-LAST:event_jpPerfilMouseClicked
 
     private void jpAjustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAjustesMouseClicked
         // TODO add your handling code here:
-        frmAjustes frmAjustes = new frmAjustes();
-        jpContenedor.removeAll();
-        jpContenedor.add(frmAjustes).setVisible(true);
+        //frmAjustes frmAjustes = new frmAjustes();
+        //jpContenedor.removeAll();
+        //jpContenedor.add(frmAjustes).setVisible(true);
     }//GEN-LAST:event_jpAjustesMouseClicked
 
     private void jpInicioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInicioMousePressed
         // TODO add your handling code here:
-        jpInicio.setBackground(ClickedColor);
-        jpPartidos.setBackground(DefaultColor);
-        jpNoticias.setBackground(DefaultColor);
-        jpTorneos.setBackground(DefaultColor);
-        jpPerfil.setBackground(DefaultColor);
-        jpAjustes.setBackground(DefaultColor);
+        //jpInicio.setBackground(ClickedColor);
+        //jpPartidos.setBackground(DefaultColor);
+        //jpNoticias.setBackground(DefaultColor);
+        //jpTorneos.setBackground(DefaultColor);
+        //jpPerfil.setBackground(DefaultColor);
+        //jpAjustes.setBackground(DefaultColor);
         
-        JlTitulo.setText("Inicio");
+        //JlTitulo.setText("Inicio");
     }//GEN-LAST:event_jpInicioMousePressed
 
     private void jpPartidosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpPartidosMousePressed
         // TODO add your handling code here:
-        jpInicio.setBackground(DefaultColor);
-        jpPartidos.setBackground(ClickedColor);
-        jpNoticias.setBackground(DefaultColor);
-        jpTorneos.setBackground(DefaultColor);
-        jpPerfil.setBackground(DefaultColor);
-        jpAjustes.setBackground(DefaultColor);
+        //jpInicio.setBackground(DefaultColor);
+        //jpPartidos.setBackground(ClickedColor);
+        //jpNoticias.setBackground(DefaultColor);
+        //jpTorneos.setBackground(DefaultColor);
+        //jpPerfil.setBackground(DefaultColor);
+        //jpAjustes.setBackground(DefaultColor);
         
-        JlTitulo.setText("Partidos");
+        //JlTitulo.setText("Partidos");
     }//GEN-LAST:event_jpPartidosMousePressed
 
     private void jpNoticiasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpNoticiasMousePressed
         // TODO add your handling code here:
-        jpInicio.setBackground(DefaultColor);
-        jpPartidos.setBackground(DefaultColor);
-        jpNoticias.setBackground(ClickedColor);
-        jpTorneos.setBackground(DefaultColor);
-        jpPerfil.setBackground(DefaultColor);
-        jpAjustes.setBackground(DefaultColor);
+        //jpInicio.setBackground(DefaultColor);
+        //jpPartidos.setBackground(DefaultColor);
+        //jpNoticias.setBackground(ClickedColor);
+        //jpTorneos.setBackground(DefaultColor);
+        //jpPerfil.setBackground(DefaultColor);
+        //jpAjustes.setBackground(DefaultColor);
         
-        JlTitulo.setText("Noticias");
+        //JlTitulo.setText("Noticias");
     }//GEN-LAST:event_jpNoticiasMousePressed
 
     private void jpTorneosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTorneosMousePressed
         // TODO add your handling code here:
-        jpInicio.setBackground(DefaultColor);
-        jpPartidos.setBackground(DefaultColor);
-        jpNoticias.setBackground(DefaultColor);
-        jpTorneos.setBackground(ClickedColor);
-        jpPerfil.setBackground(DefaultColor);
-        jpAjustes.setBackground(DefaultColor);
+        //jpInicio.setBackground(DefaultColor);
+        //jpPartidos.setBackground(DefaultColor);
+        //jpNoticias.setBackground(DefaultColor);
+        //jpTorneos.setBackground(ClickedColor);
+        //jpPerfil.setBackground(DefaultColor);
+        //jpAjustes.setBackground(DefaultColor);
         
-        JlTitulo.setText("Torneos");
+        //JlTitulo.setText("Torneos");
     }//GEN-LAST:event_jpTorneosMousePressed
 
     private void jpPerfilMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpPerfilMousePressed
         // TODO add your handling code here:
-        jpInicio.setBackground(DefaultColor);
-        jpPartidos.setBackground(DefaultColor);
-        jpNoticias.setBackground(DefaultColor);
-        jpTorneos.setBackground(DefaultColor);
-        jpPerfil.setBackground(ClickedColor);
-        jpAjustes.setBackground(DefaultColor);
+        //jpInicio.setBackground(DefaultColor);
+        //jpPartidos.setBackground(DefaultColor);
+        //jpNoticias.setBackground(DefaultColor);
+        //jpTorneos.setBackground(DefaultColor);
+        //jpPerfil.setBackground(ClickedColor);
+        //jpAjustes.setBackground(DefaultColor);
         
-        JlTitulo.setText("Perfil");
+        //JlTitulo.setText("Perfil");
     }//GEN-LAST:event_jpPerfilMousePressed
 
     private void jpAjustesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAjustesMousePressed
         // TODO add your handling code here:
-        jpInicio.setBackground(DefaultColor);
-        jpPartidos.setBackground(DefaultColor);
-        jpNoticias.setBackground(DefaultColor);
-        jpTorneos.setBackground(DefaultColor);
-        jpPerfil.setBackground(DefaultColor);
-        jpAjustes.setBackground(ClickedColor);
+        //jpInicio.setBackground(DefaultColor);
+        //jpPartidos.setBackground(DefaultColor);
+        //jpNoticias.setBackground(DefaultColor);
+        //jpTorneos.setBackground(DefaultColor);
+        //jpPerfil.setBackground(DefaultColor);
+        //jpAjustes.setBackground(ClickedColor);
         
-        JlTitulo.setText("Ajustes");
+        //JlTitulo.setText("Ajustes");
     }//GEN-LAST:event_jpAjustesMousePressed
 
     /**
@@ -545,31 +549,34 @@ public class frmHome extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                initNoticias();
+                initHome();
+                
             }
         });
+        
+     
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JlTitulo;
+    public javax.swing.JLabel JlTitulo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel jlbAjustes;
-    private javax.swing.JLabel jlbInicio;
+    public javax.swing.JLabel jlbAjustes;
+    public javax.swing.JLabel jlbInicio;
     public javax.swing.JLabel jlbNoticias;
-    private javax.swing.JLabel jlbPartidos;
-    private javax.swing.JLabel jlbPerfil;
-    private javax.swing.JLabel jlbTorneos;
-    private javax.swing.JPanel jpAjustes;
+    public javax.swing.JLabel jlbPartidos;
+    public javax.swing.JLabel jlbPerfil;
+    public javax.swing.JLabel jlbTorneos;
+    public javax.swing.JPanel jpAjustes;
     public javax.swing.JPanel jpContenedor;
-    private javax.swing.JPanel jpInicio;
-    private javax.swing.JPanel jpNoticias;
-    private javax.swing.JPanel jpPartidos;
-    private javax.swing.JPanel jpPerfil;
-    private javax.swing.JPanel jpTorneos;
+    public javax.swing.JPanel jpInicio;
+    public javax.swing.JPanel jpNoticias;
+    public javax.swing.JPanel jpPartidos;
+    public javax.swing.JPanel jpPerfil;
+    public javax.swing.JPanel jpTorneos;
     // End of variables declaration//GEN-END:variables
 }
