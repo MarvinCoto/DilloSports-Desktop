@@ -30,7 +30,7 @@ import vista.frmNoticias;
         frmNoticias.btnActualizar.addMouseListener(this);
         frmNoticias.btnEliminar.addMouseListener(this);
         frmNoticias.btnLimpiar.addMouseListener(this);
-        frmNoticias.txtBuscar.addMouseListener(this);
+        frmNoticias.txtBuscar.addKeyListener(this);
         frmNoticias.jtbNoticias.addMouseListener(this);
         vistaHome.jlbNoticias.addMouseListener(this);
         modeloNoticias.MostrarNoticia(frmNoticias.jtbNoticias);

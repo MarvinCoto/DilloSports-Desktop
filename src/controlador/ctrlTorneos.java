@@ -120,17 +120,19 @@ public class ctrlTorneos implements MouseListener{
             modeloTorneos.cargarDatosTabla(panelTorneos);
         }
         
+        if (e.getSource() == panelTorneos.btnRegistrarEquipos) {
+          
+        
+            frmEquipos.initEquipos();
+        }
+        
         if (e.getSource() == panelTorneos.btnRegistrarArbitros) {
           
         
             frmArbitros2.initArbitros();
         }
         
-        if (e.getSource() == panelTorneos.btnRegistrarEquipos) {
-          
-        
-            frmEquipos.initEquipos();
-        }
+       
         
         
         

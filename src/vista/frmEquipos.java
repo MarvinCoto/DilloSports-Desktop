@@ -20,6 +20,8 @@ public class frmEquipos extends javax.swing.JFrame {
      */
     public frmEquipos() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
     
     public static void initEquipos() {

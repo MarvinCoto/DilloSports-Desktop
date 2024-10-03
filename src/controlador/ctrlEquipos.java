@@ -7,7 +7,6 @@ package controlador;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
-import modelo.Arbitros2;
 import modelo.Equipos;
 import vista.frmArbitros2;
 import vista.frmEquipos;
@@ -29,13 +28,13 @@ public class ctrlEquipos implements MouseListener{
         this.vistaEquipos = vistaEquipos;
         
         //Siempre hay que poner los botones que vamos a utilizar
-        frmArbitros2.btnGuardar.addMouseListener(this);
-        frmArbitros2.btnActualizar.addMouseListener(this);
-        frmArbitros2.btnEliminar.addMouseListener(this);
-        frmArbitros2.btnLimpiar.addMouseListener(this);
-        frmArbitros2.btnRegresar.addMouseListener(this);
-        frmArbitros2.txtBuscar.addMouseListener(this);
-        frmArbitros2.jtbArbitros.addMouseListener(this);
+        frmEquipos.btnGuardar.addMouseListener(this);
+        frmEquipos.btnActualizar.addMouseListener(this);
+        frmEquipos.btnEliminar.addMouseListener(this);
+        frmEquipos.btnLimpiar.addMouseListener(this);
+        frmEquipos.btnRegresar.addMouseListener(this);
+        frmEquipos.txtBuscar.addMouseListener(this);
+        frmEquipos.jtbEquipos.addMouseListener(this);
         modeloEquipos.MostrarEquipo(frmEquipos.jtbEquipos);
 
     }
