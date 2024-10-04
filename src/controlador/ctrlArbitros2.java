@@ -4,6 +4,8 @@
  */
 package controlador;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
@@ -14,7 +16,7 @@ import vista.frmArbitros2;
  *
  * @author marvi
  */
-public class ctrlArbitros2 implements MouseListener{
+public class ctrlArbitros2 implements MouseListener, KeyListener{
     
     //////////////////////////2- Parametros
     private Arbitros2 modeloArbitros;
@@ -32,7 +34,7 @@ public class ctrlArbitros2 implements MouseListener{
         frmArbitros2.btnEliminar.addMouseListener(this);
         frmArbitros2.btnLimpiar.addMouseListener(this);
         frmArbitros2.btnRegresar.addMouseListener(this);
-        frmArbitros2.txtBuscar.addMouseListener(this);
+        frmArbitros2.txtBuscar.addKeyListener(this);
         frmArbitros2.jtbArbitros.addMouseListener(this);
         modeloArbitros.MostrarArbitro(frmArbitros2.jtbArbitros);
 
@@ -124,6 +126,15 @@ public class ctrlArbitros2 implements MouseListener{
         
         
     }
+    
+    @Override
+    public void keyReleased(KeyEvent e) {
+        
+        if (e.getSource() == panelArbitros.txtBuscar) {
+            modeloArbitros.Buscar(panelArbitros.jtbArbitros, panelArbitros.txtBuscar);
+        }
+        
+    }
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -140,5 +151,15 @@ public class ctrlArbitros2 implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
     }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    
     
 }

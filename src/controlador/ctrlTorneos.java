@@ -4,6 +4,8 @@
  */
 package controlador;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
@@ -20,7 +22,7 @@ import vista.registro;
  *
  * @author marvi
  */
-public class ctrlTorneos implements MouseListener{
+public class ctrlTorneos implements MouseListener, KeyListener{
     
     //////////////////////////2- Parametros
     private Torneos modeloTorneos;
@@ -41,7 +43,7 @@ public class ctrlTorneos implements MouseListener{
         frmTorneos.btnLimpiar.addMouseListener(this);
         frmTorneos.btnRegistrarEquipos.addMouseListener(this);
         frmTorneos.btnRegistrarArbitros.addMouseListener(this);
-        frmTorneos.txtBuscar.addMouseListener(this);
+        frmTorneos.txtBuscar.addKeyListener(this);
         frmTorneos.jtbTorneos.addMouseListener(this);
         vistaHome.jlbNoticias.addMouseListener(this);
         modeloTorneos.MostrarTorneo(frmTorneos.jtbTorneos);
@@ -138,6 +140,15 @@ public class ctrlTorneos implements MouseListener{
         
        
     }
+    
+    @Override
+    public void keyReleased(KeyEvent e) {
+        
+        if (e.getSource() == panelTorneos.txtBuscar) {
+            modeloTorneos.Buscar(panelTorneos.jtbTorneos, panelTorneos.txtBuscar);
+        }
+        
+    }
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -154,5 +165,15 @@ public class ctrlTorneos implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
     }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    
     
 }

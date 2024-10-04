@@ -181,14 +181,14 @@ public class Equipos {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"UUID_Equipo", "Nombre_Equipo", "Descripcion_Equipo", "Ubicacion_Equipo", "Logo_Equipo"});
         try {
-            String sql = "SELECT * FROM tbEquipo WHERE Nombre_Equipo LIKE ? || '%'";
+            String sql = "SELECT * FROM tbEquipos WHERE Nombre_Equipo LIKE ? || '%'";
             PreparedStatement searchNoticia = conexion.prepareStatement(sql);
             searchNoticia.setString(1, miTextField.getText());
             ResultSet rs = searchNoticia.executeQuery();
 
             while (rs.next()) {
                 //Llenamos el modelo por cada vez que recorremos el resultSet
-                modelo.addRow(new Object[]{rs.getString("UUID_Equipo"), rs.getString("Nombre_Equipo"), rs.getString("Descripcion_Noticia"), rs.getString("Ubicacion_Equipo"), rs.getString("Logo_Equipo")});
+                modelo.addRow(new Object[]{rs.getString("UUID_Equipo"), rs.getString("Nombre_Equipo"), rs.getString("Descripcion_Equipo"), rs.getString("Ubicacion_Equipo"), rs.getString("Logo_Equipo")});
             }
 
             
