@@ -9,12 +9,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import vista.frmNoticias;
 import vista.frmTorneos;
+import vista.frmPruebaReporte;
+import static vista.frmPruebaReporte.txtIdTorneo;
 
 /**
  *
@@ -228,6 +232,22 @@ public class Torneos {
             vistaTorneos.txtDescripcionTorneo.setText(DescripcionDeTb);
             vistaTorneos.txtLogoTorneo.setText(LogoDeTB);
         }
+    }
+    
+    private void mostrarReporte() {
+        
+        try {
+            
+            //Crear un objeto Map para almacenar los parámetros
+            Map<String, Object> parametros = new HashMap<>();
+            //Agregador el parametro con el valor deseado
+            parametros.put("idTorneo", txtIdTorneo.getText());
+        
+        }catch (Exception e) {
+            System.out.println("Este es el error en el modelo, metodo de buscar " + e);
+        }
+        
+    
     }
     
 }

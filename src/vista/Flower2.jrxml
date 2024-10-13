@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Flower" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c72f96d9-38c2-435f-af49-97a4a2b29c57">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="687"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Prueba reporte"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="39581794-7f4c-48d6-8f6a-b421776f515c"/>
+	<parameter name="idTorneo" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM TBTORNEOS WHERE UUID_Torneo = $P{idTorneo}]]>
+	</queryString>
+	<field name="UUID_TORNEO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="UUID_TORNEO"/>
+		<property name="com.jaspersoft.studio.field.label" value="UUID_TORNEO"/>
+	</field>
+	<field name="NOMBRE_TORNEO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMBRE_TORNEO"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMBRE_TORNEO"/>
+	</field>
+	<field name="UBICACION_TORNEO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="UBICACION_TORNEO"/>
+		<property name="com.jaspersoft.studio.field.label" value="UBICACION_TORNEO"/>
+	</field>
+	<field name="DESCRIPCION_TORNEO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DESCRIPCION_TORNEO"/>
+		<property name="com.jaspersoft.studio.field.label" value="DESCRIPCION_TORNEO"/>
+	</field>
+	<field name="ESTADO_TONEO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ESTADO_TONEO"/>
+		<property name="com.jaspersoft.studio.field.label" value="ESTADO_TONEO"/>
+	</field>
+	<field name="LOGO_TORNEO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="LOGO_TORNEO"/>
+		<property name="com.jaspersoft.studio.field.label" value="LOGO_TORNEO"/>
+	</field>
+	<field name="CLAVE_TORNEO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="CLAVE_TORNEO"/>
+		<property name="com.jaspersoft.studio.field.label" value="CLAVE_TORNEO"/>
+	</field>
+	<background>
+		<band height="802" splitType="Stretch">
+			<line>
+				<reportElement x="-20" y="430" width="580" height="1" uuid="9d52c925-3792-4c81-8c8c-2e363bb14c64">
+					<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="3.0" lineStyle="Dotted" lineColor="#996600"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="-20" y="40" width="573" height="1" uuid="c312bdf6-78db-4c4b-8d2c-86c848f090c5">
+					<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="3.0" lineStyle="Dotted" lineColor="#996600"/>
+				</graphicElement>
+			</line>
+		</band>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="336" y="65" width="217" height="29" uuid="7a8ee983-690c-4f4d-9330-42613bd3d628"/>
+				<textElement textAlignment="Right">
+					<font size="22" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Torneos registrados]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="597" height="65" forecolor="#006699" backcolor="#FA253E" uuid="29f958b3-9df5-4ee0-905e-9fd33029926f"/>
+				<staticText>
+					<reportElement style="Title" x="231" y="0" width="346" height="65" uuid="cf1fabd8-9376-4a95-a65d-c762a7404011"/>
+					<textElement textAlignment="Right">
+						<font size="54" isBold="false"/>
+					</textElement>
+					<text><![CDATA[DilloReports]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<frame>
+				<reportElement x="227" y="0" width="328" height="20" uuid="793d06e1-d7cc-4d62-ad99-d289a8ce0026"/>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="-240" y="0" width="202" height="20" forecolor="#000000" uuid="75999626-ce73-4ae8-80c8-b03156b7256d">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7d215591-8051-44d9-937c-9adc424f1e39"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" isBold="false"/>
+					</textElement>
+					<text><![CDATA[NOMBRE_TORNEO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="-90" y="0" width="150" height="20" forecolor="#000000" uuid="6facc66c-277d-4b52-b988-bacb98258a89">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e15514ae-d096-4be5-a973-2ca12f348458"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" isBold="false"/>
+					</textElement>
+					<text><![CDATA[UBICACION_TORNEO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="70" y="0" width="130" height="20" forecolor="#000000" uuid="83b0d5cd-9022-48f7-ab58-f17bfbdc5695">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4595d0d8-b42c-42b0-ae15-0a37ca866eb6"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" isBold="false"/>
+					</textElement>
+					<text><![CDATA[ESTADO_TONEO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="200" y="0" width="46" height="20" forecolor="#000000" uuid="a6c1fcf6-0128-43ea-bb56-853b7ebcce4c">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87007187-8696-4c5c-8933-4271e6415f22"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" isBold="false"/>
+					</textElement>
+					<text><![CDATA[LOGO_TORNEO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="260" y="3" width="66" height="20" forecolor="#000000" uuid="9495ae60-2698-4cd6-b723-a8390a5cfa1b">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea4685fc-4c4d-4714-b5b6-f041a2af6694"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" isBold="false"/>
+					</textElement>
+					<text><![CDATA[CLAVE_TORNEO]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-13" y="23" width="566" height="1" uuid="1f2efa15-468e-4870-8f24-1cb1eda2034d"/>
+			</line>
+			<frame>
+				<reportElement x="18" y="0" width="537" height="20" uuid="dec77cf2-1014-4b3e-9934-7f0c65a83bce"/>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="-30" y="0" width="98" height="18" uuid="49f90c2a-6b1a-4c3d-8fab-65c766702be5">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7d215591-8051-44d9-937c-9adc424f1e39"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" size="14" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{NOMBRE_TORNEO}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="120" y="1" width="138" height="18" uuid="41bc3ad0-3726-4dd8-b6ed-9c2ef35f198e">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e15514ae-d096-4be5-a973-2ca12f348458"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" size="14" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{UBICACION_TORNEO}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="280" y="0" width="100" height="18" uuid="76ee5deb-e3a7-4e20-bd05-767cbc99a3db">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4595d0d8-b42c-42b0-ae15-0a37ca866eb6"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" size="14" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ESTADO_TONEO}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="400" y="1" width="46" height="18" uuid="333c6e75-a65d-4e6f-95ff-44636c738e79">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87007187-8696-4c5c-8933-4271e6415f22"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" size="14" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{LOGO_TORNEO}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="470" y="0" width="57" height="18" uuid="9ff34f85-ba18-4e6a-98cc-c2e1bbf51860">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea4685fc-4c4d-4714-b5b6-f041a2af6694"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" size="14" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CLAVE_TORNEO}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="0a05d19c-77ff-48d5-91d6-460d221419e5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#EB1C42" uuid="21b8ec89-3912-4f38-b1d2-846c348d496b"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="13" forecolor="#FFFFFF" uuid="2f1f4647-386f-4ee9-b3b1-779c70fd7960"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="13" forecolor="#FFFFFF" uuid="c50a7647-9d9b-4145-89d7-15adb353fac4"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF" uuid="2a75ce15-0152-4154-9a45-a23c6a9d3107"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
