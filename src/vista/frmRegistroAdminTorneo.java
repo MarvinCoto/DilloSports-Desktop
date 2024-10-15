@@ -11,18 +11,19 @@ import modelo.tbUsuario;
  *
  * @author alanbrito
  */
-public class registro extends javax.swing.JFrame {
+public class frmRegistroAdminTorneo extends javax.swing.JFrame {
 
     /**
      * Creates new form registro
      */
-    public registro() {
+    public frmRegistroAdminTorneo() {
         initComponents();
         this.setLocationRelativeTo(null);         
     }
+    
     public static void initregistro(){
         tbUsuario modelo = new tbUsuario();
-        registro vista = new registro();
+        frmRegistroAdminTorneo vista = new frmRegistroAdminTorneo();
         ctrlRegistroUsuarios controlador = new ctrlRegistroUsuarios(modelo, vista);
         
         
@@ -336,14 +337,15 @@ public class registro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmRegistroAdminTorneo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmRegistroAdminTorneo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmRegistroAdminTorneo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmRegistroAdminTorneo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

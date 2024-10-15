@@ -160,6 +160,9 @@ public class frmNoticias extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(255, 0, 51));
         jLabel7.setText("Buscar");
 
+        jtbNoticias.setAutoCreateRowSorter(true);
+        jtbNoticias.setBackground(new java.awt.Color(255, 0, 51));
+        jtbNoticias.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jtbNoticias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

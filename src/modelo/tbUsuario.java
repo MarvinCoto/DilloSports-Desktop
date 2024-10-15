@@ -24,6 +24,7 @@ public class tbUsuario {
     private String Correo_Usuario; 
     private String Genero_Usuario;
     private String FNacimiento_Usuario; 
+    private int Rol_Usuario;
     
     public String getUUID_Usuario() {
         return UUID_Usuario;
@@ -89,14 +90,20 @@ public class tbUsuario {
         this.FNacimiento_Usuario = FNacimiento_Usuario;
     }
     
+    public int getRol_Usuario() {
+        return Rol_Usuario;
+    }
 
+    public void setRol_Usuario(int Rol_Usuario) {
+        this.Rol_Usuario = Rol_Usuario;
+    }
     
     
     public void GuardarUsuario(){
         Connection conexion = ClaseConexion.getConexion();
         
         try {
-            PreparedStatement addUsuario = conexion.prepareStatement("INSERT INTO tbUsuarios(UUID_Usuario, Nombre_Usuario, Apellido_Usuario, User_name, Contrasena_Usuario, Correo_Usuario, Genero_Usuario, FNacimiento_Usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement addUsuario = conexion.prepareStatement("INSERT INTO tbUsuarios(UUID_Usuario, Nombre_Usuario, Apellido_Usuario, User_name, Contrasena_Usuario, Correo_Usuario, Genero, FNacimiento_Usuario, UUID_Tipo_Usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             addUsuario.setString(1, UUID.randomUUID().toString());
             addUsuario.setString(2, getNombre_Usuario());
             addUsuario.setString(3, getApellido_Usuario());
@@ -105,6 +112,30 @@ public class tbUsuario {
             addUsuario.setString(6, getCorreo_Usuario());
             addUsuario.setString(7, getGenero_Usuario());
             addUsuario.setString(8, getFNacimiento_Usuario());
+            addUsuario.setInt(9, 1);
+            
+            addUsuario.executeUpdate();
+                    System.out.println("Usuario creado exitosamente");
+           
+        } catch (SQLException ex) {
+            System.out.println("Este es el error en el modelo: metodo guardar"+ ex);
+        }
+    }
+    
+    public void GuardarArbitro(){
+        Connection conexion = ClaseConexion.getConexion();
+        
+        try {
+            PreparedStatement addUsuario = conexion.prepareStatement("INSERT INTO tbUsuarios(UUID_Usuario, Nombre_Usuario, Apellido_Usuario, User_name, Contrasena_Usuario, Correo_Usuario, Genero, FNacimiento_Usuario, UUID_Tipo_Usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            addUsuario.setString(1, UUID.randomUUID().toString());
+            addUsuario.setString(2, getNombre_Usuario());
+            addUsuario.setString(3, getApellido_Usuario());
+            addUsuario.setString(4, getUser_name());
+            addUsuario.setString(5, getContrasena_Usuario());
+            addUsuario.setString(6, getCorreo_Usuario());
+            addUsuario.setString(7, getGenero_Usuario());
+            addUsuario.setString(8, getFNacimiento_Usuario());
+            addUsuario.setInt(9, 2);
             
             addUsuario.executeUpdate();
                     System.out.println("Usuario creado exitosamente");
@@ -115,30 +146,41 @@ public class tbUsuario {
     }
     
     public boolean iniciarSesion() {
-        //Obtenemos la conexión a la base de datos
+
         Connection conexion = ClaseConexion.getConexion();
         boolean resultado = false;
 
         try {
-            //Preparamos la consulta SQL para verificar el usuario
-            String sql = "SELECT * FROM tbUsuarios WHERE Correo_Usuario = ? AND Contrasena_Usuario = ?";
+            
+        // Preparamos la consulta SQL para verificar el usuario y obtener el rol
+            String sql = "SELECT UUID_Tipo_Usuario FROM tbUsuarios WHERE Correo_Usuario = ? AND Contrasena_Usuario = ?";
             PreparedStatement statement = conexion.prepareStatement(sql);
             statement.setString(1, getCorreo_Usuario());
             statement.setString(2, getContrasena_Usuario());
+            
+            System.out.println("Ejecutando consulta: " + sql);
+            System.out.println("Correo ingresado: " + getUser_name());
+            System.out.println("Contraseña ingresada (hash): " + getContrasena_Usuario());
 
-            //Ejecutamos la consulta
+            // Ejecutamos la consulta
             ResultSet resultSet = statement.executeQuery();
 
-            //Si hay un resultado, significa que el usuario existe y la contraseña es correcta
+            // Si hay un resultado, significa que el usuario existe
             if (resultSet.next()) {
                 resultado = true;
+                // Guardar el rol del usuario
+                Rol_Usuario = resultSet.getInt("UUID_Tipo_Usuario");
+                System.out.println("Usuario encontrado con rol: " + Rol_Usuario);
             }
 
         } catch (SQLException ex) {
             System.out.println("Error en el modelo: método iniciarSesion " + ex);
         }
 
-        return resultado;
+        return resultado; // Retorna true si el usuario fue encontrado
+        
+
+
     }
     
     

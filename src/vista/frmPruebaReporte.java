@@ -45,6 +45,7 @@ public class frmPruebaReporte extends javax.swing.JFrame {
         txtIdTorneo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnGenerarReporte = new javax.swing.JButton();
+        btnTodo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +53,8 @@ public class frmPruebaReporte extends javax.swing.JFrame {
         jLabel1.setText("Ingresa el ID del torneo");
 
         btnGenerarReporte.setText("Generar reporte");
+
+        btnTodo.setText("Mostrar todo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,8 +70,10 @@ public class frmPruebaReporte extends javax.swing.JFrame {
                         .addComponent(txtIdTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(151, 151, 151)
-                        .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(137, 315, Short.MAX_VALUE))
+                        .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(149, 149, 149)
+                        .addComponent(btnTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(59, 59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,8 +83,10 @@ public class frmPruebaReporte extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtIdTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         pack();
@@ -122,6 +129,7 @@ public class frmPruebaReporte extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnGenerarReporte;
+    public static javax.swing.JButton btnTodo;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JTextField txtIdTorneo;
     // End of variables declaration//GEN-END:variables

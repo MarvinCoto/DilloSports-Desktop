@@ -16,7 +16,7 @@ import vista.frmHome;
 import vista.frmInicio;
 import vista.frmNoticias;
 import vista.frmTorneos;
-import vista.registro;
+import vista.frmRegistroAdminTorneo;
 
 /**
  *

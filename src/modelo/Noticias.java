@@ -70,7 +70,7 @@ public class Noticias {
         Connection conexion = ClaseConexion.getConexion();
         try {
             //Creamos el PreparedStatement que ejecutará la Query
-            PreparedStatement addNoticia = conexion.prepareStatement("INSERT INTO tbNoticias(UUID_Noticia, Titulo_Noticia, Descripcion_Noticia, Fecha_Noticia, Imagen_Noticia) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement addNoticia = conexion.prepareStatement("INSERT INTO tbNoticias(UUID_Noticia, Nombre_Noticia, Descripcion_Noticia, Hora_Noticia, Imagen_Noticia) VALUES (?, ?, ?, ?, ?)");
             //Establecer valores de la consulta SQL
             addNoticia.setString(1, UUID.randomUUID().toString());
             addNoticia.setString(2, getTitulo());
@@ -91,21 +91,21 @@ public class Noticias {
         Connection conexion = ClaseConexion.getConexion();
         //Definimos el modelo de la tabla
         DefaultTableModel modeloNoticias = new DefaultTableModel();
-        modeloNoticias.setColumnIdentifiers(new Object[]{"UUID_Noticia", "Titulo_Noticia", "Descripcion_Noticia", "Fecha_Noticia", "Imagen_Noticia"});
+        modeloNoticias.setColumnIdentifiers(new Object[]{"UUID_Noticia", "Nombre_Noticia", "Descripcion_Noticia", "Hora_Noticia", "Imagen_Noticia"});
         try {
          
             //Creamos un Statement
             Statement statement = conexion.createStatement();
             //Ejecutamos el Statement con la consulta y lo asignamos a una variable de tipo ResultSet
-            ResultSet rs = statement.executeQuery("select UUID_Noticia, Titulo_Noticia, Descripcion_Noticia, Fecha_Noticia, Imagen_Noticia FROM tbNoticias");
+            ResultSet rs = statement.executeQuery("select UUID_Noticia, Nombre_Noticia, Descripcion_Noticia, Hora_Noticia, Imagen_Noticia FROM tbNoticias");
             
             //Recorremos el ResultSet
             while (rs.next()) {
                 //Llenamos el modelo por cada vez que recorremos el resultSet
                 modeloNoticias.addRow(new Object[]{rs.getString("UUID_Noticia"), 
-                    rs.getString("Titulo_Noticia"), 
+                    rs.getString("Nombre_Noticia"), 
                     rs.getString("Descripcion_Noticia"), 
-                    rs.getString("Fecha_Noticia"), 
+                    rs.getString("Hora_Noticia"), 
                     rs.getString("Imagen_Noticia")});
             }
             //Asignamos el nuevo modelo lleno a la tabla
@@ -148,7 +148,7 @@ public class Noticias {
 
             try {
                 //Ejecutamos la Query
-                String sql = "update tbNoticias set Titulo_Noticia = ?, Descripcion_Noticia = ?, Fecha_Noticia = ?, Imagen_Noticia = ? where UUID_Noticia = ?";
+                String sql = "update tbNoticias set Nombre_Noticia = ?, Descripcion_Noticia = ?, Hora_Noticia = ?, Imagen_Noticia = ? where UUID_Noticia = ?";
                 PreparedStatement updateNoticia = conexion.prepareStatement(sql);
 
                 updateNoticia.setString(1, getTitulo());
@@ -172,7 +172,7 @@ public class Noticias {
 
         //Definimos el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"UUID_Noticia", "Titulo_Noticia", "Descripcion_Noticia", "Fecha_Noticia", "Imagen_Noticia"});
+        modelo.setColumnIdentifiers(new Object[]{"UUID_Noticia", "Nombre_Noticia", "Descripcion_Noticia", "Hora_Noticia", "Imagen_Noticia"});
         try {
             String sql = "SELECT * FROM tbNoticias WHERE Titulo_Noticia LIKE ? || '%'";
             PreparedStatement searchNoticia = conexion.prepareStatement(sql);
@@ -181,7 +181,7 @@ public class Noticias {
 
             while (rs.next()) {
                 //Llenamos el modelo por cada vez que recorremos el resultSet
-                modelo.addRow(new Object[]{rs.getString("UUID_Noticia"), rs.getString("Titulo_Noticia"), rs.getString("Descripcion_Noticia"), rs.getString("Fecha_Noticia"), rs.getString("Imagen_Noticia")});
+                modelo.addRow(new Object[]{rs.getString("UUID_Noticia"), rs.getString("Nombre_Noticia"), rs.getString("Descripcion_Noticia"), rs.getString("Hora_Noticia"), rs.getString("Imagen_Noticia")});
             }
 
             

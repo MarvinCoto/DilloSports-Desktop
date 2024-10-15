@@ -10,8 +10,11 @@ import javax.swing.JOptionPane;
 import modelo.tbUsuario;
 import static oracle.sql.NUMBER.e;
 import vista.frmHome;
+import vista.frmHomeAdminTorneo;
+import vista.frmHomeArbitro;
 import vista.frmLogin;
-import vista.registro;
+import vista.frmRegistroAdminTorneo;
+import vista.frmRegistroArbitros;
 
 /**
  *
@@ -28,6 +31,8 @@ public class ctrlLogin implements MouseListener {
         
         vista.btnIniciarSesion.addMouseListener(this);
         vista.btnIrARegistro.addMouseListener(this);
+        vista.btnIrARegistroArbitro.addMouseListener(this);
+        
         
     }
 
@@ -38,27 +43,52 @@ public class ctrlLogin implements MouseListener {
             
             modelo.setCorreo_Usuario(vista.txtCorreo.getText());
             modelo.setContrasena_Usuario(modelo.convertirSHA256(vista.txtContraseña.getText()));
-            
-            //Creo una variable llamada comprobar 
-            //que guardará el resultado de ejecutar el método iniciarSesion()
+
             boolean comprobar = modelo.iniciarSesion();
+
+    if (comprobar) {
+        int rolUsuario = modelo.getRol_Usuario();  // Obtener el rol como int
+
+        if (rolUsuario == 1) { // Asumiendo que 1 es el ID del rol de Administrador
             
-            //Si la variable es true significa que si existe el usuario
-            if (comprobar) {
-                     JOptionPane.showMessageDialog(vista, "Inicio de sesión exitoso, ¡Bienvenido!");
-                     
-                     frmHome.initHome();
-                     vista.dispose();
-                     
-            } else {
-               JOptionPane.showMessageDialog(vista, "Usuario no encontrado");
-            }
-        
+            JOptionPane.showMessageDialog(vista, "Inicio de sesión exitoso, ¡Bienvenido Administrador!");
+            frmHomeAdminTorneo frmAdminTorneo = new frmHomeAdminTorneo();
+            frmAdminTorneo.setVisible(true);
+            
+        } else if (rolUsuario == 2) { // Asumiendo que 2 es el ID del rol de Editor
+            
+            JOptionPane.showMessageDialog(vista, "Inicio de sesión exitoso, ¡Bienvenido Editor!");
+            frmHomeArbitro frmHomeArbitro = new frmHomeArbitro();
+            frmHomeArbitro.setVisible(true);
+            
+        } else if (rolUsuario == 3) { // Asumiendo que 3 es el ID del rol de Usuario
+            
+            JOptionPane.showMessageDialog(vista, "Inicio de sesión exitoso, ¡Bienvenido Usuario!");
+            frmHome.initHome();
+            
+        } else {
+            JOptionPane.showMessageDialog(vista, "Rol de usuario no reconocido.");
         }
+
+        vista.dispose();
+
+    } else {
+        JOptionPane.showMessageDialog(vista, "Usuario no encontrado");
+    }
+}
+        
         
         if (e.getSource() == vista.btnIrARegistro) {
             
-            registro.initregistro();
+            frmRegistroAdminTorneo.initregistro();
+        
+            vista.dispose();
+        
+        }
+        
+        if (e.getSource() == vista.btnIrARegistroArbitro) {
+            
+            frmRegistroArbitros.initregistroArbitros();
         
             vista.dispose();
         

@@ -14,33 +14,26 @@ import vista.frmRegistroArbitros;
 
 /**
  *
- * @author Estudiante
+ * @author marvi
  */
-public class ctrlRegistroUsuarios implements MouseListener{
+public class ctrlRegistroArbitros implements MouseListener{
     
     tbUsuario modeloUsuario;
-    frmRegistroAdminTorneo vista;
-
+    frmRegistroArbitros vista;
     
-    public ctrlRegistroUsuarios(tbUsuario modeloUsuario, frmRegistroAdminTorneo vista){
+    public ctrlRegistroArbitros(tbUsuario modeloUsuario, frmRegistroArbitros vista){
         this.modeloUsuario = modeloUsuario;
         this.vista = vista;
         
-        vista.btnRegistrar.addMouseListener(this);
-        vista.btnIrALogin.addMouseListener(this);
-
+        vista.btnRegistrarArbitro.addMouseListener(this);
+        vista.btnIrALoginArbitro.addMouseListener(this);
         
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         
-       
-            
-            
-        
-        
-        if (e.getSource() == vista.btnRegistrar) {
+        if (e.getSource() == vista.btnRegistrarArbitro) {
             
             if (vista.txtNombreR.getText().isEmpty() || vista.txtApellidoR.getText().isEmpty() || vista.txtUsernameR.getText().isEmpty()
                 || vista.txtContrasena.getText().isEmpty() || vista.txtCorreoR.getText().isEmpty() || vista.txtGeneroReg.getText().isEmpty()
@@ -56,7 +49,7 @@ public class ctrlRegistroUsuarios implements MouseListener{
             modeloUsuario.setGenero_Usuario(vista.txtGeneroReg.getText());
             modeloUsuario.setFNacimiento_Usuario(vista.txtFnacimientoR.getText());
             
-            modeloUsuario.GuardarUsuario();
+            modeloUsuario.GuardarArbitro();
             
             JOptionPane.showMessageDialog(vista, "Usuario creado con Exito!");
             
@@ -65,9 +58,7 @@ public class ctrlRegistroUsuarios implements MouseListener{
             }
         }
         
-        
-        
-        if (e.getSource() == vista.btnIrALogin) {
+        if (e.getSource() == vista.btnIrALoginArbitro) {
             
             frmLogin.initFrmLogin();
             
@@ -75,13 +66,10 @@ public class ctrlRegistroUsuarios implements MouseListener{
         
         
         }
-        
-        
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        
     }
 
     @Override
@@ -95,4 +83,5 @@ public class ctrlRegistroUsuarios implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
     }
+    
 }

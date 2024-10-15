@@ -12,10 +12,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import modelo.ClaseConexion;
 import modelo.Torneos;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -46,6 +48,7 @@ public class ctrlReportes implements MouseListener, KeyListener{
         //Siempre hay que poner los botones que vamos a utilizar
         vistaReportes.txtIdTorneo.addMouseListener(this);
         vistaReportes.btnGenerarReporte.addMouseListener(this);
+        vistaReportes.btnTodo.addMouseListener(this);
 
     }
 
@@ -65,12 +68,40 @@ public class ctrlReportes implements MouseListener, KeyListener{
             JasperPrint jprint = JasperFillManager.fillReport(report, parametros, ClaseConexion.getConexion());
         
         JasperViewer view = new JasperViewer (jprint, false);
-        view.setTitle("Nombre reporte");
+        view.setTitle("Detalles del Torneo");
+        view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        view.setVisible(true);
+        
+        
+            
+            } catch (JRException ex) {
+                Logger.getLogger(ctrlReportes.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+        
+          
+        }
+        
+        if (e.getSource() == vistaReportes.btnTodo) {
+          
+         
+            try {
+                  //Crear un objeto Map para almacenar los parámetros
+            Map<String, Object> parametros = new HashMap<>();
+            //Agregador el parametro con el valor deseado
+            parametros.put("idTorneo", txtIdTorneo.getText());
+                
+             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/ReporteTorneos.jasper"));
+            JasperPrint jprint = JasperFillManager.fillReport(report, parametros, ClaseConexion.getConexion());
+        
+        JasperViewer view = new JasperViewer (jprint, false);
+        view.setTitle("Detalles del Torneo");
         view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         view.setVisible(true);
             
             } catch (JRException ex) {
                 Logger.getLogger(ctrlReportes.class.getName()).log(Level.SEVERE, null, ex);
+                
             }
         
           
