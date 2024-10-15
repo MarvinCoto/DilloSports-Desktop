@@ -4,7 +4,6 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/controlador/ctrlTorneos.java</file>
-            <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmRegistroAdminTorneo_1.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmPartidos.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmHomeAdminTorneo.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/modelo/Noticias.java</file>
@@ -15,11 +14,12 @@
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmLogin.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmHome.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/controlador/ctrlArbitros2.java</file>
-            <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/registro.java</file>
+            <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/controlador/ctrlRegistroArbitros.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/modelo/tbUsuario.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/controlador/ctrlEquipos.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/controlador/ctrlPerfil.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmPruebaReporte.java</file>
+            <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmRegistroAdminTorneo.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmNoticias.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmHomeArbitro.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/controlador/ctrlInicio.java</file>
@@ -28,10 +28,12 @@
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmPerfil.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmArbitros2.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmTorneos.java</file>
+            <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmRegistroArbitros.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmCodigoRecu.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/controlador/ctrlNoticias.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/controlador/ctrlHome.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/controlador/ctrlAjustes.java</file>
+            <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmRecuperacionContrasena.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/vista/frmEquipos.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/modelo/Torneos.java</file>
             <file>file:/C:/Users/marvi/OneDrive/Documentos/NetBeansProjects/DilloSports-Desktop/src/modelo/ClaseConexion.java</file>

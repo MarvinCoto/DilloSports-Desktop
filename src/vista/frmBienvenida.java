@@ -38,6 +38,7 @@ public class frmBienvenida extends javax.swing.JFrame {
         JlTitulo4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnComenzar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         JlTitulo.setBackground(new java.awt.Color(0, 0, 0));
         JlTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -59,27 +60,32 @@ public class frmBienvenida extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JlTitulo1.setBackground(new java.awt.Color(0, 0, 0));
         JlTitulo1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         JlTitulo1.setForeground(new java.awt.Color(255, 0, 51));
         JlTitulo1.setText("Sports");
         JlTitulo1.setPreferredSize(new java.awt.Dimension(107, 50));
+        jPanel1.add(JlTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(569, 64, 130, 40));
 
         JlTitulo2.setBackground(new java.awt.Color(0, 0, 0));
         JlTitulo2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         JlTitulo2.setForeground(new java.awt.Color(255, 0, 51));
         JlTitulo2.setText("Bienvenido a");
         JlTitulo2.setPreferredSize(new java.awt.Dimension(107, 50));
+        jPanel1.add(JlTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 64, 248, 40));
 
         JlTitulo4.setBackground(new java.awt.Color(0, 0, 0));
         JlTitulo4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         JlTitulo4.setForeground(new java.awt.Color(255, 255, 255));
         JlTitulo4.setText("Dillo");
         JlTitulo4.setPreferredSize(new java.awt.Dimension(107, 50));
+        jPanel1.add(JlTitulo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 64, 96, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dilogo.png"))); // NOI18N
         jLabel2.setText("jLabel2");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 122, 202, -1));
 
         btnComenzar.setBackground(new java.awt.Color(255, 51, 51));
         btnComenzar.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
@@ -90,48 +96,22 @@ public class frmBienvenida extends javax.swing.JFrame {
                 btnComenzarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 359, 221, 62));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(225, 225, 225)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnComenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(JlTitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(JlTitulo4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
-                .addComponent(JlTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(255, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JlTitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JlTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JlTitulo4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(41, 41, 41)
-                .addComponent(btnComenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(119, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -189,6 +169,7 @@ public class frmBienvenida extends javax.swing.JFrame {
     private javax.swing.JLabel JlTitulo4;
     public javax.swing.JButton btnComenzar;
     public javax.swing.JButton btnIniciarSesion;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

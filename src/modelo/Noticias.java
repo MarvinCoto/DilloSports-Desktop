@@ -174,7 +174,7 @@ public class Noticias {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"UUID_Noticia", "Nombre_Noticia", "Descripcion_Noticia", "Hora_Noticia", "Imagen_Noticia"});
         try {
-            String sql = "SELECT * FROM tbNoticias WHERE Titulo_Noticia LIKE ? || '%'";
+            String sql = "SELECT * FROM tbNoticias WHERE Nombre_Noticia LIKE ? || '%'";
             PreparedStatement searchNoticia = conexion.prepareStatement(sql);
             searchNoticia.setString(1, miTextField.getText());
             ResultSet rs = searchNoticia.executeQuery();
