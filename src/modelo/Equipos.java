@@ -27,7 +27,16 @@ public class Equipos {
     private String nombre;
     private String descripcion;
     private String ubicacion;
-    private String logo;
+    private String UUID_Torneo;
+
+    public String getUUID_Torneo() {
+        return UUID_Torneo;
+    }
+
+    public void setUUID_Torneo(String UUID_Torneo) {
+        this.UUID_Torneo = UUID_Torneo;
+    }
+
 
     public String getUUID_Equipo() {
         return UUID_Equipo;
@@ -61,13 +70,7 @@ public class Equipos {
         this.ubicacion = ubicacion;
     }
 
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
+    
     
     //3- Métodos (select, insert, update, delete)
 
@@ -77,13 +80,13 @@ public class Equipos {
         Connection conexion = ClaseConexion.getConexion();
         try {
             //Creamos el PreparedStatement que ejecutará la Query
-            PreparedStatement addEquipo = conexion.prepareStatement("INSERT INTO tbEquipos(UUID_Equipo, Nombre_Equipo, Descripcion_Equipo, Ubicacion_Equipo, Logo_Equipo) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement addEquipo = conexion.prepareStatement("INSERT INTO tbEquipos(UUID_Equipo, Nombre_Equipo, Descripcion_Equipo, Ubicacion_Equipo, UUID_Torneo) VALUES (?, ?, ?, ?, ?)");
             //Establecer valores de la consulta SQL
             addEquipo.setString(1, UUID.randomUUID().toString());
             addEquipo.setString(2, getNombre());
             addEquipo.setString(3, getDescripcion());
             addEquipo.setString(4, getUbicacion());
-            addEquipo.setString(5, getLogo());
+            addEquipo.setString(5, getUUID_Torneo());
  
             //Ejecutar la consulta
             addEquipo.executeUpdate();
@@ -98,13 +101,13 @@ public class Equipos {
         Connection conexion = ClaseConexion.getConexion();
         //Definimos el modelo de la tabla
         DefaultTableModel modeloEquipo = new DefaultTableModel();
-        modeloEquipo.setColumnIdentifiers(new Object[]{"UUID_Equipo", "Nombre_Equipo", "Descripcion_Equipo", "Ubicacion_Equipo", "Logo_Equipo"});
+        modeloEquipo.setColumnIdentifiers(new Object[]{"UUID_Equipo", "Nombre_Equipo", "Descripcion_Equipo", "Ubicacion_Equipo", "Nombre_Torneo"});
         try {
          
             //Creamos un Statement
             Statement statement = conexion.createStatement();
             //Ejecutamos el Statement con la consulta y lo asignamos a una variable de tipo ResultSet
-            ResultSet rs = statement.executeQuery("select UUID_Equipo, Nombre_Equipo, Descripcion_Equipo, Ubicacion_Equipo, Logo_Equipo FROM tbEquipos");
+            ResultSet rs = statement.executeQuery("select e.UUID_Equipo, e.Nombre_Equipo, e.Descripcion_Equipo, e.Ubicacion_Equipo, t.Nombre_Torneo FROM tbEquipos e LEFT JOIN tbTorneos t ON e.UUID_Torneo = t.UUID_Torneo");
             
             //Recorremos el ResultSet
             while (rs.next()) {
@@ -113,7 +116,7 @@ public class Equipos {
                     rs.getString("Nombre_Equipo"), 
                     rs.getString("Descripcion_Equipo"), 
                     rs.getString("Ubicacion_Equipo"), 
-                    rs.getString("Logo_Equipo")});
+                    rs.getString("Nombre_Torneo")});
             }
             //Asignamos el nuevo modelo lleno a la tabla
             tabla.setModel(modeloEquipo);
@@ -155,13 +158,13 @@ public class Equipos {
 
             try {
                 //Ejecutamos la Query
-                String sql = "update tbEquipos set Nombre_Equipo = ?, Descripcion_Equipo = ?, Ubicacion_Equipo = ?, Logo_Equipo = ? where UUID_Equipo = ?";
+                String sql = "update tbEquipos set Nombre_Equipo = ?, Descripcion_Equipo = ?, Ubicacion_Equipo = ?, Nombre_Torneo = ? where UUID_Equipo = ?";
                 PreparedStatement updateNoticia = conexion.prepareStatement(sql);
 
                 updateNoticia.setString(1, getNombre());
                 updateNoticia.setString(2, getDescripcion());
                 updateNoticia.setString(3, getUbicacion());
-                updateNoticia.setString(4, getLogo());
+                updateNoticia.setString(4, getUUID_Torneo());
                 updateNoticia.setString(5, miUUId);
                 updateNoticia.executeUpdate();
 
@@ -179,7 +182,7 @@ public class Equipos {
 
         //Definimos el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"UUID_Equipo", "Nombre_Equipo", "Descripcion_Equipo", "Ubicacion_Equipo", "Logo_Equipo"});
+        modelo.setColumnIdentifiers(new Object[]{"UUID_Equipo", "Nombre_Equipo", "Descripcion_Equipo", "Ubicacion_Equipo", "Nombre_Torneo"});
         try {
             String sql = "SELECT * FROM tbEquipos WHERE Nombre_Equipo LIKE ? || '%'";
             PreparedStatement searchNoticia = conexion.prepareStatement(sql);
@@ -188,7 +191,7 @@ public class Equipos {
 
             while (rs.next()) {
                 //Llenamos el modelo por cada vez que recorremos el resultSet
-                modelo.addRow(new Object[]{rs.getString("UUID_Equipo"), rs.getString("Nombre_Equipo"), rs.getString("Descripcion_Equipo"), rs.getString("Ubicacion_Equipo"), rs.getString("Logo_Equipo")});
+                modelo.addRow(new Object[]{rs.getString("UUID_Equipo"), rs.getString("Nombre_Equipo"), rs.getString("Descripcion_Equipo"), rs.getString("Ubicacion_Equipo"), rs.getString("Nombre_Torneo")});
             }
 
             
@@ -207,7 +210,6 @@ public class Equipos {
         vistaEquipos.txtNombre.setText("");
         vistaEquipos.txtDescripcion.setText("");
         vistaEquipos.txtUbicacion.setText("");
-        vistaEquipos.txtLogo.setText("");
     }
 
     public void cargarDatosTabla(frmEquipos vistaEquipos) {
@@ -226,7 +228,6 @@ public class Equipos {
             vistaEquipos.txtNombre.setText(NombreDeTB);
             vistaEquipos.txtDescripcion.setText(DescripcionDeTb);
             vistaEquipos.txtUbicacion.setText(UbicacionDeTB);
-            vistaEquipos.txtLogo.setText(LogoDeTB);
         }
     }
     

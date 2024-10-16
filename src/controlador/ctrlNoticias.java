@@ -44,7 +44,7 @@ import vista.frmNoticias;
         
         
         if (e.getSource() == vistaNoticias.btnGuardar) {
-            if (vistaNoticias.txtTitulo.getText().isEmpty() || vistaNoticias.txtDescripcion.getText().isEmpty() || vistaNoticias.txtFecha.getText().isEmpty() || vistaNoticias.txtImagen.getText().isEmpty() )  {
+            if (vistaNoticias.txtTitulo.getText().isEmpty() || vistaNoticias.txtDescripcion.getText().isEmpty() || vistaNoticias.txtFecha.getText().isEmpty() )  {
                 JOptionPane.showMessageDialog(vistaNoticias, "Debes llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
@@ -52,7 +52,6 @@ import vista.frmNoticias;
                     modeloNoticias.setTitulo(vistaNoticias.txtTitulo.getText());
                     modeloNoticias.setDescripcion(vistaNoticias.txtDescripcion.getText());
                     modeloNoticias.setFecha(vistaNoticias.txtFecha.getText());
-                    modeloNoticias.setImagen(vistaNoticias.txtImagen.getText());
                     //Ejecutar el metodo 
                     modeloNoticias.GuardarNoticia();
                     modeloNoticias.MostrarNoticia(vistaNoticias.jtbNoticias);
@@ -64,7 +63,7 @@ import vista.frmNoticias;
         }
         
         if (e.getSource() == vistaNoticias.btnEliminar) {
-            if (vistaNoticias.txtTitulo.getText().isEmpty() || vistaNoticias.txtDescripcion.getText().isEmpty() || vistaNoticias.txtFecha.getText().isEmpty() || vistaNoticias.txtImagen.getText().isEmpty() ) {
+            if (vistaNoticias.txtTitulo.getText().isEmpty() || vistaNoticias.txtDescripcion.getText().isEmpty() || vistaNoticias.txtFecha.getText().isEmpty() ) {
                 JOptionPane.showMessageDialog(vistaNoticias, "Debes seleccionar un registro para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
@@ -79,7 +78,7 @@ import vista.frmNoticias;
         
         
         if (e.getSource() == vistaNoticias.btnActualizar) {
-            if (vistaNoticias.txtTitulo.getText().isEmpty() || vistaNoticias.txtDescripcion.getText().isEmpty() || vistaNoticias.txtFecha.getText().isEmpty() || vistaNoticias.txtImagen.getText().isEmpty() ) {
+            if (vistaNoticias.txtTitulo.getText().isEmpty() || vistaNoticias.txtDescripcion.getText().isEmpty() || vistaNoticias.txtFecha.getText().isEmpty() ) {
                 JOptionPane.showMessageDialog(vistaNoticias, "Debes seleccionar un registro para actualizar", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
@@ -87,7 +86,6 @@ import vista.frmNoticias;
                     modeloNoticias.setTitulo(vistaNoticias.txtTitulo.getText());
                     modeloNoticias.setDescripcion(vistaNoticias.txtDescripcion.getText());
                     modeloNoticias.setFecha(vistaNoticias.txtFecha.getText());
-                    modeloNoticias.setImagen(vistaNoticias.txtImagen.getText());
 
                     //Ejecutar el método    
                     modeloNoticias.ActualizarNoticia(vistaNoticias.jtbNoticias);

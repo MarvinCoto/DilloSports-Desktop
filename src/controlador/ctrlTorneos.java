@@ -9,8 +9,9 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
+import modelo.Deportes;
 import modelo.Torneos;
-import vista.frmArbitros2;
+import vista.frmArbitros;
 import vista.frmEquipos;
 import vista.frmHome;
 import vista.frmInicio;
@@ -26,15 +27,17 @@ public class ctrlTorneos implements MouseListener, KeyListener{
     
     //////////////////////////2- Parametros
     private Torneos modeloTorneos;
+    private Deportes modeloDeportes;
     private frmHome vistaHome;
     private frmTorneos panelTorneos;
     
-    public ctrlTorneos(Torneos modeloTorneos, frmHome vistaHome, frmTorneos panelTorneos) {
+    public ctrlTorneos(Torneos modeloTorneos, Deportes modeloDeportes, frmHome vistaHome, frmTorneos panelTorneos) {
         
         //////////////////////////2- Parametros
         this.modeloTorneos = modeloTorneos;
         this.vistaHome = vistaHome;
         this.panelTorneos = panelTorneos;
+        this.modeloDeportes = modeloDeportes;
         
         //Siempre hay que poner los botones que vamos a utilizar
         frmTorneos.btnGuardar.addMouseListener(this);
@@ -45,8 +48,21 @@ public class ctrlTorneos implements MouseListener, KeyListener{
         frmTorneos.btnRegistrarArbitros.addMouseListener(this);
         frmTorneos.txtBuscar.addKeyListener(this);
         frmTorneos.jtbTorneos.addMouseListener(this);
+        frmTorneos.cbDeportes.addMouseListener(this);
+        this.modeloDeportes.CargarComboDeportes(panelTorneos.cbDeportes);
         vistaHome.jlbNoticias.addMouseListener(this);
         modeloTorneos.MostrarTorneo(frmTorneos.jtbTorneos);
+        
+        //Obtener el UUID del doctor seleccionado
+        frmTorneos.cbDeportes.addActionListener(e -> {
+            if (e.getSource() == frmTorneos.cbDeportes) {
+                Deportes selectedItem = (Deportes) frmTorneos.cbDeportes.getSelectedItem();
+                if (selectedItem != null) {
+                    String UUID = selectedItem.getUUID_Deporte();
+                    modeloDeportes.setUUID_Deporte(UUID);
+                }
+            }
+        });
 
     }
 
@@ -59,7 +75,7 @@ public class ctrlTorneos implements MouseListener, KeyListener{
         
         
         if (e.getSource() == panelTorneos.btnGuardar) {
-            if (panelTorneos.txtNombreTorneo.getText().isEmpty() || panelTorneos.txtUbicacionTorneo.getText().isEmpty() || panelTorneos.txtDescripcionTorneo.getText().isEmpty() || panelTorneos.txtLogoTorneo.getText().isEmpty() )  {
+            if (panelTorneos.txtNombreTorneo.getText().isEmpty() || panelTorneos.txtUbicacionTorneo.getText().isEmpty() || panelTorneos.txtDescripcionTorneo.getText().isEmpty() )  {
                 JOptionPane.showMessageDialog(panelTorneos, "Debes llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
@@ -67,7 +83,7 @@ public class ctrlTorneos implements MouseListener, KeyListener{
                     modeloTorneos.setNombre(panelTorneos.txtNombreTorneo.getText());
                     modeloTorneos.setUbicacion(panelTorneos.txtUbicacionTorneo.getText());
                     modeloTorneos.setDescripcion(panelTorneos.txtDescripcionTorneo.getText());
-                    modeloTorneos.setLogo(panelTorneos.txtLogoTorneo.getText());
+                    modeloTorneos.setDeporte(modeloDeportes.getUUID_Deporte());
                     //Ejecutar el metodo 
                     modeloTorneos.GuardarTorneo();
                     modeloTorneos.MostrarTorneo(panelTorneos.jtbTorneos);
@@ -79,7 +95,7 @@ public class ctrlTorneos implements MouseListener, KeyListener{
         }
         
         if (e.getSource() == panelTorneos.btnEliminar) {
-            if (panelTorneos.txtNombreTorneo.getText().isEmpty() || panelTorneos.txtUbicacionTorneo.getText().isEmpty() || panelTorneos.txtDescripcionTorneo.getText().isEmpty() || panelTorneos.txtLogoTorneo.getText().isEmpty() ) {
+            if (panelTorneos.txtNombreTorneo.getText().isEmpty() || panelTorneos.txtUbicacionTorneo.getText().isEmpty() || panelTorneos.txtDescripcionTorneo.getText().isEmpty() ) {
                 JOptionPane.showMessageDialog(panelTorneos, "Debes seleccionar un registro para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
@@ -94,7 +110,7 @@ public class ctrlTorneos implements MouseListener, KeyListener{
         
         
         if (e.getSource() == panelTorneos.btnActualizar) {
-            if (panelTorneos.txtNombreTorneo.getText().isEmpty() || panelTorneos.txtUbicacionTorneo.getText().isEmpty() || panelTorneos.txtDescripcionTorneo.getText().isEmpty() || panelTorneos.txtLogoTorneo.getText().isEmpty() ) {
+            if (panelTorneos.txtNombreTorneo.getText().isEmpty() || panelTorneos.txtUbicacionTorneo.getText().isEmpty() || panelTorneos.txtDescripcionTorneo.getText().isEmpty() ) {
                 JOptionPane.showMessageDialog(panelTorneos, "Debes seleccionar un registro para actualizar", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
@@ -102,7 +118,7 @@ public class ctrlTorneos implements MouseListener, KeyListener{
                     modeloTorneos.setNombre(panelTorneos.txtNombreTorneo.getText());
                     modeloTorneos.setUbicacion(panelTorneos.txtUbicacionTorneo.getText());
                     modeloTorneos.setDescripcion(panelTorneos.txtDescripcionTorneo.getText());
-                    modeloTorneos.setLogo(panelTorneos.txtLogoTorneo.getText());
+                    modeloTorneos.setDeporte(panelTorneos.cbDeportes.getSelectedItem().toString());
 
                     //Ejecutar el método    
                     modeloTorneos.ActualizarTorneo(panelTorneos.jtbTorneos);
@@ -131,7 +147,7 @@ public class ctrlTorneos implements MouseListener, KeyListener{
         if (e.getSource() == panelTorneos.btnRegistrarArbitros) {
           
         
-            frmArbitros2.initArbitros();
+            frmArbitros.initArbitros();
         }
         
        

@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -31,7 +32,15 @@ public class Torneos {
     private String nombre;
     private String ubicacion;
     private String descripcion;
-    private String logo;
+    private String deporte;
+
+    public String getDeporte() {
+        return deporte;
+    }
+
+    public void setDeporte(String deporte) {
+        this.deporte = deporte;
+    }
 
     public String getUUID_Torneo() {
         return UUID_Torneo;
@@ -65,13 +74,7 @@ public class Torneos {
         this.descripcion = descripcion;
     }
 
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
+    
     
     //3- Métodos (select, insert, update, delete)
 
@@ -81,13 +84,13 @@ public class Torneos {
         Connection conexion = ClaseConexion.getConexion();
         try {
             //Creamos el PreparedStatement que ejecutará la Query
-            PreparedStatement addNoticia = conexion.prepareStatement("INSERT INTO tbTorneos(UUID_Torneo, Nombre_Torneo, Ubicacion_Torneo, Descripcion_Torneo, Logo_Torneo) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement addNoticia = conexion.prepareStatement("INSERT INTO tbTorneos(UUID_Torneo, Nombre_Torneo, Ubicacion_Torneo, Descripcion_Torneo, UUID_Tipo_Deporte) VALUES (?, ?, ?, ?, ?)");
             //Establecer valores de la consulta SQL
             addNoticia.setString(1, UUID.randomUUID().toString());
             addNoticia.setString(2, getNombre());
             addNoticia.setString(3, getUbicacion());
             addNoticia.setString(4, getDescripcion());
-            addNoticia.setString(5, getLogo());
+            addNoticia.setString(5, getDeporte());
  
             //Ejecutar la consulta
             addNoticia.executeUpdate();
@@ -102,13 +105,13 @@ public class Torneos {
         Connection conexion = ClaseConexion.getConexion();
         //Definimos el modelo de la tabla
         DefaultTableModel modeloTorneos = new DefaultTableModel();
-        modeloTorneos.setColumnIdentifiers(new Object[]{"UUID_Torneo", "Nombre_Torneo", "Ubicacion_Torneo", "Descripcion_Torneo", "Logo_Torneo"});
+        modeloTorneos.setColumnIdentifiers(new Object[]{"UUID_Torneo", "Nombre_Torneo", "Ubicacion_Torneo", "Descripcion_Torneo", "UUID_Tipo_Deporte"});
         try {
          
             //Creamos un Statement
             Statement statement = conexion.createStatement();
             //Ejecutamos el Statement con la consulta y lo asignamos a una variable de tipo ResultSet
-            ResultSet rs = statement.executeQuery("select UUID_Torneo, Nombre_Torneo, Ubicacion_Torneo, Descripcion_Torneo, Logo_Torneo FROM tbTorneos");
+            ResultSet rs = statement.executeQuery("select t.UUID_Torneo, t.Nombre_Torneo, t.Ubicacion_Torneo, t.Descripcion_Torneo, td.Nombre_Tipo_Deporte FROM tbTorneos t LEFT JOIN tbTipoDeporte td ON t.UUID_Tipo_Deporte = td.UUID_Tipo_Deporte");
             
             //Recorremos el ResultSet
             while (rs.next()) {
@@ -117,7 +120,7 @@ public class Torneos {
                     rs.getString("Nombre_Torneo"), 
                     rs.getString("Ubicacion_Torneo"), 
                     rs.getString("Descripcion_Torneo"), 
-                    rs.getString("Logo_Torneo")});
+                    rs.getString("Nombre_Tipo_Deporte")});
             }
             //Asignamos el nuevo modelo lleno a la tabla
             tabla.setModel(modeloTorneos);
@@ -159,13 +162,13 @@ public class Torneos {
 
             try {
                 //Ejecutamos la Query
-                String sql = "update tbTorneos set Nombre_Torneo = ?, Ubicacion_Torneo = ?, Descripcion_Torneo = ?, Logo_Torneo = ? where UUID_Torneo = ?";
+                String sql = "update tbTorneos set Nombre_Torneo = ?, Ubicacion_Torneo = ?, Descripcion_Torneo = ?, UUID_Tipo_Deporte = ? where UUID_Torneo = ?";
                 PreparedStatement updateNoticia = conexion.prepareStatement(sql);
 
                 updateNoticia.setString(1, getNombre());
                 updateNoticia.setString(2, getUbicacion());
                 updateNoticia.setString(3, getDescripcion());
-                updateNoticia.setString(4, getLogo());
+                updateNoticia.setString(4, getDeporte());
                 updateNoticia.setString(5, miUUId);
                 updateNoticia.executeUpdate();
 
@@ -183,7 +186,7 @@ public class Torneos {
 
         //Definimos el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"UUID_Torneo", "Nombre_Torneo", "Ubicacion_Torneo", "Descripcion_Torneo", "Logo_Torneo"});
+        modelo.setColumnIdentifiers(new Object[]{"UUID_Torneo", "Nombre_Torneo", "Ubicacion_Torneo", "Descripcion_Torneo", "UUID_Tipo_Deporte"});
         try {
             String sql = "SELECT * FROM tbTorneos WHERE Nombre_Torneo LIKE ? || '%'";
             PreparedStatement searchNoticia = conexion.prepareStatement(sql);
@@ -192,7 +195,7 @@ public class Torneos {
 
             while (rs.next()) {
                 //Llenamos el modelo por cada vez que recorremos el resultSet
-                modelo.addRow(new Object[]{rs.getString("UUID_Torneo"), rs.getString("Nombre_Torneo"), rs.getString("Ubicacion_Torneo"), rs.getString("Descripcion_Torneo"), rs.getString("Logo_Torneo")});
+                modelo.addRow(new Object[]{rs.getString("UUID_Torneo"), rs.getString("Nombre_Torneo"), rs.getString("Ubicacion_Torneo"), rs.getString("Descripcion_Torneo"), rs.getString("UUID_Tipo_Deporte")});
             }
 
             
@@ -211,7 +214,6 @@ public class Torneos {
         vistaTorneos.txtNombreTorneo.setText("");
         vistaTorneos.txtUbicacionTorneo.setText("");
         vistaTorneos.txtDescripcionTorneo.setText("");
-        vistaTorneos.txtLogoTorneo.setText("");
     }
 
     public void cargarDatosTabla(frmTorneos vistaTorneos) {
@@ -230,7 +232,6 @@ public class Torneos {
             vistaTorneos.txtNombreTorneo.setText(NombreDeTB);
             vistaTorneos.txtUbicacionTorneo.setText(UbicacionDeTB);
             vistaTorneos.txtDescripcionTorneo.setText(DescripcionDeTb);
-            vistaTorneos.txtLogoTorneo.setText(LogoDeTB);
         }
     }
     
@@ -248,6 +249,43 @@ public class Torneos {
         }
         
     
+    }
+    
+    //Extras para el ComboBox
+    public Torneos(){
+        
+    }
+    
+    public Torneos(String uuid, String nombre)
+    {
+        this.UUID_Torneo = uuid;
+        this.nombre = nombre;
+    }
+    
+      @Override
+    public String toString()
+    {
+        return nombre;
+    }
+    
+    
+    //Metodo para cargar los valores en el ComboBox
+    public void CargarComboTorneos(JComboBox comboBox){    
+        Connection conexion = ClaseConexion.getConexion();
+        comboBox.removeAllItems();
+        try{
+            Statement statement = conexion.createStatement();
+            ResultSet rs = statement.executeQuery("Select UUID_Torneo, Nombre_Torneo from tbTorneos");
+            while (rs.next()) {
+                String uuid = rs.getString("UUID_Torneo");
+                String nombre = rs.getString("Nombre_Torneo");
+                comboBox.addItem(new Torneos(uuid,nombre));                
+            }
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();  
+        }
     }
     
     

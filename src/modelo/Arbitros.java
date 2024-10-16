@@ -10,17 +10,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import vista.frmArbitros2;
+import vista.frmArbitros;
 import vista.frmTorneos;
 
 /**
  *
  * @author marvi
  */
-public class Arbitros2 {
+public class Arbitros {
     
     //Parametros
     private String UUID_Arbitro;
@@ -28,6 +29,16 @@ public class Arbitros2 {
     private String apellido;
     private int edad;
     private String telefono;
+    private String UUID_Torneo;
+
+    public String getUUID_Torneo() {
+        return UUID_Torneo;
+    }
+
+    public void setUUID_Torneo(String UUID_Torneo) {
+        this.UUID_Torneo = UUID_Torneo;
+    }
+    
 
     public String getUUID_Arbitro() {
         return UUID_Arbitro;
@@ -77,19 +88,20 @@ public class Arbitros2 {
         Connection conexion = ClaseConexion.getConexion();
         try {
             //Creamos el PreparedStatement que ejecutará la Query
-            PreparedStatement addArbitro = conexion.prepareStatement("INSERT INTO tbArbitros(UUID_Arbitro, Nombre_Arbitro, Apellido_Arbitro, Edad_Arbitro, Telefono_Arbitro) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement addArbitro = conexion.prepareStatement("INSERT INTO tbArbitros(UUID_Arbitro, Nombre_Arbitro, Apellido_Arbitro, Edad_Arbitro, Telefono_Arbitro, UUID_Torneo) VALUES (?, ?, ?, ?, ?, ?)");
             //Establecer valores de la consulta SQL
             addArbitro.setString(1, UUID.randomUUID().toString());
             addArbitro.setString(2, getNombre());
             addArbitro.setString(3, getApellido());
             addArbitro.setInt(4, getEdad());
             addArbitro.setString(5, getTelefono());
+            addArbitro.setString(6, getUUID_Torneo());
  
             //Ejecutar la consulta
             addArbitro.executeUpdate();
  
         } catch (SQLException ex) {
-            System.out.println("este es el error en el modelo:metodo guardar " + ex);
+            System.out.println("Este es el error en el modelo: metodo guardar ");
         }
     }
 
@@ -98,13 +110,13 @@ public class Arbitros2 {
         Connection conexion = ClaseConexion.getConexion();
         //Definimos el modelo de la tabla
         DefaultTableModel modeloArbitros = new DefaultTableModel();
-        modeloArbitros.setColumnIdentifiers(new Object[]{"UUID_Arbitro", "Nombre_Arbitro", "Apellido_Arbitro", "Edad_Arbitro", "Telefono_Arbitro"});
+        modeloArbitros.setColumnIdentifiers(new Object[]{"UUID_Arbitro", "Nombre_Arbitro", "Apellido_Arbitro", "Edad_Arbitro", "Telefono_Arbitro", "UUID_Torneo"});
         try {
          
             //Creamos un Statement
             Statement statement = conexion.createStatement();
             //Ejecutamos el Statement con la consulta y lo asignamos a una variable de tipo ResultSet
-            ResultSet rs = statement.executeQuery("select UUID_Arbitro, Nombre_Arbitro, Apellido_Arbitro, Edad_Arbitro, Telefono_Arbitro FROM tbArbitros");
+            ResultSet rs = statement.executeQuery("select * from tbArbitros");
             
             //Recorremos el ResultSet
             while (rs.next()) {
@@ -112,13 +124,14 @@ public class Arbitros2 {
                 modeloArbitros.addRow(new Object[]{rs.getString("UUID_Arbitro"), 
                     rs.getString("Nombre_Arbitro"), 
                     rs.getString("Apellido_Arbitro"), 
-                    rs.getString("Edad_Arbitro"), 
-                    rs.getString("Telefono_Arbitro")});
+                    rs.getInt("Edad_Arbitro"), 
+                    rs.getString("Telefono_Arbitro"),
+                    rs.getString("UUID_Torneo")});
             }
             //Asignamos el nuevo modelo lleno a la tabla
             tabla.setModel(modeloArbitros);
         } catch (Exception e) {
-            System.out.println("Este es el error en el modelo, metodo mostrar " + e);
+            e.printStackTrace();
         }
     }
     
@@ -155,14 +168,15 @@ public class Arbitros2 {
 
             try {
                 //Ejecutamos la Query
-                String sql = "update tbArbitros set Nombre_Arbitro = ?, Apellido_Arbitro = ?, Edad_Arbitro = ?, Telefono_Arbitro = ? where UUID_Arbitro = ?";
+                String sql = "update tbArbitros set Nombre_Arbitro = ?, Apellido_Arbitro = ?, Edad_Arbitro = ?, Telefono_Arbitro = ?, UUID_Torneo = ? where UUID_Arbitro = ?";
                 PreparedStatement updateNoticia = conexion.prepareStatement(sql);
 
                 updateNoticia.setString(1, getNombre());
                 updateNoticia.setString(2, getApellido());
                 updateNoticia.setInt(3, getEdad());
                 updateNoticia.setString(4, getTelefono());
-                updateNoticia.setString(5, miUUId);
+                updateNoticia.setString(5, getUUID_Torneo());
+                updateNoticia.setString(6, miUUId);
                 updateNoticia.executeUpdate();
 
             } catch (Exception e) {
@@ -179,7 +193,7 @@ public class Arbitros2 {
 
         //Definimos el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"UUID_Arbitro", "Nombre_Arbitro", "Apellido_Arbitro", "Edad_Arbitro", "Telefono_Arbitro"});
+        modelo.setColumnIdentifiers(new Object[]{"UUID_Arbitro", "Nombre_Arbitro", "Apellido_Arbitro", "Edad_Arbitro", "Telefono_Arbitro", "UUID_Torneo"});
         try {
             String sql = "SELECT * FROM tbArbitros WHERE Nombre_Arbitro LIKE ? || '%'";
             PreparedStatement searchNoticia = conexion.prepareStatement(sql);
@@ -188,7 +202,7 @@ public class Arbitros2 {
 
             while (rs.next()) {
                 //Llenamos el modelo por cada vez que recorremos el resultSet
-                modelo.addRow(new Object[]{rs.getString("UUID_Arbitro"), rs.getString("Nombre_Arbitro"), rs.getString("Apellido_Arbitro"), rs.getString("Edad_Arbitro"), rs.getString("Telefono_Arbitro")});
+                modelo.addRow(new Object[]{rs.getString("UUID_Arbitro"), rs.getString("Nombre_Arbitro"), rs.getString("Apellido_Arbitro"), rs.getInt("Edad_Arbitro"), rs.getString("Telefono_Arbitro"), rs.getString("UUID_Torneo")});
             }
 
             
@@ -203,14 +217,14 @@ public class Arbitros2 {
     }
     
     
-    public void limpiar(frmArbitros2 vistaArbitros) {
+    public void limpiar(frmArbitros vistaArbitros) {
         vistaArbitros.txtNombre.setText("");
         vistaArbitros.txtApellido.setText("");
         vistaArbitros.txtEdad.setText("");
         vistaArbitros.txtTelefono.setText("");
     }
 
-    public void cargarDatosTabla(frmArbitros2 vistaArbitros) {
+    public void cargarDatosTabla(frmArbitros vistaArbitros) {
         // Obtén la fila seleccionada 
         int filaSeleccionada = vistaArbitros.jtbArbitros.getSelectedRow();
 
@@ -229,5 +243,9 @@ public class Arbitros2 {
             vistaArbitros.txtTelefono.setText(TelefonoDeTB);
         }
     }
+    
+    
+    
+    
     
 }

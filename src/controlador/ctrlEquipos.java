@@ -10,7 +10,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import modelo.Equipos;
-import vista.frmArbitros2;
+import modelo.Torneos;
+import vista.frmArbitros;
 import vista.frmEquipos;
 
 /**
@@ -21,13 +22,15 @@ public class ctrlEquipos implements MouseListener, KeyListener{
     
     //////////////////////////2- Parametros
     private Equipos modeloEquipos;
+    private Torneos modeloTorneos;
     private frmEquipos vistaEquipos;
     
-    public ctrlEquipos(Equipos modeloEquipos, frmEquipos vistaEquipos) {
+    public ctrlEquipos(Equipos modeloEquipos, Torneos modeloTorneos, frmEquipos vistaEquipos) {
         
         //////////////////////////2- Parametros
         this.modeloEquipos = modeloEquipos;
         this.vistaEquipos = vistaEquipos;
+        this.modeloTorneos = modeloTorneos;
         
         //Siempre hay que poner los botones que vamos a utilizar
         frmEquipos.btnGuardar.addMouseListener(this);
@@ -36,8 +39,21 @@ public class ctrlEquipos implements MouseListener, KeyListener{
         frmEquipos.btnLimpiar.addMouseListener(this);
         frmEquipos.btnRegresar.addMouseListener(this);
         frmEquipos.txtBuscar.addKeyListener(this);
+        frmEquipos.cbTorneos.addMouseListener(this);
+        this.modeloTorneos.CargarComboTorneos(frmEquipos.cbTorneos);
         frmEquipos.jtbEquipos.addMouseListener(this);
         modeloEquipos.MostrarEquipo(frmEquipos.jtbEquipos);
+        
+        //Obtener el UUID del doctor seleccionado
+        frmEquipos.cbTorneos.addActionListener(e -> {
+            if (e.getSource() == frmEquipos.cbTorneos) {
+                Torneos selectedItem = (Torneos) frmEquipos.cbTorneos.getSelectedItem();
+                if (selectedItem != null) {
+                    String UUID = selectedItem.getUUID_Torneo();
+                    modeloTorneos.setUUID_Torneo(UUID);
+                }
+            }
+        });
 
     }
 
@@ -45,7 +61,7 @@ public class ctrlEquipos implements MouseListener, KeyListener{
     public void mouseClicked(MouseEvent e) {
         
         if (e.getSource() == vistaEquipos.btnGuardar) {
-            if (vistaEquipos.txtNombre.getText().isEmpty() || vistaEquipos.txtDescripcion.getText().isEmpty() || vistaEquipos.txtUbicacion.getText().isEmpty() || vistaEquipos.txtLogo.getText().isEmpty() )  {
+            if (vistaEquipos.txtNombre.getText().isEmpty() || vistaEquipos.txtDescripcion.getText().isEmpty() || vistaEquipos.txtUbicacion.getText().isEmpty() )  {
                 JOptionPane.showMessageDialog(vistaEquipos, "Debes llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
@@ -53,7 +69,7 @@ public class ctrlEquipos implements MouseListener, KeyListener{
                     modeloEquipos.setNombre(vistaEquipos.txtNombre.getText());
                     modeloEquipos.setDescripcion(vistaEquipos.txtDescripcion.getText());
                     modeloEquipos.setUbicacion(vistaEquipos.txtUbicacion.getText());
-                    modeloEquipos.setLogo(vistaEquipos.txtLogo.getText());
+                    modeloEquipos.setUUID_Torneo(modeloTorneos.getUUID_Torneo());
                     //Ejecutar el metodo 
                     modeloEquipos.GuardarEquipo();
                     modeloEquipos.MostrarEquipo(vistaEquipos.jtbEquipos);
@@ -65,7 +81,7 @@ public class ctrlEquipos implements MouseListener, KeyListener{
         }
         
         if (e.getSource() == vistaEquipos.btnEliminar) {
-            if (vistaEquipos.txtNombre.getText().isEmpty() || vistaEquipos.txtDescripcion.getText().isEmpty() || vistaEquipos.txtUbicacion.getText().isEmpty() || vistaEquipos.txtLogo.getText().isEmpty() ) {
+            if (vistaEquipos.txtNombre.getText().isEmpty() || vistaEquipos.txtDescripcion.getText().isEmpty() || vistaEquipos.txtUbicacion.getText().isEmpty() ) {
                 JOptionPane.showMessageDialog(vistaEquipos, "Debes seleccionar un registro para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
@@ -80,7 +96,7 @@ public class ctrlEquipos implements MouseListener, KeyListener{
         
         
         if (e.getSource() == vistaEquipos.btnActualizar) {
-            if (vistaEquipos.txtNombre.getText().isEmpty() || vistaEquipos.txtDescripcion.getText().isEmpty() || vistaEquipos.txtUbicacion.getText().isEmpty() || vistaEquipos.txtLogo.getText().isEmpty() ) {
+            if (vistaEquipos.txtNombre.getText().isEmpty() || vistaEquipos.txtDescripcion.getText().isEmpty() || vistaEquipos.txtUbicacion.getText().isEmpty() ) {
                 JOptionPane.showMessageDialog(vistaEquipos, "Debes seleccionar un registro para actualizar", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
@@ -88,7 +104,7 @@ public class ctrlEquipos implements MouseListener, KeyListener{
                     modeloEquipos.setNombre(vistaEquipos.txtNombre.getText());
                     modeloEquipos.setDescripcion(vistaEquipos.txtDescripcion.getText());
                     modeloEquipos.setUbicacion(vistaEquipos.txtUbicacion.getText());
-                    modeloEquipos.setLogo(vistaEquipos.txtLogo.getText());
+                    modeloEquipos.setUUID_Torneo(modeloTorneos.getUUID_Torneo());
 
                     //Ejecutar el método    
                     modeloEquipos.ActualizarEquipo(vistaEquipos.jtbEquipos);

@@ -6,6 +6,7 @@ package vista;
 
 import controlador.ctrlInicio;
 import controlador.ctrlTorneos;
+import modelo.Deportes;
 import modelo.Noticias;
 import modelo.Torneos;
 
@@ -22,11 +23,12 @@ public class frmTorneos extends javax.swing.JPanel {
         initComponents();
         
         Torneos modeloTorneos = new Torneos();
+        Deportes modeloDeportes = new Deportes();
         frmTorneos panelTorneos = this;
         frmHome vista = new frmHome();
         
         
-        ctrlTorneos controlador = new ctrlTorneos(modeloTorneos, vista, panelTorneos);
+        ctrlTorneos controlador = new ctrlTorneos(modeloTorneos, modeloDeportes, vista, panelTorneos);
         
     }
 
@@ -45,12 +47,12 @@ public class frmTorneos extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         txtNombreTorneo = new javax.swing.JTextField();
         txtUbicacionTorneo = new javax.swing.JTextField();
-        txtLogoTorneo = new javax.swing.JTextField();
         txtDescripcionTorneo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        cbDeportes = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
@@ -87,11 +89,13 @@ public class frmTorneos extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel4.setText("URL Logo");
+        jLabel4.setText("Deporte");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 51));
         jLabel6.setText("Descripción del torneo");
+
+        cbDeportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fútbol", "Basketball", "Volleyball" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -114,12 +118,14 @@ public class frmTorneos extends javax.swing.JPanel {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtUbicacionTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2))
-                                .addGap(27, 27, 27)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
                                         .addComponent(jLabel4)
-                                        .addGap(0, 67, Short.MAX_VALUE))
-                                    .addComponent(txtLogoTorneo))))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cbDeportes, 0, 134, Short.MAX_VALUE)))))
                         .addGap(15, 15, 15))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -131,12 +137,11 @@ public class frmTorneos extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUbicacionTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtNombreTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtLogoTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtUbicacionTorneo, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(txtNombreTorneo, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(cbDeportes))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDescripcionTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,6 +253,7 @@ public class frmTorneos extends javax.swing.JPanel {
     public static javax.swing.JButton btnLimpiar;
     public static javax.swing.JButton btnRegistrarArbitros;
     public static javax.swing.JButton btnRegistrarEquipos;
+    public static javax.swing.JComboBox<String> cbDeportes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -262,7 +268,6 @@ public class frmTorneos extends javax.swing.JPanel {
     public static javax.swing.JTable jtbTorneos;
     public static javax.swing.JTextField txtBuscar;
     public javax.swing.JTextField txtDescripcionTorneo;
-    public javax.swing.JTextField txtLogoTorneo;
     public javax.swing.JTextField txtNombreTorneo;
     public javax.swing.JTextField txtUbicacionTorneo;
     // End of variables declaration//GEN-END:variables

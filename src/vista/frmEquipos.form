@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="773" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -65,7 +65,7 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="btnGuardar" alignment="1" max="32767" attributes="0"/>
-                      <Component id="btnActualizar" alignment="1" pref="106" max="32767" attributes="0"/>
+                      <Component id="btnActualizar" alignment="1" max="32767" attributes="0"/>
                       <Component id="btnEliminar" alignment="1" max="32767" attributes="0"/>
                       <Component id="btnLimpiar" alignment="1" max="32767" attributes="0"/>
                       <Component id="btnRegresar" alignment="0" max="32767" attributes="0"/>
@@ -150,13 +150,16 @@
                                           <Component id="txtUbicacion" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
                                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="55" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="cbTorneos" min="-2" pref="173" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="txtLogo" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>
@@ -176,12 +179,10 @@
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtUbicacion" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="txtNombre" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="txtLogo" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtUbicacion" alignment="0" pref="31" max="32767" attributes="0"/>
+                          <Component id="txtNombre" alignment="0" pref="31" max="32767" attributes="0"/>
+                          <Component id="cbTorneos" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -199,11 +200,6 @@
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtUbicacion">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtLogo">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
@@ -243,7 +239,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="0" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="URL Logo"/>
+                <Property name="text" type="java.lang.String" value="Torneo a incribir"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
@@ -256,6 +252,22 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbTorneos">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

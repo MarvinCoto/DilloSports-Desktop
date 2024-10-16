@@ -6,8 +6,9 @@ package vista;
 
 import controlador.ctrlArbitros2;
 import controlador.ctrlEquipos;
-import modelo.Arbitros2;
+import modelo.Arbitros;
 import modelo.Equipos;
+import modelo.Torneos;
 
 /**
  *
@@ -27,9 +28,10 @@ public class frmEquipos extends javax.swing.JFrame {
     public static void initEquipos() {
         
         Equipos modeloEquipos = new Equipos();
+        Torneos modeloTorneos = new Torneos();
         frmEquipos vistaEquipos = new frmEquipos();
         
-        ctrlEquipos controlador = new ctrlEquipos(modeloEquipos, vistaEquipos);
+        ctrlEquipos controlador = new ctrlEquipos(modeloEquipos, modeloTorneos, vistaEquipos);
     
         vistaEquipos.setVisible(true);
     
@@ -49,12 +51,12 @@ public class frmEquipos extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         txtNombre = new javax.swing.JTextField();
         txtUbicacion = new javax.swing.JTextField();
-        txtLogo = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        cbTorneos = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
@@ -86,11 +88,13 @@ public class frmEquipos extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel4.setText("URL Logo");
+        jLabel4.setText("Torneo a incribir");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 51));
         jLabel6.setText("Descripción");
+
+        cbTorneos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -113,12 +117,14 @@ public class frmEquipos extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2))
-                                .addGap(27, 27, 27)
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(cbTorneos, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 10, Short.MAX_VALUE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
-                                        .addGap(0, 55, Short.MAX_VALUE))
-                                    .addComponent(txtLogo))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addGap(15, 15, 15))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -130,11 +136,10 @@ public class frmEquipos extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtUbicacion, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(cbTorneos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -203,7 +208,7 @@ public class frmEquipos extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRegresar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -240,7 +245,7 @@ public class frmEquipos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,6 +304,7 @@ public class frmEquipos extends javax.swing.JFrame {
     public static javax.swing.JButton btnGuardar;
     public static javax.swing.JButton btnLimpiar;
     public static javax.swing.JButton btnRegresar;
+    public static javax.swing.JComboBox<String> cbTorneos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -311,7 +317,6 @@ public class frmEquipos extends javax.swing.JFrame {
     public static javax.swing.JTable jtbEquipos;
     public static javax.swing.JTextField txtBuscar;
     public javax.swing.JTextField txtDescripcion;
-    public javax.swing.JTextField txtLogo;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtUbicacion;
     // End of variables declaration//GEN-END:variables

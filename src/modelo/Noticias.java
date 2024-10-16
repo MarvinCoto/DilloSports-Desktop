@@ -18,7 +18,6 @@ public class Noticias {
     private String titulo;
     private String descripcion;
     private String fecha;
-    private String imagen;
 
     //2- Getters y Setters
     public String getUUID_Noticia() {
@@ -53,13 +52,7 @@ public class Noticias {
         this.fecha = fecha;
     }
 
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
+    
 
     
     //3- Métodos (select, insert, update, delete)
@@ -70,13 +63,13 @@ public class Noticias {
         Connection conexion = ClaseConexion.getConexion();
         try {
             //Creamos el PreparedStatement que ejecutará la Query
-            PreparedStatement addNoticia = conexion.prepareStatement("INSERT INTO tbNoticias(UUID_Noticia, Nombre_Noticia, Descripcion_Noticia, Hora_Noticia, Imagen_Noticia) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement addNoticia = conexion.prepareStatement("INSERT INTO tbNoticias(UUID_Noticia, Nombre_Noticia, Descripcion_Noticia, Hora_Noticia) VALUES (?, ?, ?, ?)");
             //Establecer valores de la consulta SQL
             addNoticia.setString(1, UUID.randomUUID().toString());
             addNoticia.setString(2, getTitulo());
             addNoticia.setString(3, getDescripcion());
             addNoticia.setString(4, getFecha());
-            addNoticia.setString(5, getImagen());
+
  
             //Ejecutar la consulta
             addNoticia.executeUpdate();
@@ -91,13 +84,13 @@ public class Noticias {
         Connection conexion = ClaseConexion.getConexion();
         //Definimos el modelo de la tabla
         DefaultTableModel modeloNoticias = new DefaultTableModel();
-        modeloNoticias.setColumnIdentifiers(new Object[]{"UUID_Noticia", "Nombre_Noticia", "Descripcion_Noticia", "Hora_Noticia", "Imagen_Noticia"});
+        modeloNoticias.setColumnIdentifiers(new Object[]{"UUID_Noticia", "Nombre_Noticia", "Descripcion_Noticia", "Hora_Noticia"});
         try {
          
             //Creamos un Statement
             Statement statement = conexion.createStatement();
             //Ejecutamos el Statement con la consulta y lo asignamos a una variable de tipo ResultSet
-            ResultSet rs = statement.executeQuery("select UUID_Noticia, Nombre_Noticia, Descripcion_Noticia, Hora_Noticia, Imagen_Noticia FROM tbNoticias");
+            ResultSet rs = statement.executeQuery("select UUID_Noticia, Nombre_Noticia, Descripcion_Noticia, Hora_Noticia FROM tbNoticias");
             
             //Recorremos el ResultSet
             while (rs.next()) {
@@ -105,8 +98,7 @@ public class Noticias {
                 modeloNoticias.addRow(new Object[]{rs.getString("UUID_Noticia"), 
                     rs.getString("Nombre_Noticia"), 
                     rs.getString("Descripcion_Noticia"), 
-                    rs.getString("Hora_Noticia"), 
-                    rs.getString("Imagen_Noticia")});
+                    rs.getString("Hora_Noticia")});
             }
             //Asignamos el nuevo modelo lleno a la tabla
             tabla.setModel(modeloNoticias);
@@ -148,14 +140,13 @@ public class Noticias {
 
             try {
                 //Ejecutamos la Query
-                String sql = "update tbNoticias set Nombre_Noticia = ?, Descripcion_Noticia = ?, Hora_Noticia = ?, Imagen_Noticia = ? where UUID_Noticia = ?";
+                String sql = "update tbNoticias set Nombre_Noticia = ?, Descripcion_Noticia = ?, Hora_Noticia = ? where UUID_Noticia = ?";
                 PreparedStatement updateNoticia = conexion.prepareStatement(sql);
 
                 updateNoticia.setString(1, getTitulo());
                 updateNoticia.setString(2, getDescripcion());
                 updateNoticia.setString(3, getFecha());
-                updateNoticia.setString(4, getImagen());
-                updateNoticia.setString(5, miUUId);
+                updateNoticia.setString(4, miUUId);
                 updateNoticia.executeUpdate();
 
             } catch (Exception e) {
@@ -172,7 +163,7 @@ public class Noticias {
 
         //Definimos el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"UUID_Noticia", "Nombre_Noticia", "Descripcion_Noticia", "Hora_Noticia", "Imagen_Noticia"});
+        modelo.setColumnIdentifiers(new Object[]{"UUID_Noticia", "Nombre_Noticia", "Descripcion_Noticia", "Hora_Noticia"});
         try {
             String sql = "SELECT * FROM tbNoticias WHERE Nombre_Noticia LIKE ? || '%'";
             PreparedStatement searchNoticia = conexion.prepareStatement(sql);
@@ -181,7 +172,7 @@ public class Noticias {
 
             while (rs.next()) {
                 //Llenamos el modelo por cada vez que recorremos el resultSet
-                modelo.addRow(new Object[]{rs.getString("UUID_Noticia"), rs.getString("Nombre_Noticia"), rs.getString("Descripcion_Noticia"), rs.getString("Hora_Noticia"), rs.getString("Imagen_Noticia")});
+                modelo.addRow(new Object[]{rs.getString("UUID_Noticia"), rs.getString("Nombre_Noticia"), rs.getString("Descripcion_Noticia"), rs.getString("Hora_Noticia")});
             }
 
             
@@ -200,7 +191,7 @@ public class Noticias {
         vistaNoticias.txtTitulo.setText("");
         vistaNoticias.txtDescripcion.setText("");
         vistaNoticias.txtFecha.setText("");
-        vistaNoticias.txtImagen.setText("");
+        
     }
 
     public void cargarDatosTabla(frmNoticias vistaNoticias) {
@@ -213,13 +204,12 @@ public class Noticias {
             String TituloDeTB = vistaNoticias.jtbNoticias.getValueAt(filaSeleccionada, 1).toString();
             String DescripcionDeTb = vistaNoticias.jtbNoticias.getValueAt(filaSeleccionada, 2).toString();
             String FechadDeTB = vistaNoticias.jtbNoticias.getValueAt(filaSeleccionada, 3).toString();
-            String ImagenDeTB = vistaNoticias.jtbNoticias.getValueAt(filaSeleccionada, 4).toString();
 
             // Establece los valores en los campos de texto
             vistaNoticias.txtTitulo.setText(TituloDeTB);
             vistaNoticias.txtDescripcion.setText(DescripcionDeTb);
             vistaNoticias.txtFecha.setText(FechadDeTB);
-            vistaNoticias.txtImagen.setText(ImagenDeTB);
+            
         }
     }
     

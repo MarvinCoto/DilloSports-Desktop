@@ -9,8 +9,10 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
-import modelo.Arbitros2;
-import vista.frmArbitros2;
+import modelo.Arbitros;
+import modelo.Torneos;
+import vista.frmArbitros;
+import vista.frmEquipos;
 
 /**
  *
@@ -19,24 +21,39 @@ import vista.frmArbitros2;
 public class ctrlArbitros2 implements MouseListener, KeyListener{
     
     //////////////////////////2- Parametros
-    private Arbitros2 modeloArbitros;
-    private frmArbitros2 panelArbitros;
+    private Arbitros modeloArbitros;
+    private Torneos modeloTorneos;
+    private frmArbitros panelArbitros;
     
-    public ctrlArbitros2(Arbitros2 modeloArbitros, frmArbitros2 panelTorneos) {
+    public ctrlArbitros2(Arbitros modeloArbitros, Torneos modeloTorneos, frmArbitros panelTorneos) {
         
         //////////////////////////2- Parametros
         this.modeloArbitros = modeloArbitros;
         this.panelArbitros = panelTorneos;
+        this.modeloTorneos = modeloTorneos;
         
         //Siempre hay que poner los botones que vamos a utilizar
-        frmArbitros2.btnGuardar.addMouseListener(this);
-        frmArbitros2.btnActualizar.addMouseListener(this);
-        frmArbitros2.btnEliminar.addMouseListener(this);
-        frmArbitros2.btnLimpiar.addMouseListener(this);
-        frmArbitros2.btnRegresar.addMouseListener(this);
-        frmArbitros2.txtBuscar.addKeyListener(this);
-        frmArbitros2.jtbArbitros.addMouseListener(this);
-        modeloArbitros.MostrarArbitro(frmArbitros2.jtbArbitros);
+        frmArbitros.btnGuardar.addMouseListener(this);
+        frmArbitros.btnActualizar.addMouseListener(this);
+        frmArbitros.btnEliminar.addMouseListener(this);
+        frmArbitros.btnLimpiar.addMouseListener(this);
+        frmArbitros.btnRegresar.addMouseListener(this);
+        frmArbitros.txtBuscar.addKeyListener(this);
+        frmArbitros.cbTorneos.addMouseListener(this);
+        this.modeloTorneos.CargarComboTorneos(frmArbitros.cbTorneos);
+        frmArbitros.jtbArbitros.addMouseListener(this);
+        modeloArbitros.MostrarArbitro(frmArbitros.jtbArbitros);
+        
+        //Obtener el UUID del doctor seleccionado
+        frmArbitros.cbTorneos.addActionListener(e -> {
+            if (e.getSource() == frmArbitros.cbTorneos) {
+                Torneos selectedItem = (Torneos) frmArbitros.cbTorneos.getSelectedItem();
+                if (selectedItem != null) {
+                    String UUID = selectedItem.getUUID_Torneo();
+                    modeloTorneos.setUUID_Torneo(UUID);
+                }
+            }
+        });
 
     }
 
@@ -45,14 +62,7 @@ public class ctrlArbitros2 implements MouseListener, KeyListener{
         
         //////////////////////////4- Detección de clicks en la vista
         
-        try {
-                int edadNumerica = Integer.parseInt(panelArbitros.txtEdad.getText());
-                if(edadNumerica > 100 || edadNumerica == 0){
-                    JOptionPane.showMessageDialog(panelArbitros, "Ingrese una edad valida");
-                }
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(panelArbitros, "Ingrese solo numeros");
-            }
+        
         
         
         if (e.getSource() == panelArbitros.btnGuardar) {
@@ -65,6 +75,7 @@ public class ctrlArbitros2 implements MouseListener, KeyListener{
                     modeloArbitros.setApellido(panelArbitros.txtApellido.getText());
                     modeloArbitros.setEdad(Integer.parseInt(panelArbitros.txtEdad.getText()));
                     modeloArbitros.setTelefono(panelArbitros.txtTelefono.getText());
+                    modeloArbitros.setUUID_Torneo(modeloTorneos.getUUID_Torneo());
                     //Ejecutar el metodo 
                     modeloArbitros.GuardarArbitro();
                     modeloArbitros.MostrarArbitro(panelArbitros.jtbArbitros);
@@ -100,6 +111,7 @@ public class ctrlArbitros2 implements MouseListener, KeyListener{
                     modeloArbitros.setApellido(panelArbitros.txtApellido.getText());
                     modeloArbitros.setEdad(Integer.parseInt(panelArbitros.txtEdad.getText()));
                     modeloArbitros.setTelefono(panelArbitros.txtTelefono.getText());
+                    modeloArbitros.setUUID_Torneo(modeloTorneos.getUUID_Torneo());
 
                     //Ejecutar el método    
                     modeloArbitros.ActualizarArbitro(panelArbitros.jtbArbitros);
