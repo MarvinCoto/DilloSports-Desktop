@@ -3,10 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
+import controlador.ctrlIngresoCorreo;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 import java.sql.*;
+import static oracle.sql.NUMBER.e;
 
 
 /**
@@ -183,6 +185,11 @@ public class tbUsuario {
 
     }
     
+    //Método Actualizar contraseña
+    
+    
+    
+    
     
     public String convertirSHA256(String password) {
 	MessageDigest md = null;
@@ -202,4 +209,5 @@ public class tbUsuario {
  
 	return sb.toString();
 }
+
 }

@@ -4,6 +4,8 @@
  */
 package vista;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author marvi
@@ -15,6 +17,9 @@ public class frmBienvenida extends javax.swing.JFrame {
      */
     public frmBienvenida() {
         initComponents();
+        
+        setIconImage(new ImageIcon(getClass().getResource("/img/logodillo.png")).getImage());
+        setResizable(false);
         
         this.setLocationRelativeTo(null);
         
