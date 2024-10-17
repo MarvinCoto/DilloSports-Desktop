@@ -111,7 +111,13 @@ public class frmHomeAdminTorneo extends javax.swing.JFrame {
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         
-       
+       new frmBienvenida().setVisible(true);
+        
+        frmBienvenida bienvenida = new frmBienvenida();
+        
+        bienvenida.setVisible(true);
+        
+        this.dispose();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     /**
