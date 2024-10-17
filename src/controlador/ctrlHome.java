@@ -14,10 +14,12 @@ import vista.frmHome;
 import vista.frmInicio;
 import vista.frmInicio;
 import vista.frmNoticias;
-import vista.frmPartidos;
-import vista.frmPartidos;
-import vista.frmPerfil;
-import vista.frmPerfil;
+import vista.frmReportes;
+import vista.frmReportes;
+import vista.frmAuditoria;
+import vista.frmAuditoria;
+import vista.frmBienvenida;
+import vista.frmRegistroAdminTorneo;
 import vista.frmTorneos;
 import vista.frmTorneos;
 
@@ -32,15 +34,15 @@ public class ctrlHome implements MouseListener {
     //////////////////////////2- Parametros
     private frmHome vistaHome;
     private frmInicio panelInicio;
-    private frmPartidos panelPartidos;
+    private frmReportes panelPartidos;
     private frmNoticias panelNoticias;
     private frmTorneos panelTorneos;
-    private frmPerfil panelPerfil;
+    private frmAuditoria panelPerfil;
     private frmAjustes panelAjustes;
     
     
     
-    public ctrlHome(frmHome vistaHome, frmInicio panelInicio, frmPartidos panelPartidos, frmNoticias panelNoticias, frmTorneos panelTorneos, frmPerfil panelPerfil, frmAjustes panelAjustes) {
+    public ctrlHome(frmHome vistaHome, frmInicio panelInicio, frmReportes panelPartidos, frmNoticias panelNoticias, frmTorneos panelTorneos, frmAuditoria panelPerfil, frmAjustes panelAjustes) {
         
         this.vistaHome = vistaHome;
         
@@ -80,7 +82,7 @@ public class ctrlHome implements MouseListener {
         }
         
         if(e.getSource() == vistaHome.jpPartidos) {
-        frmPartidos objPartidos = new frmPartidos();
+        frmReportes objPartidos = new frmReportes();
             
             vistaHome.jpContenedor.removeAll();
             vistaHome.jpContenedor.add(objPartidos);
@@ -110,7 +112,7 @@ public class ctrlHome implements MouseListener {
         }
         
         if(e.getSource() == vistaHome.jpPerfil) {
-        frmPerfil objPerfil = new frmPerfil();
+        frmAuditoria objPerfil = new frmAuditoria();
             
             vistaHome.jpContenedor.removeAll();
             vistaHome.jpContenedor.add(objPerfil);
@@ -144,7 +146,6 @@ public class ctrlHome implements MouseListener {
         vistaHome.jpNoticias.setBackground(DefaultColor);
         vistaHome.jpTorneos.setBackground(DefaultColor);
         vistaHome.jpPerfil.setBackground(DefaultColor);
-        vistaHome.jpAjustes.setBackground(DefaultColor);
         
         vistaHome.JlTitulo.setText("Inicio");
         
@@ -157,7 +158,6 @@ public class ctrlHome implements MouseListener {
         vistaHome.jpNoticias.setBackground(DefaultColor);
         vistaHome.jpTorneos.setBackground(DefaultColor);
         vistaHome.jpPerfil.setBackground(DefaultColor);
-        vistaHome.jpAjustes.setBackground(DefaultColor);
         
         vistaHome.JlTitulo.setText("Partidos");
         
@@ -170,7 +170,6 @@ public class ctrlHome implements MouseListener {
         vistaHome.jpNoticias.setBackground(ClickedColor);
         vistaHome.jpTorneos.setBackground(DefaultColor);
         vistaHome.jpPerfil.setBackground(DefaultColor);
-        vistaHome.jpAjustes.setBackground(DefaultColor);
         
         vistaHome.JlTitulo.setText("Noticias");
         
@@ -183,7 +182,6 @@ public class ctrlHome implements MouseListener {
         vistaHome.jpNoticias.setBackground(DefaultColor);
         vistaHome.jpTorneos.setBackground(ClickedColor);
         vistaHome.jpPerfil.setBackground(DefaultColor);
-        vistaHome.jpAjustes.setBackground(DefaultColor);
         
         vistaHome.JlTitulo.setText("Torneos");
         
@@ -196,7 +194,6 @@ public class ctrlHome implements MouseListener {
         vistaHome.jpNoticias.setBackground(DefaultColor);
         vistaHome.jpTorneos.setBackground(DefaultColor);
         vistaHome.jpPerfil.setBackground(ClickedColor);
-        vistaHome.jpAjustes.setBackground(DefaultColor);
         
         vistaHome.JlTitulo.setText("Perfil");
         
@@ -204,14 +201,14 @@ public class ctrlHome implements MouseListener {
         
         if(e.getSource() == vistaHome.jpAjustes) {
             
-        vistaHome.jpInicio.setBackground(DefaultColor);
-        vistaHome.jpPartidos.setBackground(DefaultColor);
-        vistaHome.jpNoticias.setBackground(DefaultColor);
-        vistaHome.jpTorneos.setBackground(DefaultColor);
-        vistaHome.jpPerfil.setBackground(DefaultColor);
-        vistaHome.jpAjustes.setBackground(ClickedColor);
+        new frmBienvenida().setVisible(true);
         
-        vistaHome.JlTitulo.setText("Ajustes");
+        frmBienvenida bienvenida = new frmBienvenida();
+        
+        bienvenida.setVisible(true);
+        
+        vistaHome.dispose();
+        
         
         }
     }

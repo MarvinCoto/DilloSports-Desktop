@@ -6,6 +6,7 @@ package vista;
 
 import controlador.ctrlArbitros2;
 import controlador.ctrlEquipos;
+import javax.swing.ImageIcon;
 import modelo.Arbitros;
 import modelo.Equipos;
 import modelo.Torneos;
@@ -22,7 +23,11 @@ public class frmEquipos extends javax.swing.JFrame {
     public frmEquipos() {
         initComponents();
         
+        setIconImage(new ImageIcon(getClass().getResource("/img/logodillo.png")).getImage());
+        setResizable(false);
+
         this.setLocationRelativeTo(null);
+        
     }
     
     public static void initEquipos() {
@@ -78,6 +83,12 @@ public class frmEquipos extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
+        txtNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
+
+        txtUbicacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
+
+        txtDescripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 51));
         jLabel2.setText("Ubicación");
@@ -95,6 +106,7 @@ public class frmEquipos extends javax.swing.JFrame {
         jLabel6.setText("Descripción");
 
         cbTorneos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbTorneos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -122,9 +134,7 @@ public class frmEquipos extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(cbTorneos, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 10, Short.MAX_VALUE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(jLabel4))))
                         .addGap(15, 15, 15))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -164,6 +174,7 @@ public class frmEquipos extends javax.swing.JFrame {
         btnLimpiar.setBackground(new java.awt.Color(255, 0, 51));
         btnLimpiar.setText("Limpiar");
 
+        txtBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscarActionPerformed(evt);
@@ -174,6 +185,8 @@ public class frmEquipos extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 0, 51));
         jLabel7.setText("Buscar");
 
+        jtbEquipos.setBackground(new java.awt.Color(51, 51, 51));
+        jtbEquipos.setForeground(new java.awt.Color(255, 255, 255));
         jtbEquipos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

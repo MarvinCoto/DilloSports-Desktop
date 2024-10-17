@@ -4,26 +4,74 @@
  */
 package vista;
 
+import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 
-/**
- *
- * @author marvi
- */
 public class frmBienvenida extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmHome
-     */
     public frmBienvenida() {
+
         initComponents();
-        
+
         setIconImage(new ImageIcon(getClass().getResource("/img/logodillo.png")).getImage());
         setResizable(false);
-        
+
         this.setLocationRelativeTo(null);
+
+        // Cambia el color de la barra de progreso
+        ProgressBar.setForeground(new java.awt.Color(255, 51, 51)); // Rojo
         
+        // Configura el botón como inhabilitado al principio
+        btnComenzar.setEnabled(false);
+
+        // Cierra el programa cuando se cierra la ventana
+        this.setDefaultCloseOperation(frmBienvenida.EXIT_ON_CLOSE);
+        
+        // Inicia el progreso al abrir el formulario
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                startProgressBar();
+            }
+        });
     }
+
+    private void startProgressBar() {
+        // Usa un hilo separado para simular el progreso
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i <= 100; i++) {
+                    try {
+                        // Simula un retardo en la carga
+                        Thread.sleep(50); // 50 milisegundos
+
+                        // Actualiza la barra de progreso en el hilo EDT
+                        final int progressValue = i;
+                        SwingUtilities.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                ProgressBar.setValue(progressValue);
+                                
+                            }
+                        });
+
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                // Habilita el botón una vez que el progreso llegue a 100
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        btnComenzar.setEnabled(true);
+                    }
+                });
+            }
+        }).start();
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,6 +86,7 @@ public class frmBienvenida extends javax.swing.JFrame {
         JlTitulo3 = new javax.swing.JLabel();
         btnIniciarSesion = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        ProgressBar = new javax.swing.JProgressBar();
         JlTitulo1 = new javax.swing.JLabel();
         JlTitulo2 = new javax.swing.JLabel();
         JlTitulo4 = new javax.swing.JLabel();
@@ -67,6 +116,9 @@ public class frmBienvenida extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        ProgressBar.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel1.add(ProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 400, 20));
+
         JlTitulo1.setBackground(new java.awt.Color(0, 0, 0));
         JlTitulo1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         JlTitulo1.setForeground(new java.awt.Color(255, 0, 51));
@@ -88,9 +140,9 @@ public class frmBienvenida extends javax.swing.JFrame {
         JlTitulo4.setPreferredSize(new java.awt.Dimension(107, 50));
         jPanel1.add(JlTitulo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 64, 96, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dilogo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/DilloDone.png"))); // NOI18N
         jLabel2.setText("jLabel2");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 122, 202, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 360, 350));
 
         btnComenzar.setBackground(new java.awt.Color(255, 51, 51));
         btnComenzar.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
@@ -101,7 +153,7 @@ public class frmBienvenida extends javax.swing.JFrame {
                 btnComenzarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 359, 221, 62));
+        jPanel1.add(btnComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 221, 62));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 520));
@@ -162,6 +214,7 @@ public class frmBienvenida extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new frmBienvenida().setVisible(true);
+                
             }
         });
     }
@@ -172,6 +225,7 @@ public class frmBienvenida extends javax.swing.JFrame {
     private javax.swing.JLabel JlTitulo2;
     private javax.swing.JLabel JlTitulo3;
     private javax.swing.JLabel JlTitulo4;
+    public javax.swing.JProgressBar ProgressBar;
     public javax.swing.JButton btnComenzar;
     public javax.swing.JButton btnIniciarSesion;
     private javax.swing.JLabel jLabel1;

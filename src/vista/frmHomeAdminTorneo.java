@@ -4,6 +4,8 @@
  */
 package vista;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author marvi
@@ -15,6 +17,11 @@ public class frmHomeAdminTorneo extends javax.swing.JFrame {
      */
     public frmHomeAdminTorneo() {
         initComponents();
+        
+        setIconImage(new ImageIcon(getClass().getResource("/img/logodillo.png")).getImage());
+        setResizable(false);
+
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -26,32 +33,86 @@ public class frmHomeAdminTorneo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        btnArbitros = new javax.swing.JButton();
+        btnEquipos = new javax.swing.JButton();
+        btnJugadores = new javax.swing.JButton();
+        btnPartidos = new javax.swing.JButton();
+        btnCerrarSesion = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("HOME ADMINISTRADOR TORNEO");
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnArbitros.setBackground(new java.awt.Color(255, 0, 51));
+        btnArbitros.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnArbitros.setForeground(new java.awt.Color(255, 255, 255));
+        btnArbitros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/arbitro.png"))); // NOI18N
+        btnArbitros.setText("Arbitros");
+        jPanel1.add(btnArbitros, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 230, 140));
+
+        btnEquipos.setBackground(new java.awt.Color(255, 0, 51));
+        btnEquipos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnEquipos.setForeground(new java.awt.Color(255, 255, 255));
+        btnEquipos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/equipos.png"))); // NOI18N
+        btnEquipos.setText("Equipos");
+        jPanel1.add(btnEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 230, 140));
+
+        btnJugadores.setBackground(new java.awt.Color(255, 0, 51));
+        btnJugadores.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnJugadores.setForeground(new java.awt.Color(255, 255, 255));
+        btnJugadores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/jugadores.png"))); // NOI18N
+        btnJugadores.setText("Jugadores");
+        jPanel1.add(btnJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 240, 140));
+
+        btnPartidos.setBackground(new java.awt.Color(255, 0, 51));
+        btnPartidos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnPartidos.setForeground(new java.awt.Color(255, 255, 255));
+        btnPartidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/partidos.png"))); // NOI18N
+        btnPartidos.setText("Partidos");
+        jPanel1.add(btnPartidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 230, 140));
+
+        btnCerrarSesion.setBackground(new java.awt.Color(255, 0, 51));
+        btnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/log out.png"))); // NOI18N
+        btnCerrarSesion.setText("Cerrar sesión");
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 260, 140));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel2.setText("Bienvenido a DilloSports");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 460));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(226, 226, 226)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(178, 178, 178)
-                .addComponent(jLabel1)
-                .addContainerGap(245, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        
+       
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,6 +150,13 @@ public class frmHomeAdminTorneo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton btnArbitros;
+    public static javax.swing.JButton btnCerrarSesion;
+    public static javax.swing.JButton btnEquipos;
+    public static javax.swing.JButton btnJugadores;
+    public static javax.swing.JButton btnPartidos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

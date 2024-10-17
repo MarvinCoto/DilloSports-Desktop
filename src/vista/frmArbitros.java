@@ -5,6 +5,7 @@
 package vista;
 
 import controlador.ctrlArbitros2;
+import javax.swing.ImageIcon;
 import modelo.Arbitros;
 import modelo.Torneos;
 
@@ -20,6 +21,9 @@ public class frmArbitros extends javax.swing.JFrame {
     public frmArbitros() {
         initComponents();
         
+        setIconImage(new ImageIcon(getClass().getResource("/img/logodillo.png")).getImage());
+        setResizable(false);
+
         this.setLocationRelativeTo(null);
     }
     
@@ -78,6 +82,14 @@ public class frmArbitros extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
+        txtNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
+
+        txtApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
+
+        txtEdad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
+
+        txtTelefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 51));
         jLabel2.setText("Apellido");
@@ -99,6 +111,7 @@ public class frmArbitros extends javax.swing.JFrame {
         jLabel6.setText("Teléfono");
 
         cbTorneos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbTorneos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -180,6 +193,7 @@ public class frmArbitros extends javax.swing.JFrame {
         btnLimpiar.setBackground(new java.awt.Color(255, 0, 51));
         btnLimpiar.setText("Limpiar");
 
+        txtBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscarActionPerformed(evt);
@@ -190,6 +204,8 @@ public class frmArbitros extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 0, 51));
         jLabel7.setText("Buscar");
 
+        jtbArbitros.setBackground(new java.awt.Color(51, 51, 51));
+        jtbArbitros.setForeground(new java.awt.Color(255, 255, 255));
         jtbArbitros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

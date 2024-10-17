@@ -7,6 +7,7 @@ package controlador;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Random;
+import javax.swing.JOptionPane;
 import modelo.EnviarCorreo;
 import modelo.tbUsuario;
 import vista.frmIngresoCodigo;
@@ -47,7 +48,10 @@ public class ctrlIngresoCorreo implements MouseListener {
             codigoRecuperacion = numeroAleatorio;
             correoUsuario = vista.txtCorreo.getText();
 
-            String recipient = vista.txtCorreo.getText();
+            if (vista.txtCorreo.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vista, "El campo no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                String recipient = vista.txtCorreo.getText();
             String subject = "Recuperacion de contraseña";
             String content = "Este es el código de recuperación: " + numeroAleatorio;
 
@@ -56,6 +60,8 @@ public class ctrlIngresoCorreo implements MouseListener {
             frmIngresoCodigo.initFrmIngresoCodigo();
         
             vista.dispose();
+                }
+            
 
         }
     }

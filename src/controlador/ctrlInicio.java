@@ -29,7 +29,7 @@ public class ctrlInicio implements MouseListener{
         this.panelInicio = panelInicio;
         
         //Siempre hay que poner los botones que vamos a utilizar
-        frmInicio.btnPrueba.addMouseListener(this);
+        //frmInicio.btnPrueba.addMouseListener(this);
     }
 
     @Override

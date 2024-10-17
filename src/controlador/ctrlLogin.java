@@ -12,6 +12,7 @@ import static oracle.sql.NUMBER.e;
 import vista.frmHome;
 import vista.frmHomeAdminTorneo;
 import vista.frmHomeArbitro;
+import vista.frmIngresoCorreo;
 import vista.frmLogin;
 import vista.frmRegistroAdminTorneo;
 import vista.frmRegistroArbitros;
@@ -32,6 +33,7 @@ public class ctrlLogin implements MouseListener {
         vista.btnIniciarSesion.addMouseListener(this);
         vista.btnIrARegistro.addMouseListener(this);
         vista.btnIrARegistroArbitro.addMouseListener(this);
+        vista.btnRecuperar.addMouseListener(this);
         
         
     }
@@ -89,6 +91,14 @@ public class ctrlLogin implements MouseListener {
         if (e.getSource() == vista.btnIrARegistroArbitro) {
             
             frmRegistroArbitros.initregistroArbitros();
+        
+            vista.dispose();
+        
+        }
+        
+        if (e.getSource() == vista.btnRecuperar) {
+            
+            frmIngresoCorreo.initFrmIngresoCorreo();
         
             vista.dispose();
         

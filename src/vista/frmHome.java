@@ -7,6 +7,7 @@ package vista;
 import controlador.ctrlHome;
 import controlador.ctrlNoticias;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import modelo.Noticias;
 
 /**
@@ -31,8 +32,10 @@ public class frmHome extends javax.swing.JFrame {
         jpNoticias.setBackground(DefaultColor);
         jpTorneos.setBackground(DefaultColor);
         jpPerfil.setBackground(DefaultColor);
-        jpAjustes.setBackground(DefaultColor);
         
+        setIconImage(new ImageIcon(getClass().getResource("/img/logodillo.png")).getImage());
+        setResizable(false);
+
         this.setLocationRelativeTo(null);
         
     }
@@ -41,10 +44,10 @@ public class frmHome extends javax.swing.JFrame {
         
         frmHome vista = new frmHome();
         frmInicio panelInicio = new frmInicio();
-        frmPartidos panelPartidos = new frmPartidos();
+        frmReportes panelPartidos = new frmReportes();
         frmNoticias panelNoticias = new frmNoticias();
         frmTorneos panelTorneos = new frmTorneos();
-        frmPerfil panelPerfil = new frmPerfil();
+        frmAuditoria panelPerfil = new frmAuditoria();
         frmAjustes panelAjustes = new frmAjustes();
         
         ctrlHome controlador = new ctrlHome(vista, panelInicio, panelPartidos, panelNoticias, panelTorneos, panelPerfil, panelAjustes);
@@ -137,7 +140,7 @@ public class frmHome extends javax.swing.JFrame {
         jlbPartidos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlbPartidos.setForeground(new java.awt.Color(255, 0, 51));
         jlbPartidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/match.png"))); // NOI18N
-        jlbPartidos.setText(" Partidos");
+        jlbPartidos.setText("Reportes");
         jlbPartidos.setPreferredSize(new java.awt.Dimension(107, 50));
 
         javax.swing.GroupLayout jpPartidosLayout = new javax.swing.GroupLayout(jpPartidos);
@@ -220,7 +223,7 @@ public class frmHome extends javax.swing.JFrame {
                 .addComponent(jlbTorneos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpAjustes.setBackground(new java.awt.Color(0, 0, 0));
+        jpAjustes.setBackground(new java.awt.Color(255, 0, 51));
         jpAjustes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpAjustesMouseClicked(evt);
@@ -230,11 +233,10 @@ public class frmHome extends javax.swing.JFrame {
             }
         });
 
-        jlbAjustes.setBackground(new java.awt.Color(0, 0, 0));
+        jlbAjustes.setBackground(new java.awt.Color(255, 0, 51));
         jlbAjustes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jlbAjustes.setForeground(new java.awt.Color(255, 0, 51));
-        jlbAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ajustes.png"))); // NOI18N
-        jlbAjustes.setText("Ajustes");
+        jlbAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salir.png"))); // NOI18N
+        jlbAjustes.setText("Salir");
         jlbAjustes.setPreferredSize(new java.awt.Dimension(107, 50));
 
         javax.swing.GroupLayout jpAjustesLayout = new javax.swing.GroupLayout(jpAjustes);
@@ -248,9 +250,7 @@ public class frmHome extends javax.swing.JFrame {
         );
         jpAjustesLayout.setVerticalGroup(
             jpAjustesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAjustesLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jlbAjustes, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
+            .addComponent(jlbAjustes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
         );
 
         jpPerfil.setBackground(new java.awt.Color(0, 0, 0));
@@ -267,7 +267,7 @@ public class frmHome extends javax.swing.JFrame {
         jlbPerfil.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlbPerfil.setForeground(new java.awt.Color(255, 0, 51));
         jlbPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/profile.png"))); // NOI18N
-        jlbPerfil.setText("Perfil");
+        jlbPerfil.setText("Auditoría");
         jlbPerfil.setPreferredSize(new java.awt.Dimension(107, 50));
 
         javax.swing.GroupLayout jpPerfilLayout = new javax.swing.GroupLayout(jpPerfil);

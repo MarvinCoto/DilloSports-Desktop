@@ -7,36 +7,47 @@ package controlador;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
+import modelo.Auditoria;
+import modelo.Noticias;
 import vista.frmHome;
-import vista.frmPartidos;
-import vista.frmPerfil;
+import vista.frmReportes;
+import vista.frmAuditoria;
+import vista.frmNoticias;
 
 /**
  *
  * @author marvi
  */
-public class ctrlPerfil implements MouseListener{
+public class ctrlAuditoria implements MouseListener{
     
     //////////////////////////2- Parametros
+    private Auditoria modeloAuditoria;
     private frmHome vistaHome;
-    private frmPerfil panelPerfil;
+    private frmAuditoria panelAuditoria;
     
-    public ctrlPerfil(frmHome vistaHome, frmPerfil panelPerfil) {
+    public ctrlAuditoria(Auditoria modeloAuditoria, frmHome vistaHome, frmAuditoria panelAuditoria) {
         
         
         this.vistaHome = vistaHome;
-        this.panelPerfil = panelPerfil;
+        this.panelAuditoria = panelAuditoria;
         
         //Siempre hay que poner los botones que vamos a utilizar
-        frmPerfil.btnPrueba.addMouseListener(this);
+        frmAuditoria.btnPrueba.addMouseListener(this);
+        frmAuditoria.jtbAuditoria.addMouseListener(this);
+        modeloAuditoria.MostrarAuditoria(frmAuditoria.jtbAuditoria);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         
-        if(e.getSource() == panelPerfil.btnPrueba){
-            JOptionPane.showMessageDialog(panelPerfil, "Hola");
+        
+        if(e.getSource() == panelAuditoria.btnPrueba){
+            JOptionPane.showMessageDialog(panelAuditoria, "Hola");
     
+        }
+        
+        if (e.getSource() == panelAuditoria.jtbAuditoria) {
+            modeloAuditoria.cargarDatosTabla(panelAuditoria);
         }
         
     }

@@ -12,6 +12,7 @@ import modelo.tbUsuario;
 import vista.frmIngresoContrasena;
 import vista.frmIngresoCorreo;
 import java.sql.*;
+import vista.frmLogin;
 
 /**
  *
@@ -78,6 +79,10 @@ public class ctrlIngresoContrasena implements MouseListener {
         if(e.getSource() == vista.btnActualizarContrasena){
         
              actualizarContrasena();
+             
+             frmLogin.initFrmLogin();
+            
+            vista.dispose();
              
             }
     }

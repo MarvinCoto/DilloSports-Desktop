@@ -51,13 +51,18 @@ public class ctrlIngresoCodigo implements MouseListener{
         
         if(e.getSource() == vista.btnVerificarCodigo){
         
-             // Obtener el código ingresado por el usuario
+            if (vista.txtCodigo.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vista, "El campo no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                // Obtener el código ingresado por el usuario
                 try {
                     int codigoIngresado = Integer.parseInt(vista.txtCodigo.getText());
                     verificarCodigo(codigoIngresado);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(vista, "Por favor, ingrese un código válido.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+                }
+             
             }
         
         

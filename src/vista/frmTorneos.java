@@ -79,6 +79,12 @@ public class frmTorneos extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
+        txtNombreTorneo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
+
+        txtUbicacionTorneo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
+
+        txtDescripcionTorneo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 51));
         jLabel2.setText("Ubicación");
@@ -96,6 +102,7 @@ public class frmTorneos extends javax.swing.JPanel {
         jLabel6.setText("Descripción del torneo");
 
         cbDeportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fútbol", "Basketball", "Volleyball" }));
+        cbDeportes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -171,6 +178,7 @@ public class frmTorneos extends javax.swing.JPanel {
         btnLimpiar.setText("Limpiar");
         jPanel2.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(608, 208, 142, 36));
 
+        txtBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 3));
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscarActionPerformed(evt);
@@ -183,6 +191,8 @@ public class frmTorneos extends javax.swing.JPanel {
         jLabel7.setText("Buscar");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 21, -1, -1));
 
+        jtbTorneos.setBackground(new java.awt.Color(51, 51, 51));
+        jtbTorneos.setForeground(new java.awt.Color(255, 255, 255));
         jtbTorneos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

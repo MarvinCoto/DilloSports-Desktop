@@ -9,32 +9,32 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import vista.frmHome;
 import vista.frmInicio;
-import vista.frmPartidos;
+import vista.frmReportes;
 
 /**
  *
  * @author marvi
  */
-public class ctrlPartidos implements MouseListener{
+public class ctrlReportesMenu implements MouseListener{
     
     //////////////////////////2- Parametros
     private frmHome vistaHome;
-    private frmPartidos panelPartidos;
+    private frmReportes panelPartidos;
     
-    public ctrlPartidos(frmHome vistaHome, frmPartidos panelPartidos) {
+    public ctrlReportesMenu(frmHome vistaHome, frmReportes panelPartidos) {
         
         
         this.vistaHome = vistaHome;
         this.panelPartidos = panelPartidos;
         
         //Siempre hay que poner los botones que vamos a utilizar
-        frmPartidos.btnPrueba.addMouseListener(this);
+        frmReportes.btnPartidos.addMouseListener(this);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         
-        if(e.getSource() == panelPartidos.btnPrueba){
+        if(e.getSource() == panelPartidos.btnPartidos){
             JOptionPane.showMessageDialog(panelPartidos, "Hola");
     
         }
