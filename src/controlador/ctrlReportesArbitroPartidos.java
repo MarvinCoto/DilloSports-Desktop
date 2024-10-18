@@ -17,47 +17,47 @@ import javax.swing.WindowConstants;
 import modelo.ClaseConexion;
 import modelo.Torneos;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import vista.frmArbitros;
-import vista.frmHome;
+import vista.frmEquipos;
 import vista.frmPruebaReporte;
 import static vista.frmPruebaReporte.txtIdTorneo;
-import vista.frmTorneos;
+import vista.frmReporteArbitro;
+import vista.frmReporteArbitroPartidos;
+import vista.frmReporteEquipo;
 
 /**
  *
  * @author marvi
  */
-public class ctrlReportes implements MouseListener, KeyListener{
+public class ctrlReportesArbitroPartidos implements MouseListener, KeyListener {
     
     //////////////////////////2- Parametros
-    private Torneos modeloReportes;
-    private frmPruebaReporte vistaReportes;
+    private frmReporteArbitroPartidos vistaArbitro;
+
     
-    public ctrlReportes(Torneos modeloTorneos, frmPruebaReporte panelReportes) {
+    public ctrlReportesArbitroPartidos(frmReporteArbitroPartidos vistaArbitro) {
         
         //////////////////////////2- Parametros
-        this.modeloReportes = modeloReportes;
-        this.vistaReportes = vistaReportes;
+
+        this.vistaArbitro = vistaArbitro;
         
         //Siempre hay que poner los botones que vamos a utilizar
-        vistaReportes.txtIdTorneo.addMouseListener(this);
-        vistaReportes.btnGenerarReporte.addMouseListener(this);
-        vistaReportes.btnTodo.addMouseListener(this);
+        vistaArbitro.txtParametro.addMouseListener(this);
+        vistaArbitro.btnGenerarReporte.addMouseListener(this);
+        vistaArbitro.btnRegresar.addMouseListener(this);
 
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         
-        if (e.getSource() == vistaReportes.btnGenerarReporte) {
+        if (e.getSource() == vistaArbitro.btnGenerarReporte) {
           
-            if(txtIdTorneo.getText().isEmpty()) {
+            if(vistaArbitro.txtParametro.getText().isEmpty()) {
                 
                 JOptionPane.showMessageDialog(null, "Debes colocar el identificador para generar el reporte");
                 
@@ -67,13 +67,13 @@ public class ctrlReportes implements MouseListener, KeyListener{
                   //Crear un objeto Map para almacenar los parámetros
             Map<String, Object> parametros = new HashMap<>();
             //Agregador el parametro con el valor deseado
-            parametros.put("idTorneo", txtIdTorneo.getText());
+            parametros.put("idArbitro", vistaArbitro.txtParametro.getText());
                 
-             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/Flower2.jasper"));
+             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/ReportePartidosArbitros.jasper"));
             JasperPrint jprint = JasperFillManager.fillReport(report, parametros, ClaseConexion.getConexion());
         
         JasperViewer view = new JasperViewer (jprint, false);
-        view.setTitle("Detalles del Torneo");
+        view.setTitle("Arbitros");
         view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         view.setVisible(true);
         
@@ -89,30 +89,13 @@ public class ctrlReportes implements MouseListener, KeyListener{
           
         }
         
-        if (e.getSource() == vistaReportes.btnTodo) {
-          
-         
-            try {
-                  //Crear un objeto Map para almacenar los parámetros
-            Map<String, Object> parametros = new HashMap<>();
-            //Agregador el parametro con el valor deseado
-            parametros.put("idTorneo", txtIdTorneo.getText());
-                
-             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/ReporteTorneos.jasper"));
-            JasperPrint jprint = JasperFillManager.fillReport(report, parametros, ClaseConexion.getConexion());
-        
-        JasperViewer view = new JasperViewer (jprint, false);
-        view.setTitle("Detalles del Torneo");
-        view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        view.setVisible(true);
+        if (e.getSource() == vistaArbitro.btnRegresar) {
             
-            } catch (JRException ex) {
-                Logger.getLogger(ctrlReportes.class.getName()).log(Level.SEVERE, null, ex);
-                
-            }
-        
-          
+            vistaArbitro.dispose();
         }
+        
+        
+        
     }
 
     @Override
@@ -142,4 +125,6 @@ public class ctrlReportes implements MouseListener, KeyListener{
     @Override
     public void keyReleased(KeyEvent e) {
     }
+    
+    
 }

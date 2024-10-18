@@ -4,6 +4,8 @@
  */
 package vista;
 
+import controlador.ctrlHomeAdmin;
+import controlador.ctrlReportesPartido;
 import javax.swing.ImageIcon;
 
 /**
@@ -22,6 +24,15 @@ public class frmHomeAdminTorneo extends javax.swing.JFrame {
         setResizable(false);
 
         this.setLocationRelativeTo(null);
+    }
+    
+    public static void initFrmHomeAdmin(){
+        
+        frmHomeAdminTorneo vista = new frmHomeAdminTorneo();
+        ctrlHomeAdmin controlador = new ctrlHomeAdmin(vista);
+        
+        vista.setVisible(true);
+        
     }
 
     /**
@@ -111,13 +122,13 @@ public class frmHomeAdminTorneo extends javax.swing.JFrame {
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         
-       new frmBienvenida().setVisible(true);
+       //new frmBienvenida().setVisible(true);
         
-        frmBienvenida bienvenida = new frmBienvenida();
+        //frmBienvenida bienvenida = new frmBienvenida();
         
-        bienvenida.setVisible(true);
+        //bienvenida.setVisible(true);
         
-        this.dispose();
+        //this.dispose();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     /**
@@ -150,7 +161,7 @@ public class frmHomeAdminTorneo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmHomeAdminTorneo().setVisible(true);
+                initFrmHomeAdmin();
             }
         });
     }

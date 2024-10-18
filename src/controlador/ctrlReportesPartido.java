@@ -4,83 +4,93 @@
  */
 package controlador;
 
-import com.itextpdf.text.log.Level;
-import com.itextpdf.text.log.Logger;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
-import modelo.Auditoria;
 import modelo.ClaseConexion;
-import modelo.Noticias;
+import modelo.Torneos;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import vista.frmHome;
-import vista.frmReportes;
-import vista.frmAuditoria;
-import vista.frmNoticias;
+import vista.frmPruebaReporte;
+import static vista.frmPruebaReporte.txtIdTorneo;
+import vista.frmReporteArbitro;
+import vista.frmReporteEquipo;
+import vista.frmReportePartido;
 
 /**
  *
  * @author marvi
  */
-public class ctrlAuditoria implements MouseListener{
+public class ctrlReportesPartido implements MouseListener, KeyListener {
     
     //////////////////////////2- Parametros
-    private Auditoria modeloAuditoria;
-    private frmHome vistaHome;
-    private frmAuditoria panelAuditoria;
+    private frmReportePartido vistaPartido;
+
     
-    public ctrlAuditoria(Auditoria modeloAuditoria, frmHome vistaHome, frmAuditoria panelAuditoria) {
+    public ctrlReportesPartido(frmReportePartido vistaPartido) {
         
-        
-        this.vistaHome = vistaHome;
-        this.panelAuditoria = panelAuditoria;
+        //////////////////////////2- Parametros
+
+        this.vistaPartido = vistaPartido;
         
         //Siempre hay que poner los botones que vamos a utilizar
-        frmAuditoria.btnGenerarReporte.addMouseListener(this);
-        frmAuditoria.jtbAuditoria.addMouseListener(this);
-        frmAuditoria.txtIdTorneo.addMouseListener(this);
-        modeloAuditoria.MostrarAuditoria(frmAuditoria.jtbAuditoria);
+        vistaPartido.txtParametro.addMouseListener(this);
+        vistaPartido.btnGenerarReporte.addMouseListener(this);
+        vistaPartido.btnRegresar.addMouseListener(this);
+
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         
-        
-        
-        
-        if (e.getSource() == panelAuditoria.jtbAuditoria) {
-            modeloAuditoria.cargarDatosTabla(panelAuditoria);
-        }
-        
-        if (e.getSource() == panelAuditoria.btnGenerarReporte) {
-            
-            try {
+        if (e.getSource() == vistaPartido.btnGenerarReporte) {
+          
+            if(vistaPartido.txtParametro.getText().isEmpty()) {
+                
+                JOptionPane.showMessageDialog(null, "Debes colocar el identificador para generar el reporte");
+                
+            } else {
+                
+                try {
                   //Crear un objeto Map para almacenar los parámetros
             Map<String, Object> parametros = new HashMap<>();
             //Agregador el parametro con el valor deseado
-            parametros.put("idTorneo", frmReportes.txtIdTorneo.getText());
+            parametros.put("idEquipo", vistaPartido.txtParametro.getText());
                 
-             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/ReporteAuditoria.jasper"));
+             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/ReportePartidosEquipos.jasper"));
             JasperPrint jprint = JasperFillManager.fillReport(report, parametros, ClaseConexion.getConexion());
         
         JasperViewer view = new JasperViewer (jprint, false);
-        view.setTitle("Auditoría del sistema");
+        view.setTitle("Arbitros");
         view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         view.setVisible(true);
+        
+        
             
             } catch (JRException ex) {
-                java.util.logging.Logger.getLogger(ctrlReportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                Logger.getLogger(ctrlReportes.class.getName()).log(Level.SEVERE, null, ex);
                 
             }
             
+            }
+         
+          
+        }
+        
+        if (e.getSource() == vistaPartido.btnRegresar) {
+            
+            vistaPartido.dispose();
         }
         
         
@@ -102,5 +112,18 @@ public class ctrlAuditoria implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
     }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+    
     
 }

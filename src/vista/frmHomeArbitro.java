@@ -4,6 +4,8 @@
  */
 package vista;
 
+import controlador.ctrlHomeAdmin;
+import controlador.ctrlHomeArbitro;
 import javax.swing.ImageIcon;
 
 /**
@@ -22,6 +24,15 @@ public class frmHomeArbitro extends javax.swing.JFrame {
         setResizable(false);
 
         this.setLocationRelativeTo(null);
+    }
+    
+    public static void initFrmHomeArbitro(){
+        
+        frmHomeArbitro vista = new frmHomeArbitro();
+        ctrlHomeArbitro controlador = new ctrlHomeArbitro(vista);
+        
+        vista.setVisible(true);
+        
     }
 
     /**
@@ -135,7 +146,7 @@ public class frmHomeArbitro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmHomeArbitro().setVisible(true);
+                initFrmHomeArbitro();
             }
         });
     }

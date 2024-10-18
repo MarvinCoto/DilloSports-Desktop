@@ -43,10 +43,11 @@ public class frmAuditoria extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbAuditoria = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        btnPrueba = new javax.swing.JButton();
+        btnGenerarReporte = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnNoticias = new javax.swing.JButton();
+        txtIdTorneo = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -73,10 +74,10 @@ public class frmAuditoria extends javax.swing.JPanel {
         jLabel1.setText("Generar reporte");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
-        btnPrueba.setBackground(new java.awt.Color(255, 0, 51));
-        btnPrueba.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrueba.setText("Generar");
-        jPanel1.add(btnPrueba, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 140, 60));
+        btnGenerarReporte.setBackground(new java.awt.Color(255, 0, 51));
+        btnGenerarReporte.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerarReporte.setText("Generar");
+        jPanel1.add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 140, 60));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
@@ -93,6 +94,7 @@ public class frmAuditoria extends javax.swing.JPanel {
         btnNoticias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/news.png"))); // NOI18N
         btnNoticias.setText("Noticias");
         jPanel1.add(btnNoticias, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 230, 140));
+        jPanel1.add(txtIdTorneo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 456, 20, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -108,13 +110,14 @@ public class frmAuditoria extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton btnGenerarReporte;
     public static javax.swing.JButton btnNoticias;
-    public static javax.swing.JButton btnPrueba;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable jtbAuditoria;
+    public static javax.swing.JLabel txtIdTorneo;
     // End of variables declaration//GEN-END:variables
 }

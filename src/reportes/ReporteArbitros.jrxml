@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Coffee_Landscape" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="df013db5-f76e-44d3-b0df-bcbc46d93160">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Prueba reporte"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[select * from tbArbitros]]>
+	</queryString>
+	<field name="UUID_ARBITRO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="UUID_ARBITRO"/>
+		<property name="com.jaspersoft.studio.field.label" value="UUID_ARBITRO"/>
+	</field>
+	<field name="NOMBRE_ARBITRO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMBRE_ARBITRO"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMBRE_ARBITRO"/>
+	</field>
+	<field name="APELLIDO_ARBITRO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="APELLIDO_ARBITRO"/>
+		<property name="com.jaspersoft.studio.field.label" value="APELLIDO_ARBITRO"/>
+	</field>
+	<field name="EDAD_ARBITRO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="EDAD_ARBITRO"/>
+		<property name="com.jaspersoft.studio.field.label" value="EDAD_ARBITRO"/>
+	</field>
+	<field name="TELEFONO_ARBITRO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="TELEFONO_ARBITRO"/>
+		<property name="com.jaspersoft.studio.field.label" value="TELEFONO_ARBITRO"/>
+	</field>
+	<field name="UUID_TORNEO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="UUID_TORNEO"/>
+		<property name="com.jaspersoft.studio.field.label" value="UUID_TORNEO"/>
+	</field>
+	<field name="FOTO_ARBITRO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="FOTO_ARBITRO"/>
+		<property name="com.jaspersoft.studio.field.label" value="FOTO_ARBITRO"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="4" width="182" height="55" uuid="1c003177-754c-448f-8ce1-16868856f545"/>
+				<imageExpression><![CDATA["C:/Users/marvi/Downloads/dillole.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="270" y="0" width="284" height="62" uuid="bc1ce1da-8232-46ea-be55-cec4abb986dd"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[DilloReports]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="320" y="62" width="196" height="22" forecolor="#FF0F43" uuid="f6a78448-8260-4445-a9e0-e3fb53b080d9"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Detalles de los árbitros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="90" width="383" height="42" uuid="8240065e-64b6-4170-b5d9-6341598e7b35"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[En este reporte se muestran los detalles con los que fueron registrados los árbitros]]></text>
+			</staticText>
+			<image>
+				<reportElement x="40" y="45" width="84" height="79" uuid="aedbad05-dd2b-406c-b425-7c026c6429ec"/>
+				<imageExpression><![CDATA["C:/Users/marvi/Downloads/DilloSports (1).png"]]></imageExpression>
+			</image>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="710" y="14" width="100" height="30" uuid="17744daf-7fb7-413c-a4b1-59429e0f8182"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="730" y="30" width="100" height="30" uuid="fbe91fdf-9449-4c9a-9786-52648573c7b9"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="e9d2002a-c8ee-4649-a258-640dad29110c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="200" height="15" forecolor="#FF0F43" uuid="a7fdf90b-554c-40c8-9425-31954eb10687">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="205aa727-608e-4783-b0da-beaa22bcc451"/>
+				</reportElement>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="200" y="0" width="200" height="15" forecolor="#FF0F43" uuid="f3694398-44ff-47c0-81f0-2f9f2d8eaaa6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1b9aedfc-a780-4c7a-93ca-0c35d45ffed7"/>
+				</reportElement>
+				<text><![CDATA[APELLIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="400" y="0" width="200" height="15" forecolor="#FF0F43" uuid="a843f159-02ad-4c7e-bf17-51a01d39af8f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5656d1f5-74a1-4049-a56a-1cb2b7b9fce4"/>
+				</reportElement>
+				<text><![CDATA[EDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="620" y="1" width="110" height="15" forecolor="#FF0F43" uuid="1a6512d7-7ad2-4c9c-8e68-14b7c9c89640">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dbfd771c-a2c4-4450-8f53-f89827a2535c"/>
+				</reportElement>
+				<text><![CDATA[TELÉFONO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="fa7cec56-4ec1-48e6-a26e-7266a995d174"/>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="0" y="0" width="200" height="15" uuid="5a7d9ea9-b129-42ae-87a2-3d38fd0b1628">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="205aa727-608e-4783-b0da-beaa22bcc451"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{NOMBRE_ARBITRO}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="200" y="0" width="200" height="15" uuid="a0dc72a6-f6ce-46bf-a999-296ecef23078">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1b9aedfc-a780-4c7a-93ca-0c35d45ffed7"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{APELLIDO_ARBITRO}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="400" y="0" width="200" height="15" uuid="413bf3c3-d84c-4c29-8963-431076a30af3">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5656d1f5-74a1-4049-a56a-1cb2b7b9fce4"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{EDAD_ARBITRO}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="620" y="0" width="160" height="15" uuid="2ee762f5-12f8-4156-880e-48c27415f43e">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dbfd771c-a2c4-4450-8f53-f89827a2535c"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{TELEFONO_ARBITRO}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="fa5e88d5-a011-4e32-8f12-ce923f903111"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#FFFFFF" backcolor="#FA1E4E" uuid="5d8169bd-4a75-48c8-8a68-6d3ad5ba9402"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#FFFFFF" uuid="e5e27efa-b599-499b-9ca3-848cb511cb7b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#FFFFFF" uuid="18cfe1ca-f7d6-48b0-9827-28578b42a5e0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="fbce24bb-3cb1-44a3-8eec-8c067ddbe5b5"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

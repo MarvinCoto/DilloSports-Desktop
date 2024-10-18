@@ -155,7 +155,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 144, -1, 260));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dilosmall.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/DilloDona.png"))); // NOI18N
         jLabel5.setText("jLabel5");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(828, 6, 107, -1));
 

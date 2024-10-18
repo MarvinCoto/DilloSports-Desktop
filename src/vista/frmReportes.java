@@ -44,6 +44,7 @@ public class frmReportes extends javax.swing.JPanel {
         btnArbitros = new javax.swing.JButton();
         btnTorneos = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        txtIdTorneo = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(791, 481));
 
@@ -101,6 +102,7 @@ public class frmReportes extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo.png"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(794, 481));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, -1));
+        jPanel1.add(txtIdTorneo, new org.netbeans.lib.awtextra.AbsoluteConstraints(793, 10, 20, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -125,5 +127,6 @@ public class frmReportes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    public static javax.swing.JTextField txtIdTorneo;
     // End of variables declaration//GEN-END:variables
 }
