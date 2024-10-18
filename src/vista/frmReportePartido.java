@@ -7,6 +7,7 @@ package vista;
 import controlador.ctrlReportes;
 import controlador.ctrlReportesArbitro;
 import controlador.ctrlReportesPartido;
+import javax.swing.ImageIcon;
 import modelo.Torneos;
 
 /**
@@ -20,6 +21,18 @@ public class frmReportePartido extends javax.swing.JFrame {
      */
     public frmReportePartido() {
         initComponents();
+        
+        setIconImage(new ImageIcon(getClass().getResource("/img/logodillo.png")).getImage());
+        setResizable(false);
+
+        this.setLocationRelativeTo(null);
+        
+        
+        
+        
+        
+        
+        
     }
     
     public static void initFrmReportesAdmin(){

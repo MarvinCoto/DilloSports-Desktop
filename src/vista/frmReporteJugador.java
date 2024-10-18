@@ -8,6 +8,7 @@ import controlador.ctrlReportes;
 import controlador.ctrlReportesArbitro;
 import controlador.ctrlReportesEquipo;
 import controlador.ctrlReportesJugador;
+import javax.swing.ImageIcon;
 import modelo.Torneos;
 
 /**
@@ -21,6 +22,11 @@ public class frmReporteJugador extends javax.swing.JFrame {
      */
     public frmReporteJugador() {
         initComponents();
+        
+        setIconImage(new ImageIcon(getClass().getResource("/img/logodillo.png")).getImage());
+        setResizable(false);
+
+        this.setLocationRelativeTo(null);
     }
     
     public static void initFrmReportesAdmin(){

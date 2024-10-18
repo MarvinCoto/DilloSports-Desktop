@@ -6,6 +6,7 @@ package vista;
 
 import controlador.ctrlReportes;
 import controlador.ctrlReportesArbitro;
+import javax.swing.ImageIcon;
 import modelo.Torneos;
 
 /**
@@ -19,6 +20,11 @@ public class frmReporteArbitro extends javax.swing.JFrame {
      */
     public frmReporteArbitro() {
         initComponents();
+        
+        setIconImage(new ImageIcon(getClass().getResource("/img/logodillo.png")).getImage());
+        setResizable(false);
+
+        this.setLocationRelativeTo(null);
     }
     
     public static void initFrmReportesAdmin(){

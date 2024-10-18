@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import vista.frmBienvenida;
 import vista.frmHomeAdminTorneo;
 import vista.frmHomeArbitro;
+import vista.frmReporteArbitral;
 import vista.frmReporteArbitro;
 import vista.frmReporteEquipo;
 import vista.frmReporteJugador;
@@ -48,13 +49,13 @@ public class ctrlHomeArbitro implements MouseListener{
         
         }
         
-        //if (e.getSource() == vista.btnArbitros) {
+        if (e.getSource() == vista.btnReporte) {
             
-            //frmReporteArbitro.initFrmReportesAdmin();
+            frmReporteArbitral.initFrmReporteArbitral();
         
             
         
-        //}
+        }
         
         
         

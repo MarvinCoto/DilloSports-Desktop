@@ -4,22 +4,20 @@
  */
 package vista;
 
-import controlador.ctrlReportes;
+import controlador.ctrlReporteArbitral;
 import controlador.ctrlReportesArbitro;
-import controlador.ctrlReportesArbitroPartidos;
 import javax.swing.ImageIcon;
-import modelo.Torneos;
 
 /**
  *
  * @author marvi
  */
-public class frmReporteArbitroPartidos extends javax.swing.JFrame {
+public class frmReporteArbitral extends javax.swing.JFrame {
 
     /**
-     * Creates new form frmReporteArbitro
+     * Creates new form frmReporteArbitral
      */
-    public frmReporteArbitroPartidos() {
+    public frmReporteArbitral() {
         initComponents();
         
         setIconImage(new ImageIcon(getClass().getResource("/img/logodillo.png")).getImage());
@@ -28,12 +26,12 @@ public class frmReporteArbitroPartidos extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
-    public static void initFrmReportesAdmin(){
+        public static void initFrmReporteArbitral(){
         
-        frmReporteArbitroPartidos vistaArbitro = new frmReporteArbitroPartidos();
-        ctrlReportesArbitroPartidos controlador = new ctrlReportesArbitroPartidos(vistaArbitro);
+        frmReporteArbitral vista = new frmReporteArbitral();
+        ctrlReporteArbitral controlador = new ctrlReporteArbitral(vista);
         
-        vistaArbitro.setVisible(true);
+        vista.setVisible(true);
         
     }
 
@@ -47,10 +45,10 @@ public class frmReporteArbitroPartidos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnRegresar = new javax.swing.JButton();
         btnGenerarReporte = new javax.swing.JButton();
-        txtParametro = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtParrafo = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -59,41 +57,45 @@ public class frmReporteArbitroPartidos extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnRegresar.setBackground(new java.awt.Color(255, 0, 51));
+        btnGenerarReporte.setBackground(new java.awt.Color(255, 0, 51));
+        btnGenerarReporte.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnGenerarReporte.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerarReporte.setText("Generar Reporte");
+        btnGenerarReporte.setBorder(null);
+        jPanel1.add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 170, 50));
+
+        btnRegresar.setBackground(new java.awt.Color(255, 0, 0));
         btnRegresar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegresar.setText("Cerrar");
-        btnRegresar.setBorder(null);
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 80, 30));
+        btnRegresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 30));
 
-        btnGenerarReporte.setBackground(new java.awt.Color(255, 0, 51));
-        btnGenerarReporte.setForeground(new java.awt.Color(255, 255, 255));
-        btnGenerarReporte.setText("Generar reporte");
-        btnGenerarReporte.setBorder(null);
-        jPanel1.add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 200, 50));
+        txtParrafo.setColumns(20);
+        txtParrafo.setLineWrap(true);
+        txtParrafo.setRows(5);
+        txtParrafo.setWrapStyleWord(true);
+        txtParrafo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 4));
+        jScrollPane1.setViewportView(txtParrafo);
 
-        txtParametro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 3));
-        jPanel1.add(txtParametro, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 360, 40));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 890, 450));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setText("Ingresa el ID del torneo");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rexdillo.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, -1));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setText("Redacta tu reporte arbitral");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 480));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 930, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -116,21 +118,20 @@ public class frmReporteArbitroPartidos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmReporteArbitroPartidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmReporteArbitral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmReporteArbitroPartidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmReporteArbitral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmReporteArbitroPartidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmReporteArbitral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmReporteArbitroPartidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmReporteArbitral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                initFrmReportesAdmin();
+                initFrmReporteArbitral();
             }
         });
     }
@@ -140,8 +141,8 @@ public class frmReporteArbitroPartidos extends javax.swing.JFrame {
     public static javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    public static javax.swing.JTextField txtParametro;
+    private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JTextArea txtParrafo;
     // End of variables declaration//GEN-END:variables
 }

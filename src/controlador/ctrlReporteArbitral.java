@@ -25,6 +25,7 @@ import net.sf.jasperreports.view.JasperViewer;
 import vista.frmEquipos;
 import vista.frmPruebaReporte;
 import static vista.frmPruebaReporte.txtIdTorneo;
+import vista.frmReporteArbitral;
 import vista.frmReporteArbitro;
 import vista.frmReporteEquipo;
 
@@ -32,20 +33,20 @@ import vista.frmReporteEquipo;
  *
  * @author marvi
  */
-public class ctrlReportesArbitro implements MouseListener, KeyListener {
+public class ctrlReporteArbitral implements MouseListener, KeyListener {
     
     //////////////////////////2- Parametros
-    private frmReporteArbitro vistaArbitro;
+    private frmReporteArbitral vistaArbitro;
 
     
-    public ctrlReportesArbitro(frmReporteArbitro vistaArbitro) {
+    public ctrlReporteArbitral(frmReporteArbitral vistaArbitro) {
         
         //////////////////////////2- Parametros
 
         this.vistaArbitro = vistaArbitro;
         
         //Siempre hay que poner los botones que vamos a utilizar
-        vistaArbitro.txtParametro.addMouseListener(this);
+        vistaArbitro.txtParrafo.addMouseListener(this);
         vistaArbitro.btnGenerarReporte.addMouseListener(this);
         vistaArbitro.btnRegresar.addMouseListener(this);
 
@@ -56,7 +57,7 @@ public class ctrlReportesArbitro implements MouseListener, KeyListener {
         
         if (e.getSource() == vistaArbitro.btnGenerarReporte) {
           
-            if(vistaArbitro.txtParametro.getText().isEmpty()) {
+            if(vistaArbitro.txtParrafo.getText().isEmpty()) {
                 
                 JOptionPane.showMessageDialog(null, "Debes colocar el identificador para generar el reporte");
                 
@@ -66,13 +67,13 @@ public class ctrlReportesArbitro implements MouseListener, KeyListener {
                   //Crear un objeto Map para almacenar los parámetros
             Map<String, Object> parametros = new HashMap<>();
             //Agregador el parametro con el valor deseado
-            parametros.put("idTorneo", vistaArbitro.txtParametro.getText());
+            parametros.put("parrafo", vistaArbitro.txtParrafo.getText());
                 
-             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/ReporteArbitrosTorneos.jasper"));
+             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/ReporteArbitral.jasper"));
             JasperPrint jprint = JasperFillManager.fillReport(report, parametros, ClaseConexion.getConexion());
         
         JasperViewer view = new JasperViewer (jprint, false);
-        view.setTitle("Arbitros");
+        view.setTitle("Reporte Arbitral");
         view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         view.setVisible(true);
         
